@@ -1,0 +1,18 @@
+(defpackage roscpp_sessions-srv
+  (:use cl
+        roslisp-msg-protocol)
+  (:export
+   "SET_VARIABLE"
+   "<SET_VARIABLE-REQUEST>"
+   "<SET_VARIABLE-RESPONSE>"
+   "GET_VARIABLE"
+   "<GET_VARIABLE-REQUEST>"
+   "<GET_VARIABLE-RESPONSE>"
+   "SIMPLE_SESSION"
+   "<SIMPLE_SESSION-REQUEST>"
+   "<SIMPLE_SESSION-RESPONSE>"
+   "ADD_VARIABLES"
+   "<ADD_VARIABLES-REQUEST>"
+   "<ADD_VARIABLES-RESPONSE>"
+  ))
+

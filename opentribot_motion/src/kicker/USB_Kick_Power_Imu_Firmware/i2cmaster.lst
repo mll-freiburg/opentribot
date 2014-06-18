@@ -1,0 +1,710 @@
+   1               	# 1 "i2cmaster.S"
+   1               	;*************************************************************************
+   0               	
+   0               	
+   2               	; Title	:    I2C (Single) Master Implementation
+   3               	; Author:    Peter Fleury <pfleury@gmx.ch>  http://jump.to/fleury
+   4               	;            based on Atmel Appl. Note AVR300
+   5               	; File:      $Id: i2cmaster.S,v 1.12 2008/03/02 08:51:27 peter Exp $
+   6               	; Software:  AVR-GCC 3.3 or higher
+   7               	; Target:    any AVR device
+   8               	;
+   9               	; DESCRIPTION
+  10               	; 	Basic routines for communicating with I2C slave devices. This
+  11               	;	"single" master implementation is limited to one bus master on the
+  12               	;	I2C bus. 
+  13               	;  
+  14               	;       Based on the Atmel Application Note AVR300, corrected and adapted 
+  15               	;       to GNU assembler and AVR-GCC C call interface
+  16               	;       Replaced the incorrect quarter period delays found in AVR300 with 
+  17               	;       half period delays. 
+  18               	;
+  19               	; USAGE
+  20               	;	These routines can be called from C, refere to file i2cmaster.h.
+  21               	;       See example test_i2cmaster.c 
+  22               	; 	Adapt the SCL and SDA port and pin definitions and eventually 
+  23               	;	the delay routine to your target !
+  24               	; 	Use 4.7k pull-up resistor on the SDA and SCL pin.
+  25               	;
+  26               	; NOTES
+  27               	;	The I2C routines can be called either from non-interrupt or
+  28               	;	interrupt routines, not both.
+  29               	;
+  30               	;*************************************************************************
+  31               	
+  32               	#if (__GNUC__ * 100 + __GNUC_MINOR__) < 303
+  33               	#error "This library requires AVR-GCC 3.3 or later, update to newer AVR-GCC compiler !"
+  34               	#endif
+  35               	
+  36               	
+  37               	#include <avr/io.h>
+   1               	/* Copyright (c) 2002,2003,2005,2006,2007 Marek Michalkiewicz, Joerg Wunsch
+   2               	   Copyright (c) 2007 Eric B. Weddington
+   3               	   All rights reserved.
+   4               	
+   5               	   Redistribution and use in source and binary forms, with or without
+   6               	   modification, are permitted provided that the following conditions are met:
+   7               	
+   8               	   * Redistributions of source code must retain the above copyright
+   9               	     notice, this list of conditions and the following disclaimer.
+  10               	
+  11               	   * Redistributions in binary form must reproduce the above copyright
+  12               	     notice, this list of conditions and the following disclaimer in
+  13               	     the documentation and/or other materials provided with the
+  14               	     distribution.
+  15               	
+  16               	   * Neither the name of the copyright holders nor the names of
+  17               	     contributors may be used to endorse or promote products derived
+  18               	     from this software without specific prior written permission.
+  19               	
+  20               	  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21               	  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22               	  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  23               	  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  24               	  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  25               	  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  26               	  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  27               	  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  28               	  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  29               	  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  30               	  POSSIBILITY OF SUCH DAMAGE. */
+  31               	
+  32               	/* $Id: io.h,v 1.52.2.5 2008/03/25 22:33:29 arcanum Exp $ */
+  33               	
+  34               	/** \file */
+  35               	/** \defgroup avr_io <avr/io.h>: AVR device-specific IO definitions
+  36               	    \code #include <avr/io.h> \endcode
+  37               	
+  38               	    This header file includes the apropriate IO definitions for the
+  39               	    device that has been specified by the <tt>-mmcu=</tt> compiler
+  40               	    command-line switch.  This is done by diverting to the appropriate
+  41               	    file <tt>&lt;avr/io</tt><em>XXXX</em><tt>.h&gt;</tt> which should
+  42               	    never be included directly.  Some register names common to all
+  43               	    AVR devices are defined directly within <tt>&lt;avr/common.h&gt;</tt>,
+  44               	    which is included in <tt>&lt;avr/io.h&gt;</tt>,
+  45               	    but most of the details come from the respective include file.
+  46               	
+  47               	    Note that this file always includes the following files:
+  48               	    \code 
+  49               	    #include <avr/sfr_defs.h>
+  50               	    #include <avr/portpins.h>
+  51               	    #include <avr/common.h>
+  52               	    #include <avr/version.h>
+  53               	    \endcode
+  54               	    See \ref avr_sfr for more details about that header file.
+  55               	
+  56               	    Included are definitions of the IO register set and their
+  57               	    respective bit values as specified in the Atmel documentation.
+  58               	    Note that inconsistencies in naming conventions,
+  59               	    so even identical functions sometimes get different names on
+  60               	    different devices.
+  61               	
+  62               	    Also included are the specific names useable for interrupt
+  63               	    function definitions as documented
+  64               	    \ref avr_signames "here".
+  65               	
+  66               	    Finally, the following macros are defined:
+  67               	
+  68               	    - \b RAMEND
+  69               	    <br>
+  70               	    A constant describing the last on-chip RAM location.
+  71               	    <br>
+  72               	    - \b XRAMEND
+  73               	    <br>
+  74               	    A constant describing the last possible location in RAM.
+  75               	    This is equal to RAMEND for devices that do not allow for
+  76               	    external RAM.
+  77               	    <br>
+  78               	    - \b E2END
+  79               	    <br>
+  80               	    A constant describing the address of the last EEPROM cell.
+  81               	    <br>
+  82               	    - \b FLASHEND
+  83               	    <br>
+  84               	    A constant describing the last byte address in flash ROM.
+  85               	    <br>
+  86               	    - \b SPM_PAGESIZE
+  87               	    <br>
+  88               	    For devices with bootloader support, the flash pagesize
+  89               	    (in bytes) to be used for the \c SPM instruction. */
+  90               	
+  91               	#ifndef _AVR_IO_H_
+  92               	#define _AVR_IO_H_
+  93               	
+  94               	#include <avr/sfr_defs.h>
+   1               	/* Copyright (c) 2002, Marek Michalkiewicz <marekm@amelek.gda.pl>
+  95               	
+  96               	#if defined (__AVR_AT94K__)
+  97               	#  include <avr/ioat94k.h>
+  98               	#elif defined (__AVR_AT43USB320__)
+  99               	#  include <avr/io43u32x.h>
+ 100               	#elif defined (__AVR_AT43USB355__)
+ 101               	#  include <avr/io43u35x.h>
+ 102               	#elif defined (__AVR_AT76C711__)
+ 103               	#  include <avr/io76c711.h>
+ 104               	#elif defined (__AVR_AT86RF401__)
+ 105               	#  include <avr/io86r401.h>
+ 106               	#elif defined (__AVR_AT90PWM1__)
+ 107               	#  include <avr/io90pwm1.h>
+ 108               	#elif defined (__AVR_AT90PWM2__)
+ 109               	#  include <avr/io90pwmx.h>
+ 110               	#elif defined (__AVR_AT90PWM2B__)
+ 111               	#  include <avr/io90pwm2b.h>
+ 112               	#elif defined (__AVR_AT90PWM3__)
+ 113               	#  include <avr/io90pwmx.h>
+ 114               	#elif defined (__AVR_AT90PWM3B__)
+ 115               	#  include <avr/io90pwm3b.h>
+ 116               	#elif defined (__AVR_AT90PWM216__)
+ 117               	#  include <avr/io90pwm216.h>
+ 118               	#elif defined (__AVR_AT90PWM316__)
+ 119               	#  include <avr/io90pwm316.h>
+ 120               	#elif defined (__AVR_ATmega32C1__)
+ 121               	#  include <avr/iom32c1.h>
+ 122               	#elif defined (__AVR_ATmega32M1__)
+ 123               	#  include <avr/iom32m1.h>
+ 124               	#elif defined (__AVR_ATmega32U4__)
+ 125               	#  include <avr/iom32u4.h>
+ 126               	#elif defined (__AVR_ATmega128__)
+ 127               	#  include <avr/iom128.h>
+ 128               	#elif defined (__AVR_ATmega1280__)
+ 129               	#  include <avr/iom1280.h>
+ 130               	#elif defined (__AVR_ATmega1281__)
+ 131               	#  include <avr/iom1281.h>
+ 132               	#elif defined (__AVR_ATmega1284P__)
+ 133               	#  include <avr/iom1284p.h>
+ 134               	#elif defined (__AVR_ATmega2560__)
+ 135               	#  include <avr/iom2560.h>
+ 136               	#elif defined (__AVR_ATmega2561__)
+ 137               	#  include <avr/iom2561.h>
+ 138               	#elif defined (__AVR_AT90CAN32__)
+ 139               	#  include <avr/iocan32.h>
+ 140               	#elif defined (__AVR_AT90CAN64__)
+ 141               	#  include <avr/iocan64.h>
+ 142               	#elif defined (__AVR_AT90CAN128__)
+ 143               	#  include <avr/iocan128.h>
+ 144               	#elif defined (__AVR_AT90USB82__)
+ 145               	#  include <avr/iousb82.h>
+ 146               	#elif defined (__AVR_AT90USB162__)
+ 147               	#  include <avr/iousb162.h>
+   1               	/* Copyright (c) 2007 Anatoly Sokolov 
+   2               	   All rights reserved.
+   3               	
+   4               	   Redistribution and use in source and binary forms, with or without
+   5               	   modification, are permitted provided that the following conditions are met:
+   6               	
+   7               	   * Redistributions of source code must retain the above copyright
+   8               	     notice, this list of conditions and the following disclaimer.
+   9               	
+  10               	   * Redistributions in binary form must reproduce the above copyright
+  11               	     notice, this list of conditions and the following disclaimer in
+  12               	     the documentation and/or other materials provided with the
+  13               	     distribution.
+  14               	
+  15               	   * Neither the name of the copyright holders nor the names of
+  16               	     contributors may be used to endorse or promote products derived
+  17               	     from this software without specific prior written permission.
+  18               	
+  19               	  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  20               	  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  21               	  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  22               	  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  23               	  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  24               	  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  25               	  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  26               	  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  27               	  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  28               	  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  29               	  POSSIBILITY OF SUCH DAMAGE. */
+  30               	
+  31               	/* $Id: iousb162.h,v 1.2.2.1 2008/01/05 00:08:45 arcanum Exp $ */
+  32               	
+  33               	/* avr/iousb162.h - definitions for AT90USB162 */
+  34               	
+  35               	#ifndef _AVR_AT90USB162_H_
+  36               	#define _AVR_AT90USB162_H_ 1
+  37               	
+  38               	#include <avr/iousbxx2.h>
+   1               	/* Copyright (c) 2007 Anatoly Sokolov 
+  39               	
+ 148               	#elif defined (__AVR_AT90USB646__)
+ 149               	#  include <avr/iousb646.h>
+ 150               	#elif defined (__AVR_AT90USB647__)
+ 151               	#  include <avr/iousb647.h>
+ 152               	#elif defined (__AVR_AT90USB1286__)
+ 153               	#  include <avr/iousb1286.h>
+ 154               	#elif defined (__AVR_AT90USB1287__)
+ 155               	#  include <avr/iousb1287.h>
+ 156               	#elif defined (__AVR_ATmega64__)
+ 157               	#  include <avr/iom64.h>
+ 158               	#elif defined (__AVR_ATmega640__)
+ 159               	#  include <avr/iom640.h>
+ 160               	#elif defined (__AVR_ATmega644__)
+ 161               	#  include <avr/iom644.h>
+ 162               	#elif defined (__AVR_ATmega644P__)
+ 163               	#  include <avr/iom644.h>
+ 164               	#elif defined (__AVR_ATmega645__)
+ 165               	#  include <avr/iom645.h>
+ 166               	#elif defined (__AVR_ATmega6450__)
+ 167               	#  include <avr/iom6450.h>
+ 168               	#elif defined (__AVR_ATmega649__)
+ 169               	#  include <avr/iom649.h>
+ 170               	#elif defined (__AVR_ATmega6490__)
+ 171               	#  include <avr/iom6490.h>
+ 172               	#elif defined (__AVR_ATmega103__)
+ 173               	#  include <avr/iom103.h>
+ 174               	#elif defined (__AVR_ATmega32__)
+ 175               	#  include <avr/iom32.h>
+ 176               	#elif defined (__AVR_ATmega323__)
+ 177               	#  include <avr/iom323.h>
+ 178               	#elif defined (__AVR_ATmega324P__)
+ 179               	#  include <avr/iom324.h>
+ 180               	#elif defined (__AVR_ATmega325__)
+ 181               	#  include <avr/iom325.h>
+ 182               	#elif defined (__AVR_ATmega325P__)
+ 183               	#  include <avr/iom325.h>
+ 184               	#elif defined (__AVR_ATmega3250__)
+ 185               	#  include <avr/iom3250.h>
+ 186               	#elif defined (__AVR_ATmega3250P__)
+ 187               	#  include <avr/iom3250.h>
+ 188               	#elif defined (__AVR_ATmega328P__)
+ 189               	#  include <avr/iom328p.h>
+ 190               	#elif defined (__AVR_ATmega329__)
+ 191               	#  include <avr/iom329.h>
+ 192               	#elif defined (__AVR_ATmega329P__)
+ 193               	#  include <avr/iom329.h>
+ 194               	#elif defined (__AVR_ATmega3290__)
+ 195               	#  include <avr/iom3290.h>
+ 196               	#elif defined (__AVR_ATmega3290P__)
+ 197               	#  include <avr/iom3290.h>
+ 198               	#elif defined (__AVR_ATmega32HVB__)
+ 199               	#  include <avr/iom32hvb.h>
+ 200               	#elif defined (__AVR_ATmega406__)
+ 201               	#  include <avr/iom406.h>
+ 202               	#elif defined (__AVR_ATmega16__)
+ 203               	#  include <avr/iom16.h>
+ 204               	#elif defined (__AVR_ATmega161__)
+ 205               	#  include <avr/iom161.h>
+ 206               	#elif defined (__AVR_ATmega162__)
+ 207               	#  include <avr/iom162.h>
+ 208               	#elif defined (__AVR_ATmega163__)
+ 209               	#  include <avr/iom163.h>
+ 210               	#elif defined (__AVR_ATmega164P__)
+ 211               	#  include <avr/iom164.h>
+ 212               	#elif defined (__AVR_ATmega165__)
+ 213               	#  include <avr/iom165.h>
+ 214               	#elif defined (__AVR_ATmega165P__)
+ 215               	#  include <avr/iom165p.h>
+ 216               	#elif defined (__AVR_ATmega168__)
+ 217               	#  include <avr/iom168.h>
+ 218               	#elif defined (__AVR_ATmega168P__)
+ 219               	#  include <avr/iom168p.h>
+ 220               	#elif defined (__AVR_ATmega169__)
+ 221               	#  include <avr/iom169.h>
+ 222               	#elif defined (__AVR_ATmega169P__)
+ 223               	#  include <avr/iom169p.h>
+ 224               	#elif defined (__AVR_ATmega8HVA__)
+ 225               	#  include <avr/iom8hva.h>
+ 226               	#elif defined (__AVR_ATmega16HVA__)
+ 227               	#  include <avr/iom16hva.h>
+ 228               	#elif defined (__AVR_ATmega8__)
+ 229               	#  include <avr/iom8.h>
+ 230               	#elif defined (__AVR_ATmega48__)
+ 231               	#  include <avr/iom48.h>
+ 232               	#elif defined (__AVR_ATmega48P__)
+ 233               	#  include <avr/iom48p.h>
+ 234               	#elif defined (__AVR_ATmega88__)
+ 235               	#  include <avr/iom88.h>
+ 236               	#elif defined (__AVR_ATmega88P__)
+ 237               	#  include <avr/iom88p.h>
+ 238               	#elif defined (__AVR_ATmega8515__)
+ 239               	#  include <avr/iom8515.h>
+ 240               	#elif defined (__AVR_ATmega8535__)
+ 241               	#  include <avr/iom8535.h>
+ 242               	#elif defined (__AVR_AT90S8535__)
+ 243               	#  include <avr/io8535.h>
+ 244               	#elif defined (__AVR_AT90C8534__)
+ 245               	#  include <avr/io8534.h>
+ 246               	#elif defined (__AVR_AT90S8515__)
+ 247               	#  include <avr/io8515.h>
+ 248               	#elif defined (__AVR_AT90S4434__)
+ 249               	#  include <avr/io4434.h>
+ 250               	#elif defined (__AVR_AT90S4433__)
+ 251               	#  include <avr/io4433.h>
+ 252               	#elif defined (__AVR_AT90S4414__)
+ 253               	#  include <avr/io4414.h>
+ 254               	#elif defined (__AVR_ATtiny22__)
+ 255               	#  include <avr/iotn22.h>
+ 256               	#elif defined (__AVR_ATtiny26__)
+ 257               	#  include <avr/iotn26.h>
+ 258               	#elif defined (__AVR_AT90S2343__)
+ 259               	#  include <avr/io2343.h>
+ 260               	#elif defined (__AVR_AT90S2333__)
+ 261               	#  include <avr/io2333.h>
+ 262               	#elif defined (__AVR_AT90S2323__)
+ 263               	#  include <avr/io2323.h>
+ 264               	#elif defined (__AVR_AT90S2313__)
+ 265               	#  include <avr/io2313.h>
+ 266               	#elif defined (__AVR_ATtiny2313__)
+ 267               	#  include <avr/iotn2313.h>
+ 268               	#elif defined (__AVR_ATtiny13__)
+ 269               	#  include <avr/iotn13.h>
+ 270               	#elif defined (__AVR_ATtiny25__)
+ 271               	#  include <avr/iotn25.h>
+ 272               	#elif defined (__AVR_ATtiny45__)
+ 273               	#  include <avr/iotn45.h>
+ 274               	#elif defined (__AVR_ATtiny85__)
+ 275               	#  include <avr/iotn85.h>
+ 276               	#elif defined (__AVR_ATtiny24__)
+ 277               	#  include <avr/iotn24.h>
+ 278               	#elif defined (__AVR_ATtiny44__)
+ 279               	#  include <avr/iotn44.h>
+ 280               	#elif defined (__AVR_ATtiny84__)
+ 281               	#  include <avr/iotn84.h>
+ 282               	#elif defined (__AVR_ATtiny261__)
+ 283               	#  include <avr/iotn261.h>
+ 284               	#elif defined (__AVR_ATtiny461__)
+ 285               	#  include <avr/iotn461.h>
+ 286               	#elif defined (__AVR_ATtiny861__)
+ 287               	#  include <avr/iotn861.h>
+ 288               	#elif defined (__AVR_ATtiny43U__)
+ 289               	#  include <avr/iotn43u.h>
+ 290               	#elif defined (__AVR_ATtiny48__)
+ 291               	#  include <avr/iotn48.h>
+ 292               	#elif defined (__AVR_ATtiny88__)
+ 293               	#  include <avr/iotn88.h>
+ 294               	#elif defined (__AVR_ATtiny167__)
+ 295               	#  include <avr/iotn167.h>
+ 296               	/* avr1: the following only supported for assembler programs */
+ 297               	#elif defined (__AVR_ATtiny28__)
+ 298               	#  include <avr/iotn28.h>
+ 299               	#elif defined (__AVR_AT90S1200__)
+ 300               	#  include <avr/io1200.h>
+ 301               	#elif defined (__AVR_ATtiny15__)
+ 302               	#  include <avr/iotn15.h>
+ 303               	#elif defined (__AVR_ATtiny12__)
+ 304               	#  include <avr/iotn12.h>
+ 305               	#elif defined (__AVR_ATtiny11__)
+ 306               	#  include <avr/iotn11.h>
+ 307               	#elif defined (__AVR_ATxmega64A1__)
+ 308               	#  include <avr/iox64a1.h>
+ 309               	#elif defined (__AVR_ATxmega128A1__)
+ 310               	#  include <avr/iox128a1.h>
+ 311               	#else
+ 312               	#  if !defined(__COMPILING_AVR_LIBC__)
+ 313               	#    warning "device type not defined"
+ 314               	#  endif
+ 315               	#endif
+ 316               	
+ 317               	#include <avr/portpins.h>
+   1               	/* Copyright (c) 2003  Theodore A. Roth
+ 318               	
+ 319               	#include <avr/common.h>
+   1               	/* Copyright (c) 2007 Eric B. Weddington
+ 320               	
+ 321               	#include <avr/version.h>
+   1               	/* Copyright (c) 2005, Joerg Wunsch                               -*- c -*-
+ 322               	
+ 323               	/* Include fuse.h after individual IO header files. */
+ 324               	#include <avr/fuse.h>
+   1               	/* Copyright (c) 2007, Atmel Corporation
+ 325               	
+ 326               	/* Include lock.h after individual IO header files. */
+ 327               	#include <avr/lock.h>
+   1               	/* Copyright (c) 2007, Atmel Corporation
+ 328               	
+  38               	#include "i2cmasterconfig.h"
+   1               	#ifndef _I2CMASTER_CONFIG_H
+  39               	
+  40               	
+  41               	;******
+  42               	
+  43               	;-- map the IO register back into the IO address space
+  44               	#define SDA_DDR		(_SFR_IO_ADDR(SDA_PORT) - 1)
+  45               	#define SCL_DDR		(_SFR_IO_ADDR(SCL_PORT) - 1)
+  46               	#define SDA_OUT		_SFR_IO_ADDR(SDA_PORT)
+  47               	#define SCL_OUT		_SFR_IO_ADDR(SCL_PORT)
+  48               	#define SDA_IN		(_SFR_IO_ADDR(SDA_PORT) - 2)
+  49               	#define SCL_IN		(_SFR_IO_ADDR(SCL_PORT) - 2)
+  50               	
+  51               	#ifndef __tmp_reg__
+  52               	#define __tmp_reg__ 0
+  53               	#endif
+  54               	
+  55               	
+  56               		.section .text
+  57               	
+  58               	;*************************************************************************
+  59               	; delay half period
+  60               	; For I2C in normal mode (100kHz), use T/2 > 5us
+  61               	; For I2C in fast mode (400kHz),   use T/2 > 1.3us
+  62               	;*************************************************************************
+  65               		.func i2c_delay_T2	; delay 5.0 microsec with 4 Mhz crystal	
+  66               	i2c_delay_T2:        ; 4 cycles
+  67:i2cmaster.S   **** 	rjmp 1f      ; 2   "
+  68:i2cmaster.S   **** 1:	rjmp 2f      ; 2   "
+  69:i2cmaster.S   **** 2:	rjmp 3f      ; 2   "
+  70:i2cmaster.S   **** 3:	rjmp 4f      ; 2   "
+  71:i2cmaster.S   **** 4:	rjmp 5f      ; 2   "
+  72:i2cmaster.S   **** 5: 	rjmp 6f      ; 2   "
+  73               	;verlängerung um 40  zyklen
+  74:i2cmaster.S   **** 6: 	rjmp 7f      ; 2   "
+  75:i2cmaster.S   **** 7: 	rjmp 8f      ; 2   "
+  76:i2cmaster.S   **** 8: 	rjmp 9f      ; 2   "
+  77:i2cmaster.S   **** 9: 	rjmp 10f      ; 2   "
+  78:i2cmaster.S   **** 10: 	rjmp 11f      ; 2   "
+  79:i2cmaster.S   **** 11: 	rjmp 12f      ; 2   "
+  80:i2cmaster.S   **** 12: 	rjmp 13f      ; 2   "
+  81:i2cmaster.S   **** 13: 	rjmp 14f      ; 2   "
+  82:i2cmaster.S   **** 14: 	rjmp 15f      ; 2   "
+  83:i2cmaster.S   **** 15: 	rjmp 16f      ; 2   "
+  84:i2cmaster.S   **** 16: 	rjmp 17f      ; 2   "
+  85:i2cmaster.S   **** 17: 	rjmp 18f      ; 2   "
+  86:i2cmaster.S   **** 18: 	rjmp 19f      ; 2   "
+  87:i2cmaster.S   **** 19: 	rjmp 20f      ; 2   "
+  88:i2cmaster.S   **** 20: 	rjmp 21f      ; 2   "
+  89:i2cmaster.S   **** 21:	nop          ; 1   "
+  90:i2cmaster.S   **** 	ret          ; 3   "
+  91               		.endfunc     ; total 20 cyles = 5.0 microsec with 4 Mhz crystal 
+  92               	
+  93               	
+  94               	;*************************************************************************
+  95               	; Initialization of the I2C bus interface. Need to be called only once
+  96               	; 
+  97               	; extern void i2c_init(void)
+  98               	;*************************************************************************
+  99               		.global i2c_init
+ 100               		.func i2c_init
+ 101               	i2c_init:
+ 102:i2cmaster.S   **** 	cbi SDA_DDR,SDA		;release SDA
+ 103:i2cmaster.S   **** 	cbi SCL_DDR,SCL		;release SCL
+ 104:i2cmaster.S   **** 	cbi SDA_OUT,SDA
+ 105:i2cmaster.S   **** 	cbi SCL_OUT,SCL
+ 106:i2cmaster.S   **** 	ret
+ 107               		.endfunc
+ 108               	
+ 109               	
+ 110               	;*************************************************************************	
+ 111               	; Issues a start condition and sends address and transfer direction.
+ 112               	; return 0 = device accessible, 1= failed to access device
+ 113               	;
+ 114               	; extern unsigned char i2c_start(unsigned char addr);
+ 115               	;	addr = r24, return = r25(=0):r24
+ 116               	;*************************************************************************
+ 117               	
+ 118               		.global i2c_start
+ 119               		.func   i2c_start
+ 120               	i2c_start:
+ 121:i2cmaster.S   **** 	sbi 	SDA_DDR,SDA	;force SDA low
+ 122:i2cmaster.S   **** 	rcall 	i2c_delay_T2	;delay T/2
+ 123               		
+ 124:i2cmaster.S   **** 	rcall 	i2c_write	;write address
+ 125:i2cmaster.S   **** 	ret
+ 126               		.endfunc		
+ 127               	
+ 128               	
+ 129               	;*************************************************************************
+ 130               	; Issues a repeated start condition and sends address and transfer direction.
+ 131               	; return 0 = device accessible, 1= failed to access device
+ 132               	;
+ 133               	; extern unsigned char i2c_rep_start(unsigned char addr);
+ 134               	;	addr = r24,  return = r25(=0):r24
+ 135               	;*************************************************************************
+ 136               	
+ 137               		.global i2c_rep_start
+ 138               		.func	i2c_rep_start
+ 139               	i2c_rep_start:
+ 140:i2cmaster.S   **** 	sbi	SCL_DDR,SCL	;force SCL low
+ 141:i2cmaster.S   **** 	rcall 	i2c_delay_T2	;delay  T/2
+ 142:i2cmaster.S   **** 	cbi	SDA_DDR,SDA	;release SDA
+ 143:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 144:i2cmaster.S   **** 	cbi	SCL_DDR,SCL	;release SCL
+ 145:i2cmaster.S   **** 	rcall 	i2c_delay_T2	;delay  T/2
+ 146:i2cmaster.S   **** 	sbi 	SDA_DDR,SDA	;force SDA low
+ 147:i2cmaster.S   **** 	rcall 	i2c_delay_T2	;delay	T/2
+ 148               		
+ 149:i2cmaster.S   **** 	rcall	i2c_write	;write address
+ 150:i2cmaster.S   **** 	ret
+ 151               		.endfunc
+ 152               	
+ 153               	
+ 154               	;*************************************************************************	
+ 155               	; Issues a start condition and sends address and transfer direction.
+ 156               	; If device is busy, use ack polling to wait until device is ready
+ 157               	;
+ 158               	; extern void i2c_start_wait(unsigned char addr);
+ 159               	;	addr = r24
+ 160               	;*************************************************************************
+ 161               	
+ 162               		.global i2c_start_wait
+ 163               		.func   i2c_start_wait
+ 164               	i2c_start_wait:
+ 165:i2cmaster.S   **** 	mov	__tmp_reg__,r24
+ 166               	i2c_start_wait1:
+ 167:i2cmaster.S   **** 	sbi 	SDA_DDR,SDA	;force SDA low
+ 168:i2cmaster.S   **** 	rcall 	i2c_delay_T2	;delay T/2
+ 169:i2cmaster.S   **** 	mov	r24,__tmp_reg__
+ 170:i2cmaster.S   **** 	rcall 	i2c_write	;write address
+ 171:i2cmaster.S   **** 	tst	r24		;if device not busy -> done
+ 172:i2cmaster.S   **** 	breq	i2c_start_wait_done
+ 173:i2cmaster.S   **** 	rcall	i2c_stop	;terminate write operation
+ 174:i2cmaster.S   **** 	rjmp	i2c_start_wait1	;device busy, poll ack again
+ 175               	i2c_start_wait_done:
+ 176:i2cmaster.S   **** 	ret
+ 177               		.endfunc	
+ 178               	
+ 179               	
+ 180               	;*************************************************************************
+ 181               	; Terminates the data transfer and releases the I2C bus
+ 182               	;
+ 183               	; extern void i2c_stop(void)
+ 184               	;*************************************************************************
+ 185               	
+ 186               		.global	i2c_stop
+ 187               		.func	i2c_stop
+ 188               	i2c_stop:
+ 189:i2cmaster.S   **** 	sbi	SCL_DDR,SCL	;force SCL low
+ 190:i2cmaster.S   **** 	sbi	SDA_DDR,SDA	;force SDA low
+ 191:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 192:i2cmaster.S   **** 	cbi	SCL_DDR,SCL	;release SCL
+ 193:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 194:i2cmaster.S   **** 	cbi	SDA_DDR,SDA	;release SDA
+ 195:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 196:i2cmaster.S   **** 	ret
+ 197               		.endfunc
+ 198               	
+ 199               	
+ 200               	;*************************************************************************
+ 201               	; Send one byte to I2C device
+ 202               	; return 0 = write successful, 1 = write failed
+ 203               	;
+ 204               	; extern unsigned char i2c_write( unsigned char data );
+ 205               	;	data = r24,  return = r25(=0):r24
+ 206               	;*************************************************************************
+ 207               		.global i2c_write
+ 208               		.func	i2c_write
+ 209               	i2c_write:
+ 210:i2cmaster.S   **** 	sec			;set carry flag
+ 211:i2cmaster.S   **** 	rol 	r24		;shift in carry and out bit one
+ 212:i2cmaster.S   **** 	rjmp	i2c_write_first
+ 213               	i2c_write_bit:
+ 214:i2cmaster.S   **** 	lsl	r24		;if transmit register empty
+ 215               	i2c_write_first:
+ 216:i2cmaster.S   **** 	breq	i2c_get_ack
+ 217:i2cmaster.S   **** 	sbi	SCL_DDR,SCL	;force SCL low
+ 218:i2cmaster.S   **** 	brcc	i2c_write_low
+ 219:i2cmaster.S   **** 	nop
+ 220:i2cmaster.S   **** 	cbi	SDA_DDR,SDA	;release SDA
+ 221:i2cmaster.S   **** 	rjmp	i2c_write_high
+ 222               	i2c_write_low:
+ 223:i2cmaster.S   **** 	sbi	SDA_DDR,SDA	;force SDA low
+ 224:i2cmaster.S   **** 	rjmp	i2c_write_high
+ 225               	i2c_write_high:
+ 226:i2cmaster.S   **** 	rcall 	i2c_delay_T2	;delay T/2
+ 227:i2cmaster.S   **** 	cbi	SCL_DDR,SCL	;release SCL
+ 228:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 229:i2cmaster.S   **** 	rjmp	i2c_write_bit
+ 230               		
+ 231               	i2c_get_ack:
+ 232:i2cmaster.S   **** 	sbi	SCL_DDR,SCL	;force SCL low
+ 233:i2cmaster.S   **** 	cbi	SDA_DDR,SDA	;release SDA
+ 234:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 235:i2cmaster.S   **** 	cbi	SCL_DDR,SCL	;release SCL
+ 236               	i2c_ack_wait:
+ 237:i2cmaster.S   **** 	sbis	SCL_IN,SCL	;wait SCL high (in case wait states are inserted)
+ 238:i2cmaster.S   **** 	rjmp	i2c_ack_wait
+ 239:i2cmaster.S   **** 	clr	r24		;return 0
+ 240:i2cmaster.S   **** 	sbic	SDA_IN,SDA	;if SDA high -> return 1
+ 241:i2cmaster.S   **** 	ldi	r24,1
+ 242:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 243:i2cmaster.S   **** 	clr	r25
+ 244:i2cmaster.S   **** 	ret
+ 245               		.endfunc
+ 246               	
+ 247               	
+ 248               	
+ 249               	;*************************************************************************
+ 250               	; read one byte from the I2C device, send ack or nak to device
+ 251               	; (ack=1, send ack, request more data from device 
+ 252               	;  ack=0, send nak, read is followed by a stop condition)
+ 253               	;
+ 254               	; extern unsigned char i2c_read(unsigned char ack);
+ 255               	;	ack = r24, return = r25(=0):r24
+ 256               	; extern unsigned char i2c_readAck(void);
+ 257               	; extern unsigned char i2c_readNak(void);
+ 258               	; 	return = r25(=0):r24
+ 259               	;*************************************************************************
+ 260               		.global i2c_readAck
+ 261               		.global i2c_readNak
+ 262               		.global i2c_read		
+ 263               		.func	i2c_read
+ 264               	i2c_readNak:
+ 265:i2cmaster.S   **** 	clr	r24
+ 266:i2cmaster.S   **** 	rjmp	i2c_read
+ 267               	i2c_readAck:
+ 268:i2cmaster.S   **** 	ldi	r24,0x01
+ 269               	i2c_read:
+ 270:i2cmaster.S   **** 	ldi	r23,0x01	;data = 0x01
+ 271               	i2c_read_bit:
+ 272:i2cmaster.S   **** 	sbi	SCL_DDR,SCL	;force SCL low
+ 273:i2cmaster.S   **** 	cbi	SDA_DDR,SDA	;release SDA (from previous ACK)
+ 274:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 275               		
+ 276:i2cmaster.S   **** 	cbi	SCL_DDR,SCL	;release SCL
+ 277:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 278               		
+ 279               	i2c_read_stretch:
+ 280:i2cmaster.S   ****     sbis SCL_IN, SCL        ;loop until SCL is high (allow slave to stretch SCL)
+ 281:i2cmaster.S   ****         rjmp	i2c_read_stretch
+ 282:i2cmaster.S   **** 	clc			;clear carry flag
+ 283:i2cmaster.S   **** 	sbic	SDA_IN,SDA	;if SDA is high
+ 284:i2cmaster.S   **** 	sec			;  set carry flag
+ 285               		
+ 286:i2cmaster.S   **** 	rol	r23		;store bit
+ 287:i2cmaster.S   **** 	brcc	i2c_read_bit	;while receive register not full
+ 288               		
+ 289               	i2c_put_ack:
+ 290:i2cmaster.S   **** 	sbi	SCL_DDR,SCL	;force SCL low	
+ 291:i2cmaster.S   **** 	cpi	r24,1
+ 292:i2cmaster.S   **** 	breq	i2c_put_ack_low	;if (ack=0)
+ 293:i2cmaster.S   **** 	cbi	SDA_DDR,SDA	;      release SDA
+ 294:i2cmaster.S   **** 	rjmp	i2c_put_ack_high
+ 295               	i2c_put_ack_low:                ;else
+ 296:i2cmaster.S   **** 	sbi	SDA_DDR,SDA	;      force SDA low
+ 297               	i2c_put_ack_high:
+ 298:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 299:i2cmaster.S   **** 	cbi	SCL_DDR,SCL	;release SCL
+ 300               	i2c_put_ack_wait:
+ 301:i2cmaster.S   **** 	sbis	SCL_IN,SCL	;wait SCL high
+ 302:i2cmaster.S   **** 	rjmp	i2c_put_ack_wait
+ 303:i2cmaster.S   **** 	rcall	i2c_delay_T2	;delay T/2
+ 304:i2cmaster.S   **** 	mov	r24,r23
+ 305:i2cmaster.S   **** 	clr	r25
+ 306:i2cmaster.S   **** 	ret
+ 307               		.endfunc
+DEFINED SYMBOLS
+         i2cmaster.S:66     .text:00000000 i2c_delay_T2
+         i2cmaster.S:101    .text:0000002e i2c_init
+         i2cmaster.S:120    .text:00000038 i2c_start
+         i2cmaster.S:209    .text:00000078 i2c_write
+         i2cmaster.S:139    .text:00000040 i2c_rep_start
+         i2cmaster.S:164    .text:00000054 i2c_start_wait
+         i2cmaster.S:166    .text:00000056 i2c_start_wait1
+         i2cmaster.S:175    .text:00000066 i2c_start_wait_done
+         i2cmaster.S:188    .text:00000068 i2c_stop
+         i2cmaster.S:215    .text:00000080 i2c_write_first
+         i2cmaster.S:213    .text:0000007e i2c_write_bit
+         i2cmaster.S:231    .text:00000098 i2c_get_ack
+         i2cmaster.S:222    .text:0000008c i2c_write_low
+         i2cmaster.S:225    .text:00000090 i2c_write_high
+         i2cmaster.S:236    .text:000000a0 i2c_ack_wait
+         i2cmaster.S:267    .text:000000b4 i2c_readAck
+         i2cmaster.S:264    .text:000000b0 i2c_readNak
+         i2cmaster.S:269    .text:000000b6 i2c_read
+         i2cmaster.S:271    .text:000000b8 i2c_read_bit
+         i2cmaster.S:279    .text:000000c2 i2c_read_stretch
+         i2cmaster.S:289    .text:000000d0 i2c_put_ack
+         i2cmaster.S:295    .text:000000da i2c_put_ack_low
+         i2cmaster.S:297    .text:000000dc i2c_put_ack_high
+         i2cmaster.S:300    .text:000000e0 i2c_put_ack_wait
+
+NO UNDEFINED SYMBOLS

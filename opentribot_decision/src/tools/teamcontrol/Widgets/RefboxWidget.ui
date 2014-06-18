@@ -1,0 +1,685 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>RefboxWidget</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>RefboxWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>303</width>
+            <height>353</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>1</hsizetype>
+            <vsizetype>1</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>0</width>
+            <height>0</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>3200</width>
+            <height>1000</height>
+        </size>
+    </property>
+    <property name="font">
+        <font>
+        </font>
+    </property>
+    <property name="caption">
+        <string>RefereeBoxWidget</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>3</number>
+        </property>
+        <property name="spacing">
+            <number>3</number>
+        </property>
+        <widget class="QLineEdit" row="0" column="0" rowspan="1" colspan="3">
+            <property name="name">
+                <cstring>edit_refstate</cstring>
+            </property>
+            <property name="alignment">
+                <set>AlignLeft</set>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QLayoutWidget" row="1" column="0" rowspan="1" colspan="3">
+            <property name="name">
+                <cstring>layout2</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox1</cstring>
+                    </property>
+                    <property name="frameShape">
+                        <enum>GroupBoxPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                        <enum>Sunken</enum>
+                    </property>
+                    <property name="title">
+                        <string>Tribots</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>2</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QPushButton" row="1" column="0">
+                            <property name="name">
+                                <cstring>ThrowInOwnButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Einwurf</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="2" column="0">
+                            <property name="name">
+                                <cstring>GoalKickOwnButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Torabstoß</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="3" column="0">
+                            <property name="name">
+                                <cstring>CornerKickOwnButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Eckball</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="4" column="0">
+                            <property name="name">
+                                <cstring>FreeKickOwnButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Freistoß</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="0" column="0">
+                            <property name="name">
+                                <cstring>KickOffOwnButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Anstoß</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="5" column="0">
+                            <property name="name">
+                                <cstring>PenaltyOwnButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Strafstoß</string>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+                <widget class="QLayoutWidget">
+                    <property name="name">
+                        <cstring>layout1</cstring>
+                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>2</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>StopButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Stop</string>
+                            </property>
+                            <property name="accel">
+                                <string>Space</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>DroppedBallButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>DroppedBall</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>StartButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>FreiesSpiel</string>
+                            </property>
+                            <property name="accel">
+                                <string>G</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton">
+                            <property name="name">
+                                <cstring>GoButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Los!</string>
+                            </property>
+                            <property name="accel">
+                                <string>L</string>
+                            </property>
+                        </widget>
+                        <widget class="QComboBox">
+                            <item>
+                                <property name="text">
+                                    <string>Test1</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Test2</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Test3</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Test4</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Test5</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Test6</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Test7</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Test8</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>testComboBox</cstring>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox2</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Gegner</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>3</number>
+                        </property>
+                        <property name="spacing">
+                            <number>0</number>
+                        </property>
+                        <widget class="QPushButton" row="1" column="0">
+                            <property name="name">
+                                <cstring>ThrowInOpponentButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Einwurf</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="2" column="0">
+                            <property name="name">
+                                <cstring>GoalKickOpponentButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Torabstoß</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="3" column="0">
+                            <property name="name">
+                                <cstring>CornerKickOpponentButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Eckball</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="4" column="0">
+                            <property name="name">
+                                <cstring>FreeKickOpponentButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Freistoß</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="5" column="0">
+                            <property name="name">
+                                <cstring>PenaltyOpponentButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Strafstoß</string>
+                            </property>
+                        </widget>
+                        <widget class="QPushButton" row="0" column="0">
+                            <property name="name">
+                                <cstring>KickOffOpponentButton</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Anstoß</string>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QButtonGroup" row="2" column="0">
+            <property name="name">
+                <cstring>buttonGroup1</cstring>
+            </property>
+            <property name="title">
+                <string>Einsetzseite</string>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>radioButtonSetInSideLeft</cstring>
+                    </property>
+                    <property name="text">
+                        <string>links</string>
+                    </property>
+                </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>radioButtonSetInSideRight</cstring>
+                    </property>
+                    <property name="text">
+                        <string>rechts</string>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="QGroupBox" row="3" column="0" rowspan="1" colspan="3">
+            <property name="name">
+                <cstring>groupBox7</cstring>
+            </property>
+            <property name="title">
+                <string>Refereebox</string>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>2</number>
+                </property>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>check_refboxconnect</cstring>
+                    </property>
+                    <property name="text">
+                        <string>verbinden</string>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Host:</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>edit_refboxip</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QGroupBox" row="2" column="2">
+            <property name="name">
+                <cstring>groupBox6</cstring>
+            </property>
+            <property name="title">
+                <string>Spielstand</string>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>spinBoxOwnScore</cstring>
+                    </property>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>:</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>spinBoxOpponentScore</cstring>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QButtonGroup" row="2" column="1">
+            <property name="name">
+                <cstring>buttonGroup2</cstring>
+            </property>
+            <property name="title">
+                <string>Trikotfarbe</string>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>0</number>
+                </property>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>radioButtonCyan</cstring>
+                    </property>
+                    <property name="text">
+                        <string>cyan</string>
+                    </property>
+                </widget>
+                <widget class="QRadioButton">
+                    <property name="name">
+                        <cstring>radioButtonMagenta</cstring>
+                    </property>
+                    <property name="text">
+                        <string>magenta</string>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>spinBoxOwnScore</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>ownScoreChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>DroppedBallButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>droppedBallPressed()</slot>
+    </connection>
+    <connection>
+        <sender>check_refboxconnect</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>connectRefboxChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>edit_refboxip</sender>
+        <signal>returnPressed()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>refboxipChanged()</slot>
+    </connection>
+    <connection>
+        <sender>GoButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>readyPressed()</slot>
+    </connection>
+    <connection>
+        <sender>StartButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>startPressed()</slot>
+    </connection>
+    <connection>
+        <sender>StopButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>stopPressed()</slot>
+    </connection>
+    <connection>
+        <sender>ThrowInOwnButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>throwInOwnPressed()</slot>
+    </connection>
+    <connection>
+        <sender>ThrowInOpponentButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>throwInOpponentPressed()</slot>
+    </connection>
+    <connection>
+        <sender>PenaltyOwnButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>penaltyKickOwnPressed()</slot>
+    </connection>
+    <connection>
+        <sender>PenaltyOpponentButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>penaltyKickOpponentPressed()</slot>
+    </connection>
+    <connection>
+        <sender>GoalKickOwnButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>goalKickOwnPressed()</slot>
+    </connection>
+    <connection>
+        <sender>GoalKickOpponentButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>goalKickOpponentPressed()</slot>
+    </connection>
+    <connection>
+        <sender>FreeKickOwnButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>freeKickOwnPressed()</slot>
+    </connection>
+    <connection>
+        <sender>FreeKickOpponentButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>freeKickOpponentPressed()</slot>
+    </connection>
+    <connection>
+        <sender>CornerKickOwnButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>cornerKickOwnPressed()</slot>
+    </connection>
+    <connection>
+        <sender>CornerKickOpponentButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>cornerKickOpponentPressed()</slot>
+    </connection>
+    <connection>
+        <sender>KickOffOwnButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>kickOffOwnPressed()</slot>
+    </connection>
+    <connection>
+        <sender>KickOffOpponentButton</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>kickOffOpponentPressed()</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxOpponentScore</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>opponentScoreChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>testComboBox</sender>
+        <signal>activated(const QString&amp;)</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>testActivated(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonCyan</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>teamColorChanged()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonMagenta</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>teamColorChanged()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonSetInSideLeft</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>setInSideChanged()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonSetInSideRight</sender>
+        <signal>clicked()</signal>
+        <receiver>RefboxWidget</receiver>
+        <slot>setInSideChanged()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>edit_refstate</tabstop>
+    <tabstop>KickOffOwnButton</tabstop>
+    <tabstop>ThrowInOwnButton</tabstop>
+    <tabstop>GoalKickOwnButton</tabstop>
+    <tabstop>CornerKickOwnButton</tabstop>
+    <tabstop>FreeKickOwnButton</tabstop>
+    <tabstop>PenaltyOwnButton</tabstop>
+    <tabstop>StopButton</tabstop>
+    <tabstop>DroppedBallButton</tabstop>
+    <tabstop>StartButton</tabstop>
+    <tabstop>GoButton</tabstop>
+    <tabstop>KickOffOpponentButton</tabstop>
+    <tabstop>ThrowInOpponentButton</tabstop>
+    <tabstop>GoalKickOpponentButton</tabstop>
+    <tabstop>CornerKickOpponentButton</tabstop>
+    <tabstop>FreeKickOpponentButton</tabstop>
+    <tabstop>PenaltyOpponentButton</tabstop>
+    <tabstop>edit_refboxip</tabstop>
+    <tabstop>check_refboxconnect</tabstop>
+</tabstops>
+<includes>
+    <include location="local" impldecl="in implementation">../States/RemoteBlackboard.h</include>
+    <include location="local" impldecl="in implementation">sstream</include>
+    <include location="local" impldecl="in implementation">../../../Fundamental/stringconvert.h</include>
+    <include location="local" impldecl="in implementation">RefboxWidget.ui.h</include>
+</includes>
+<slots>
+    <slot access="protected">changeOwnHalfPressed()</slot>
+    <slot access="protected">changeLabelPressed()</slot>
+    <slot access="protected">stopPressed()</slot>
+    <slot access="protected">readyPressed()</slot>
+    <slot access="protected">startPressed()</slot>
+    <slot access="protected">droppedBallPressed()</slot>
+    <slot access="protected">kickOffOwnPressed()</slot>
+    <slot access="protected">throwInOwnPressed()</slot>
+    <slot access="protected">goalKickOwnPressed()</slot>
+    <slot access="protected">cornerKickOwnPressed()</slot>
+    <slot access="protected">freeKickOwnPressed()</slot>
+    <slot access="protected">penaltyKickOwnPressed()</slot>
+    <slot access="protected">kickOffOpponentPressed()</slot>
+    <slot access="protected">throwInOpponentPressed()</slot>
+    <slot access="protected">goalKickOpponentPressed()</slot>
+    <slot access="protected">cornerKickOpponentPressed()</slot>
+    <slot access="protected">freeKickOpponentPressed()</slot>
+    <slot access="protected">penaltyKickOpponentPressed()</slot>
+    <slot>testActivated( const QString &amp; s )</slot>
+    <slot access="protected">connectRefboxChanged( bool b )</slot>
+    <slot access="protected">refboxipChanged()</slot>
+    <slot>update()</slot>
+    <slot access="protected">ownScoreChanged( int v )</slot>
+    <slot access="protected">opponentScoreChanged( int v )</slot>
+    <slot access="protected">setInSideChanged()</slot>
+    <slot access="protected">teamColorChanged()</slot>
+</slots>
+<functions>
+    <function access="private">init()</function>
+    <function>startAsSlave()</function>
+    <function>stopAsSlave()</function>
+</functions>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

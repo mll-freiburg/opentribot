@@ -1,0 +1,60 @@
+#############################################
+# Grundkonfiguration der Software           #
+# hier: Verarbeiten der Bilder ohne Antrieb #
+# geeignet zum Testen der Bildverarbeitung  #
+#############################################
+
+
+[]
+
+### User Interface parameters:
+add_com_user_interface          =       true
+communication_port              =       59361
+communication_stop_if_no_socket =       true
+<<<<<<< .mine
+user_interface_type             =       CliUserInterface
+=======
+user_interface_type             =      CliUserInterface
+>>>>>>> .r1320
+manual_start_waiting_time	=	10
+
+### General parameters:
+own_half			= 	yellow
+<<<<<<< .mine
+loop_time			= 	15       # fuer 30 Frames/s
+=======
+loop_time			= 	13        # fuer 30 Frames/s
+>>>>>>> .r1320
+random_seed			=	8746
+report_computation_time		=	true      # mittlere Rechenzeit ins Journal schreiben
+report_computation_time_detailed =       false    # Rechenzeit jede Iteration mitloggen
+
+
+### Robotertyp auswaehlen (Dummy, File, Simulator, OmniRobot_Tribot):
+robot_type			=	Dummy
+
+### Spielertyp auswaehlen (Dummy, JoystickPlayer, Goalie, Feldspieler):
+player_type			=	Dummy
+
+### Weltmodelltyp auswaehlen (Dummy, File, Simulator, CondensationFilter, ErrorMinimiser):
+world_model_type		=	ErrorMinimiser
+add_write_world_model		=	true       # im Wettkampf: false
+#write_world_model_info		=	wminfo
+
+### Bildverarbeitungstyp auswaehlen (Dummy, File, Simulator, ScanLine):
+vision_type    = GenericMultiSource
+vision_section = SingleOmniCam
+
+[Journal]
+
+output				=	journal.out
+verbosity			=	3
+flush				  = robotcontrol.log
+
+
+
+### Konfigfiles fuer einzelne Komponenten einbinden:
++ world_model.cfg
++ image_processing.cfg
++ image_sources.cfg
++ vision.cfg

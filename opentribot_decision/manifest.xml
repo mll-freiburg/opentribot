@@ -1,0 +1,15 @@
+<package>
+  <description brief="opentribot_decision">
+
+     opentribot_decision
+
+  </description>
+  <author>tribot</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/opentribot_decision</url>
+  <depend package="opentribot_messages"/>
+
+</package>
+
+

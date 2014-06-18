@@ -1,0 +1,568 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>MonitorForm</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>MonitorForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>784</width>
+            <height>864</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Robot Monitor</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QFrame" row="2" column="0">
+            <property name="name">
+                <cstring>frame3</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>3</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget" row="0" column="0">
+                    <property name="name">
+                        <cstring>layout1</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QwtPlot">
+                            <property name="name">
+                                <cstring>qwtPlotWV1</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>3</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="autoReplot">
+                                <bool>false</bool>
+                            </property>
+                            <property name="canvasLineWidth">
+                                <number>0</number>
+                            </property>
+                            <property name="yRightAxis" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="title">
+                                <string>Radgeschwindigkeit 1</string>
+                            </property>
+                            <property name="titleFont">
+                                <font>
+                                    <family>Nimbus Sans L [urw]</family>
+                                    <pointsize>10</pointsize>
+                                    <bold>1</bold>
+                                </font>
+                            </property>
+                            <property name="xGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yMinGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="autoLegend">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget class="QwtPlot">
+                            <property name="name">
+                                <cstring>qwtPlotWV2</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>3</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="autoReplot">
+                                <bool>false</bool>
+                            </property>
+                            <property name="canvasLineWidth">
+                                <number>0</number>
+                            </property>
+                            <property name="yRightAxis" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="title">
+                                <string>Radgeschwindigkeit 2</string>
+                            </property>
+                            <property name="titleFont">
+                                <font>
+                                    <family>Nimbus Sans L [urw]</family>
+                                    <pointsize>10</pointsize>
+                                    <bold>1</bold>
+                                </font>
+                            </property>
+                            <property name="xGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yMinGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="autoLegend">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget class="QwtPlot">
+                            <property name="name">
+                                <cstring>qwtPlotWV3</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>3</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="autoReplot">
+                                <bool>false</bool>
+                            </property>
+                            <property name="canvasLineWidth">
+                                <number>0</number>
+                            </property>
+                            <property name="yRightAxis" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="title">
+                                <string>Radgeschwindigkeit 3</string>
+                            </property>
+                            <property name="titleFont">
+                                <font>
+                                    <family>Nimbus Sans L [urw]</family>
+                                    <pointsize>10</pointsize>
+                                    <bold>1</bold>
+                                </font>
+                            </property>
+                            <property name="xGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yMinGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="autoLegend">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QFrame" row="1" column="0">
+            <property name="name">
+                <cstring>frame3_2</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>3</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLayoutWidget" row="0" column="0">
+                    <property name="name">
+                        <cstring>layout1_2</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QwtPlot">
+                            <property name="name">
+                                <cstring>qwtPlotRVX</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>3</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="autoReplot">
+                                <bool>false</bool>
+                            </property>
+                            <property name="canvasLineWidth">
+                                <number>0</number>
+                            </property>
+                            <property name="yRightAxis" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="title">
+                                <string>Robotergeschwindigkeit X</string>
+                            </property>
+                            <property name="titleFont">
+                                <font>
+                                    <family>Nimbus Sans L [urw]</family>
+                                    <pointsize>10</pointsize>
+                                    <bold>1</bold>
+                                </font>
+                            </property>
+                            <property name="xGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yMinGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="autoLegend">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget class="QwtPlot">
+                            <property name="name">
+                                <cstring>qwtPlotRVY</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>3</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="autoReplot">
+                                <bool>false</bool>
+                            </property>
+                            <property name="canvasLineWidth">
+                                <number>0</number>
+                            </property>
+                            <property name="yRightAxis" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="title">
+                                <string>Robotergeschwindigkeit Y</string>
+                            </property>
+                            <property name="titleFont">
+                                <font>
+                                    <family>Nimbus Sans L [urw]</family>
+                                    <pointsize>10</pointsize>
+                                    <bold>1</bold>
+                                </font>
+                            </property>
+                            <property name="xGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yMinGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="autoLegend">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                        <widget class="QwtPlot">
+                            <property name="name">
+                                <cstring>qwtPlotRVPhi</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>3</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="autoReplot">
+                                <bool>false</bool>
+                            </property>
+                            <property name="canvasLineWidth">
+                                <number>0</number>
+                            </property>
+                            <property name="yRightAxis" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="title">
+                                <string>Robotergeschwindigkeit Phi</string>
+                            </property>
+                            <property name="titleFont">
+                                <font>
+                                    <family>Nimbus Sans L [urw]</family>
+                                    <pointsize>10</pointsize>
+                                    <bold>1</bold>
+                                </font>
+                            </property>
+                            <property name="xGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="yMinGrid" stdset="0">
+                                <bool>false</bool>
+                            </property>
+                            <property name="autoLegend">
+                                <bool>false</bool>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QFrame" row="0" column="0">
+            <property name="name">
+                <cstring>frame4</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>7</vsizetype>
+                    <horstretch>100</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>600</width>
+                    <height>100</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32767</width>
+                    <height>100</height>
+                </size>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonStart</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>10</y>
+                        <width>109</width>
+                        <height>29</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>START</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonStop</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>140</x>
+                        <y>10</y>
+                        <width>109</width>
+                        <height>29</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>STOP</string>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButtonSetPID</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>60</y>
+                        <width>109</width>
+                        <height>29</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Set PID</string>
+                </property>
+            </widget>
+            <widget class="QSpinBox">
+                <property name="name">
+                    <cstring>spinBoxKD</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>250</x>
+                        <y>60</y>
+                        <width>80</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QSpinBox">
+                <property name="name">
+                    <cstring>spinBoxKP</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>60</y>
+                        <width>80</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="value">
+                    <number>15</number>
+                </property>
+            </widget>
+            <widget class="QSpinBox">
+                <property name="name">
+                    <cstring>spinBoxKI</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>130</x>
+                        <y>60</y>
+                        <width>80</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="value">
+                    <number>30</number>
+                </property>
+            </widget>
+        </widget>
+    </grid>
+</widget>
+<toolbars>
+</toolbars>
+<customwidgets>
+</customwidgets>
+<connections>
+    <connection>
+        <sender>pushButtonStart</sender>
+        <signal>clicked()</signal>
+        <receiver>MonitorForm</receiver>
+        <slot>startcom()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonStop</sender>
+        <signal>clicked()</signal>
+        <receiver>MonitorForm</receiver>
+        <slot>stopcom()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonSetPID</sender>
+        <signal>clicked()</signal>
+        <receiver>MonitorForm</receiver>
+        <slot>setPIDValues()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="global" impldecl="in implementation">iostream</include>
+    <include location="global" impldecl="in implementation">qapplication.h</include>
+    <include location="global" impldecl="in implementation">qwt_plot.h</include>
+    <include location="local" impldecl="in declaration">OnlineRobotMonitorClient.h</include>
+    <include location="global" impldecl="in declaration">qtimer.h</include>
+    <include location="global" impldecl="in declaration">qwt_plot_zoomer.h</include>
+    <include location="global" impldecl="in declaration">qpen.h</include>
+    <include location="local" impldecl="in implementation">Monitor.ui.h</include>
+</includes>
+<variables>
+    <variable>QwtPlotZoomer* qwtzoomerWV3;</variable>
+    <variable>QwtPlotZoomer* qwtzoomerWV2;</variable>
+    <variable>double* rvsoll_plotbuf[3];</variable>
+    <variable>long rvsoll_curve[3];</variable>
+    <variable>long wvsoll_curve[3];</variable>
+    <variable>long rvist_curve[3];</variable>
+    <variable>double* rvist_plotbuf[3];</variable>
+    <variable>long wvist_curve[3];</variable>
+    <variable>double* wvist_plotbuf[3];</variable>
+    <variable>double* x_plotbuf;</variable>
+    <variable>bool monitoring;</variable>
+    <variable>Tribots::OnlineRobotMonitorClient* monitor;</variable>
+    <variable>int dataWindowLength;</variable>
+    <variable>long plotcounter;</variable>
+    <variable>QTimer* timer;</variable>
+    <variable>QwtPlotZoomer* qwtzoomerWV1;</variable>
+    <variable>double* wvsoll_plotbuf[3];</variable>
+    <variable>QwtPlotZoomer* qwtzoomerRVX;</variable>
+    <variable>QwtPlotZoomer* qwtzoomerRVY;</variable>
+    <variable>QwtPlotZoomer* qwtzoomerRVPhi;</variable>
+</variables>
+<slots>
+    <slot access="protected">updateData()</slot>
+    <slot access="protected">startcom()</slot>
+    <slot access="protected">stopcom()</slot>
+    <slot access="protected">setPIDValues()</slot>
+</slots>
+<functions>
+    <function>init()</function>
+    <function>destroy()</function>
+</functions>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>qwt_plot.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_plot.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_plot.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_plot.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_plot.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_plot.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+    <includehint>qwt_scale.h</includehint>
+</includehints>
+</UI>

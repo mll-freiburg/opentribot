@@ -1,0 +1,470 @@
+   1               		.file	"i2csw.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.section	.text.i2cPutbyte,"ax",@progbits
+  19               	.global	i2cPutbyte
+  21               	i2cPutbyte:
+  22               	.LFB2:
+  23               	.LSM0:
+  24               	.LVL0:
+  25               	/* prologue: function */
+  26               	/* frame size = 0 */
+  27               	.LSM1:
+  28 0000 27E0      		ldi r18,lo8(7)
+  29 0002 30E0      		ldi r19,hi8(7)
+  30               	.LVL1:
+  31               	.LSM2:
+  32 0004 482F      		mov r20,r24
+  33 0006 50E0      		ldi r21,lo8(0)
+  34               	.LVL2:
+  35               	.L4:
+  36 0008 CA01      		movw r24,r20
+  37 000a 022E      		mov r0,r18
+  38 000c 00C0      		rjmp 2f
+  39 000e 9595      	1:	asr r25
+  40 0010 8795      		ror r24
+  41 0012 0A94      	2:	dec r0
+  42 0014 02F4      		brpl 1b
+  43 0016 80FF      		sbrs r24,0
+  44 0018 00C0      		rjmp .L2
+  45               	.LSM3:
+  46 001a 5C9A      		sbi 43-32,4
+  47 001c 00C0      		rjmp .L3
+  48               	.L2:
+  49               	.LSM4:
+  50 001e 5C98      		cbi 43-32,4
+  51               	.L3:
+  52               	.LSM5:
+  53               	/* #APP */
+  54               	 ;  78 "i2csw.c" 1
+  55 0020 0000      		nop
+  56               	 ;  0 "" 2
+  57               	 ;  78 "i2csw.c" 1
+  58 0022 0000      		nop
+  59               	 ;  0 "" 2
+  60               	/* #NOAPP */
+  61 0024 5D9A      		sbi 43-32,5
+  62               	/* #APP */
+  63               	 ;  78 "i2csw.c" 1
+  64 0026 0000      		nop
+  65               	 ;  0 "" 2
+  66               	 ;  78 "i2csw.c" 1
+  67 0028 0000      		nop
+  68               	 ;  0 "" 2
+  69               	/* #NOAPP */
+  70 002a 5D98      		cbi 43-32,5
+  71               	.LSM6:
+  72 002c 2150      		subi r18,lo8(-(-1))
+  73 002e 3040      		sbci r19,hi8(-(-1))
+  74 0030 8FEF      		ldi r24,hi8(-1)
+  75 0032 2F3F      		cpi r18,lo8(-1)
+  76 0034 3807      		cpc r19,r24
+  77 0036 01F4      		brne .L4
+  78               	.LSM7:
+  79 0038 5C9A      		sbi 43-32,4
+  80               	.LSM8:
+  81 003a 5498      		cbi 42-32,4
+  82               	.LSM9:
+  83               	/* #APP */
+  84               	 ;  84 "i2csw.c" 1
+  85 003c 0000      		nop
+  86               	 ;  0 "" 2
+  87               	 ;  84 "i2csw.c" 1
+  88 003e 0000      		nop
+  89               	 ;  0 "" 2
+  90               	.LSM10:
+  91               	/* #NOAPP */
+  92 0040 5D9A      		sbi 43-32,5
+  93               	.LSM11:
+  94 0042 29B1      		in r18,41-32
+  95               	.LVL3:
+  96               	.LSM12:
+  97               	/* #APP */
+  98               	 ;  88 "i2csw.c" 1
+  99 0044 0000      		nop
+ 100               	 ;  0 "" 2
+ 101               	 ;  88 "i2csw.c" 1
+ 102 0046 0000      		nop
+ 103               	 ;  0 "" 2
+ 104               	.LSM13:
+ 105               	/* #NOAPP */
+ 106 0048 5D98      		cbi 43-32,5
+ 107               	.LSM14:
+ 108 004a 549A      		sbi 42-32,4
+ 109               	.LSM15:
+ 110               	/* #APP */
+ 111               	 ;  91 "i2csw.c" 1
+ 112 004c 0000      		nop
+ 113               	 ;  0 "" 2
+ 114               	 ;  91 "i2csw.c" 1
+ 115 004e 0000      		nop
+ 116               	 ;  0 "" 2
+ 117               	/* #NOAPP */
+ 118 0050 2295      		swap r18
+ 119 0052 2F70      		andi r18,lo8(15)
+ 120 0054 81E0      		ldi r24,lo8(1)
+ 121 0056 2827      		eor r18,r24
+ 122 0058 30E0      		ldi r19,lo8(0)
+ 123 005a 2170      		andi r18,lo8(1)
+ 124 005c 3070      		andi r19,hi8(1)
+ 125               	.LSM16:
+ 126 005e C901      		movw r24,r18
+ 127               	/* epilogue start */
+ 128 0060 0895      		ret
+ 129               	.LFE2:
+ 131               		.section	.text.i2cGetbyte,"ax",@progbits
+ 132               	.global	i2cGetbyte
+ 134               	i2cGetbyte:
+ 135               	.LFB3:
+ 136               	.LSM17:
+ 137               	.LVL4:
+ 138               	/* prologue: function */
+ 139               	/* frame size = 0 */
+ 140               	.LSM18:
+ 141 0000 5C9A      		sbi 43-32,4
+ 142               	.LSM19:
+ 143 0002 5498      		cbi 42-32,4
+ 144 0004 27E0      		ldi r18,lo8(7)
+ 145 0006 30E0      		ldi r19,hi8(7)
+ 146               	.LVL5:
+ 147 0008 40E0      		ldi r20,lo8(0)
+ 148               	.LVL6:
+ 149               	.L9:
+ 150               	.LSM20:
+ 151               	/* #APP */
+ 152               	 ;  106 "i2csw.c" 1
+ 153 000a 0000      		nop
+ 154               	 ;  0 "" 2
+ 155               	 ;  106 "i2csw.c" 1
+ 156 000c 0000      		nop
+ 157               	 ;  0 "" 2
+ 158               	.LSM21:
+ 159               	/* #NOAPP */
+ 160 000e 5D9A      		sbi 43-32,5
+ 161               	.LSM22:
+ 162 0010 440F      		lsl r20
+ 163               	.LSM23:
+ 164 0012 4C99      		sbic 41-32,4
+ 165 0014 4160      		ori r20,lo8(1)
+ 166               	.L8:
+ 167               	.LSM24:
+ 168               	/* #APP */
+ 169               	 ;  111 "i2csw.c" 1
+ 170 0016 0000      		nop
+ 171               	 ;  0 "" 2
+ 172               	 ;  111 "i2csw.c" 1
+ 173 0018 0000      		nop
+ 174               	 ;  0 "" 2
+ 175               	.LSM25:
+ 176               	/* #NOAPP */
+ 177 001a 5D98      		cbi 43-32,5
+ 178               	.LSM26:
+ 179 001c 2150      		subi r18,lo8(-(-1))
+ 180 001e 3040      		sbci r19,hi8(-(-1))
+ 181 0020 5FEF      		ldi r21,hi8(-1)
+ 182 0022 2F3F      		cpi r18,lo8(-1)
+ 183 0024 3507      		cpc r19,r21
+ 184 0026 01F4      		brne .L9
+ 185               	.LSM27:
+ 186 0028 549A      		sbi 42-32,4
+ 187               	.LSM28:
+ 188 002a 892B      		or r24,r25
+ 189 002c 01F0      		breq .L10
+ 190               	.LSM29:
+ 191 002e 5C9A      		sbi 43-32,4
+ 192 0030 00C0      		rjmp .L11
+ 193               	.L10:
+ 194               	.LSM30:
+ 195 0032 5C98      		cbi 43-32,4
+ 196               	.L11:
+ 197               	.LSM31:
+ 198               	/* #APP */
+ 199               	 ;  122 "i2csw.c" 1
+ 200 0034 0000      		nop
+ 201               	 ;  0 "" 2
+ 202               	 ;  122 "i2csw.c" 1
+ 203 0036 0000      		nop
+ 204               	 ;  0 "" 2
+ 205               	/* #NOAPP */
+ 206 0038 5D9A      		sbi 43-32,5
+ 207               	/* #APP */
+ 208               	 ;  122 "i2csw.c" 1
+ 209 003a 0000      		nop
+ 210               	 ;  0 "" 2
+ 211               	 ;  122 "i2csw.c" 1
+ 212 003c 0000      		nop
+ 213               	 ;  0 "" 2
+ 214               	/* #NOAPP */
+ 215 003e 5D98      		cbi 43-32,5
+ 216               	.LSM32:
+ 217 0040 5C9A      		sbi 43-32,4
+ 218               	.LSM33:
+ 219 0042 842F      		mov r24,r20
+ 220               	.LVL7:
+ 221               	/* epilogue start */
+ 222 0044 0895      		ret
+ 223               	.LFE3:
+ 225               		.section	.text.i2cInit,"ax",@progbits
+ 226               	.global	i2cInit
+ 228               	i2cInit:
+ 229               	.LFB4:
+ 230               	.LSM34:
+ 231               	/* prologue: function */
+ 232               	/* frame size = 0 */
+ 233               	.LSM35:
+ 234 0000 549A      		sbi 42-32,4
+ 235               	.LSM36:
+ 236 0002 559A      		sbi 42-32,5
+ 237               	.LSM37:
+ 238 0004 5C9A      		sbi 43-32,4
+ 239               	.LSM38:
+ 240 0006 5D9A      		sbi 43-32,5
+ 241               	/* epilogue start */
+ 242               	.LSM39:
+ 243 0008 0895      		ret
+ 244               	.LFE4:
+ 246               		.section	.text.i2cSend,"ax",@progbits
+ 247               	.global	i2cSend
+ 249               	i2cSend:
+ 250               	.LFB5:
+ 251               	.LSM40:
+ 252               	.LVL8:
+ 253 0000 0F93      		push r16
+ 254 0002 1F93      		push r17
+ 255 0004 CF93      		push r28
+ 256 0006 DF93      		push r29
+ 257               	/* prologue: function */
+ 258               	/* frame size = 0 */
+ 259 0008 162F      		mov r17,r22
+ 260 000a 042F      		mov r16,r20
+ 261 000c E901      		movw r28,r18
+ 262               	.LSM41:
+ 263 000e 5C98      		cbi 43-32,4
+ 264               	/* #APP */
+ 265               	 ;  144 "i2csw.c" 1
+ 266 0010 0000      		nop
+ 267               	 ;  0 "" 2
+ 268               	/* #NOAPP */
+ 269 0012 5D98      		cbi 43-32,5
+ 270               	.LSM42:
+ 271 0014 0E94 0000 		call i2cPutbyte
+ 272               	.LVL9:
+ 273               	.LSM43:
+ 274 0018 812F      		mov r24,r17
+ 275 001a 0E94 0000 		call i2cPutbyte
+ 276 001e 00C0      		rjmp .L17
+ 277               	.L18:
+ 278               	.LSM44:
+ 279 0020 8991      		ld r24,Y+
+ 280 0022 0E94 0000 		call i2cPutbyte
+ 281 0026 0150      		subi r16,lo8(-(-1))
+ 282               	.L17:
+ 283               	.LSM45:
+ 284 0028 0023      		tst r16
+ 285 002a 01F4      		brne .L18
+ 286               	.LSM46:
+ 287 002c 5C98      		cbi 43-32,4
+ 288               	.LSM47:
+ 289               	/* #APP */
+ 290               	 ;  153 "i2csw.c" 1
+ 291 002e 0000      		nop
+ 292               	 ;  0 "" 2
+ 293               	 ;  153 "i2csw.c" 1
+ 294 0030 0000      		nop
+ 295               	 ;  0 "" 2
+ 296               	/* #NOAPP */
+ 297 0032 5D9A      		sbi 43-32,5
+ 298               	/* #APP */
+ 299               	 ;  153 "i2csw.c" 1
+ 300 0034 0000      		nop
+ 301               	 ;  0 "" 2
+ 302               	/* #NOAPP */
+ 303 0036 5C9A      		sbi 43-32,4
+ 304               	/* #APP */
+ 305               	 ;  153 "i2csw.c" 1
+ 306 0038 0000      		nop
+ 307               	 ;  0 "" 2
+ 308               	 ;  153 "i2csw.c" 1
+ 309 003a 0000      		nop
+ 310               	 ;  0 "" 2
+ 311               	/* epilogue start */
+ 312               	.LSM48:
+ 313               	/* #NOAPP */
+ 314 003c DF91      		pop r29
+ 315 003e CF91      		pop r28
+ 316               	.LVL10:
+ 317 0040 1F91      		pop r17
+ 318               	.LVL11:
+ 319 0042 0F91      		pop r16
+ 320               	.LVL12:
+ 321 0044 0895      		ret
+ 322               	.LFE5:
+ 324               		.section	.text.i2cReceive,"ax",@progbits
+ 325               	.global	i2cReceive
+ 327               	i2cReceive:
+ 328               	.LFB6:
+ 329               	.LSM49:
+ 330               	.LVL13:
+ 331 0000 CF92      		push r12
+ 332 0002 DF92      		push r13
+ 333 0004 EF92      		push r14
+ 334 0006 FF92      		push r15
+ 335 0008 0F93      		push r16
+ 336 000a 1F93      		push r17
+ 337 000c CF93      		push r28
+ 338 000e DF93      		push r29
+ 339               	/* prologue: function */
+ 340               	/* frame size = 0 */
+ 341 0010 082F      		mov r16,r24
+ 342 0012 162F      		mov r17,r22
+ 343 0014 D42E      		mov r13,r20
+ 344 0016 F22E      		mov r15,r18
+ 345 0018 E32E      		mov r14,r19
+ 346               	.LVL14:
+ 347               	.LSM50:
+ 348 001a 5C98      		cbi 43-32,4
+ 349               	/* #APP */
+ 350               	 ;  162 "i2csw.c" 1
+ 351 001c 0000      		nop
+ 352               	 ;  0 "" 2
+ 353               	/* #NOAPP */
+ 354 001e 5D98      		cbi 43-32,5
+ 355               	.LSM51:
+ 356 0020 0E94 0000 		call i2cPutbyte
+ 357               	.LVL15:
+ 358               	.LSM52:
+ 359 0024 812F      		mov r24,r17
+ 360 0026 0E94 0000 		call i2cPutbyte
+ 361               	.LSM53:
+ 362               	/* #APP */
+ 363               	 ;  165 "i2csw.c" 1
+ 364 002a 0000      		nop
+ 365               	 ;  0 "" 2
+ 366               	 ;  165 "i2csw.c" 1
+ 367 002c 0000      		nop
+ 368               	 ;  0 "" 2
+ 369               	.LSM54:
+ 370               	/* #NOAPP */
+ 371 002e 5D9A      		sbi 43-32,5
+ 372               	.LSM55:
+ 373 0030 5C98      		cbi 43-32,4
+ 374               	/* #APP */
+ 375               	 ;  167 "i2csw.c" 1
+ 376 0032 0000      		nop
+ 377               	 ;  0 "" 2
+ 378               	/* #NOAPP */
+ 379 0034 5D98      		cbi 43-32,5
+ 380               	.LSM56:
+ 381 0036 802F      		mov r24,r16
+ 382 0038 8160      		ori r24,lo8(1)
+ 383 003a 0E94 0000 		call i2cPutbyte
+ 384 003e 2F2D      		mov r18,r15
+ 385               	.LVL16:
+ 386 0040 3E2D      		mov r19,r14
+ 387               	.LVL17:
+ 388 0042 C901      		movw r24,r18
+ 389               	.LVL18:
+ 390 0044 EC01      		movw r28,r24
+ 391               	.LVL19:
+ 392 0046 00E0      		ldi r16,lo8(0)
+ 393 0048 10E0      		ldi r17,hi8(0)
+ 394               	.LVL20:
+ 395               	.LSM57:
+ 396 004a ED2C      		mov r14,r13
+ 397               	.LVL21:
+ 398 004c FF24      		clr r15
+ 399               	.LVL22:
+ 400               	.LSM58:
+ 401 004e 6701      		movw r12,r14
+ 402 0050 0894      		sec
+ 403 0052 C11C      		adc r12,__zero_reg__
+ 404 0054 D11C      		adc r13,__zero_reg__
+ 405 0056 00C0      		rjmp .L21
+ 406               	.LVL23:
+ 407               	.L23:
+ 408               	.LSM59:
+ 409 0058 80E0      		ldi r24,lo8(0)
+ 410 005a 90E0      		ldi r25,hi8(0)
+ 411 005c E016      		cp r14,r16
+ 412 005e F106      		cpc r15,r17
+ 413 0060 01F4      		brne .L22
+ 414 0062 81E0      		ldi r24,lo8(1)
+ 415 0064 90E0      		ldi r25,hi8(1)
+ 416               	.L22:
+ 417 0066 0E94 0000 		call i2cGetbyte
+ 418               	.LVL24:
+ 419 006a 8993      		st Y+,r24
+ 420               	.LVL25:
+ 421               	.L21:
+ 422 006c 0F5F      		subi r16,lo8(-(1))
+ 423 006e 1F4F      		sbci r17,hi8(-(1))
+ 424               	.LSM60:
+ 425 0070 0C15      		cp r16,r12
+ 426 0072 1D05      		cpc r17,r13
+ 427 0074 01F4      		brne .L23
+ 428               	.LSM61:
+ 429 0076 5C98      		cbi 43-32,4
+ 430               	.LSM62:
+ 431               	/* #APP */
+ 432               	 ;  176 "i2csw.c" 1
+ 433 0078 0000      		nop
+ 434               	 ;  0 "" 2
+ 435               	 ;  176 "i2csw.c" 1
+ 436 007a 0000      		nop
+ 437               	 ;  0 "" 2
+ 438               	/* #NOAPP */
+ 439 007c 5D9A      		sbi 43-32,5
+ 440               	/* #APP */
+ 441               	 ;  176 "i2csw.c" 1
+ 442 007e 0000      		nop
+ 443               	 ;  0 "" 2
+ 444               	/* #NOAPP */
+ 445 0080 5C9A      		sbi 43-32,4
+ 446               	/* #APP */
+ 447               	 ;  176 "i2csw.c" 1
+ 448 0082 0000      		nop
+ 449               	 ;  0 "" 2
+ 450               	 ;  176 "i2csw.c" 1
+ 451 0084 0000      		nop
+ 452               	 ;  0 "" 2
+ 453               	/* epilogue start */
+ 454               	.LSM63:
+ 455               	/* #NOAPP */
+ 456 0086 DF91      		pop r29
+ 457 0088 CF91      		pop r28
+ 458               	.LVL26:
+ 459 008a 1F91      		pop r17
+ 460               	.LVL27:
+ 461 008c 0F91      		pop r16
+ 462 008e FF90      		pop r15
+ 463 0090 EF90      		pop r14
+ 464 0092 DF90      		pop r13
+ 465               	.LVL28:
+ 466 0094 CF90      		pop r12
+ 467 0096 0895      		ret
+ 468               	.LFE6:
+ 526               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2csw.c
+     /tmp/ccPEprzd.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccPEprzd.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccPEprzd.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccPEprzd.s:5      *ABS*:00000034 __CCP__
+     /tmp/ccPEprzd.s:6      *ABS*:00000000 __tmp_reg__
+     /tmp/ccPEprzd.s:7      *ABS*:00000001 __zero_reg__
+     /tmp/ccPEprzd.s:21     .text.i2cPutbyte:00000000 i2cPutbyte
+     /tmp/ccPEprzd.s:134    .text.i2cGetbyte:00000000 i2cGetbyte
+     /tmp/ccPEprzd.s:228    .text.i2cInit:00000000 i2cInit
+     /tmp/ccPEprzd.s:249    .text.i2cSend:00000000 i2cSend
+     /tmp/ccPEprzd.s:327    .text.i2cReceive:00000000 i2cReceive
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

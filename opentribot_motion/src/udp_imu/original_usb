@@ -1,0 +1,34 @@
+************ ORIGINAL
+
+
+red=v
+bl = pb1  = I2c-sda
+gr = pb0  = I2c Scl
+br = gnd
+
+
+
+
+hier noch eintragen welche i2c verbindungen das sind !
+
+
+
+
+*********** NEU THORSTENS BOARD
+
+bl=pd2  i2c-sda
+gr=pd3  i2c-scl
+
+
+
+
+nunchuck
+
+
+
+
+
+
+
+
+

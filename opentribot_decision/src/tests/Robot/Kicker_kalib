@@ -1,0 +1,18 @@
+reset 
+plot '$0' u 1:2 title 'ms zu x werte' , '$0' u 1:3 title 'ms zu y werte'
+a=1
+b=1
+c=1
+d=1
+u=1
+g=1
+G(x)=a*log(x-b)+c
+F(x)=d*log(x-u)+g
+fit G(x) 'nav' using 1:2 via a,b,c
+fit F(x) 'nav' using 1:3 via d,u,g
+replot G(x), F(x)
+print 'TEYSSST'
+
+
+print 'ms zu x=' , a , '  *log(x-  ' , b , '  )+  ' , c 
+print 'ms zu y=' , d , '  *log(x-  ' , u , '  )+  ' , g

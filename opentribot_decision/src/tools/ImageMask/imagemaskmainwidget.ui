@@ -1,0 +1,504 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>ImageMaskMainWidget</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>ImageMaskMainWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>795</width>
+            <height>624</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="caption">
+        <string>ImageMask</string>
+    </property>
+    <hbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <property name="spacing">
+            <number>0</number>
+        </property>
+        <widget class="QFrame">
+            <property name="name">
+                <cstring>frame3</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>0</hsizetype>
+                    <vsizetype>7</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>140</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>140</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Raised</enum>
+            </property>
+            <property name="lineWidth">
+                <number>0</number>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>captureButton</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>NoFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>Capture</string>
+                    </property>
+                    <property name="toggleButton">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Fixed</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>16</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>false</bool>
+                    </property>
+                    <property name="text">
+                        <string>Threshold</string>
+                    </property>
+                    <property name="alignment">
+                        <set>AlignCenter</set>
+                    </property>
+                </widget>
+                <widget class="QFrame">
+                    <property name="name">
+                        <cstring>frame5</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>3</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="frameShape">
+                        <enum>StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                        <enum>Plain</enum>
+                    </property>
+                    <property name="lineWidth">
+                        <number>0</number>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer1</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                        <widget class="QSlider">
+                            <property name="name">
+                                <cstring>thresholdSlider</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>false</bool>
+                            </property>
+                            <property name="cursor">
+                                <cursor>5</cursor>
+                            </property>
+                            <property name="maxValue">
+                                <number>255</number>
+                            </property>
+                            <property name="orientation">
+                                <enum>Vertical</enum>
+                            </property>
+                            <property name="tickmarks">
+                                <enum>Both</enum>
+                            </property>
+                            <property name="tickInterval">
+                                <number>10</number>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer2</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>20</width>
+                                    <height>20</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </hbox>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="TribotsTools::ImageWidget">
+            <property name="name">
+                <cstring>cImageWidget</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>5</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+        </widget>
+    </hbox>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>MenuBar</cstring>
+    </property>
+    <item text="&amp;File" name="fileMenu">
+        <action name="fileSaveAction"/>
+        <action name="fileSaveAsAction"/>
+        <separator/>
+        <action name="configSaveAction"/>
+        <separator/>
+        <action name="fileExitAction"/>
+    </item>
+    <item text="&amp;Help" name="helpMenu">
+        <action name="helpContentsAction"/>
+        <action name="helpIndexAction"/>
+        <separator/>
+        <action name="helpAboutAction"/>
+    </item>
+    <separator/>
+</menubar>
+<toolbars>
+</toolbars>
+<customwidgets>
+    <customwidget>
+        <class>TribotsTools::ImageWidget</class>
+        <header location="local">../components/ImageWidget.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+        <slot access="public" specifier="">setImage(const Image&amp; image)</slot>
+        <slot access="public" specifier="">slot()</slot>
+    </customwidget>
+</customwidgets>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>fileSaveAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset></iconset>
+        </property>
+        <property name="text">
+            <string>Save</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Save</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileSaveAsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Save As</string>
+        </property>
+        <property name="menuText">
+            <string>Save &amp;As...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileExitAction</cstring>
+        </property>
+        <property name="text">
+            <string>Exit</string>
+        </property>
+        <property name="menuText">
+            <string>E&amp;xit</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpContentsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Contents</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Contents...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpIndexAction</cstring>
+        </property>
+        <property name="text">
+            <string>Index</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Index...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpAboutAction</cstring>
+        </property>
+        <property name="text">
+            <string>About</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;About</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>configSaveAction</cstring>
+        </property>
+        <property name="enabled">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>Write Config</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>filenew_itemAction</cstring>
+        </property>
+        <property name="text">
+            <string>new item</string>
+        </property>
+        <property name="menuText">
+            <string>new item</string>
+        </property>
+    </action>
+</actions>
+<images>
+    <image name="image0">
+        <data format="XBM.GZ" length="79">789c534e494dcbcc4b554829cdcdad8c2fcf4c29c95030e0524611cd48cd4ccf28010a1797249664262b2467241641a592324b8aa363156c15aab914146aadb90067111b1f</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>fileSaveAction</sender>
+        <signal>activated()</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>fileSave()</slot>
+    </connection>
+    <connection>
+        <sender>fileSaveAsAction</sender>
+        <signal>activated()</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>fileSaveAs()</slot>
+    </connection>
+    <connection>
+        <sender>fileExitAction</sender>
+        <signal>activated()</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>fileExit()</slot>
+    </connection>
+    <connection>
+        <sender>helpIndexAction</sender>
+        <signal>activated()</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>helpIndex()</slot>
+    </connection>
+    <connection>
+        <sender>helpContentsAction</sender>
+        <signal>activated()</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>helpContents()</slot>
+    </connection>
+    <connection>
+        <sender>helpAboutAction</sender>
+        <signal>activated()</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>helpAbout()</slot>
+    </connection>
+    <connection>
+        <sender>captureButton</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>toggleCapture(bool)</slot>
+    </connection>
+    <connection>
+        <sender>thresholdSlider</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>thresholdChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>configSaveAction</sender>
+        <signal>activated()</signal>
+        <receiver>ImageMaskMainWidget</receiver>
+        <slot>writeConfig()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in declaration">../../ImageProcessing/Formation/Image.h</include>
+    <include location="local" impldecl="in declaration">../../Fundamental/ConfigReader.h</include>
+    <include location="local" impldecl="in declaration">../../WorldModel/WorldModel.h</include>
+    <include location="global" impldecl="in implementation">qtimer.h</include>
+    <include location="global" impldecl="in implementation">qstatusbar.h</include>
+    <include location="global" impldecl="in implementation">qpushbutton.h</include>
+    <include location="global" impldecl="in implementation">qfiledialog.h</include>
+    <include location="global" impldecl="in implementation">vector</include>
+    <include location="local" impldecl="in implementation">../components/ImageWidget.h</include>
+    <include location="local" impldecl="in implementation">../components/ImageVarianceFilter.h</include>
+    <include location="local" impldecl="in implementation">../components/MorphologicOperators.h</include>
+    <include location="local" impldecl="in implementation">../../ImageProcessing/Formation/ImageProducer.h</include>
+    <include location="local" impldecl="in implementation">../../ImageProcessing/Formation/MultiImageProducer.h</include>
+    <include location="local" impldecl="in implementation">../../ImageProcessing/Formation/PPMIO.h</include>
+    <include location="local" impldecl="in implementation">../../ImageProcessing/PixelAnalysis/ColorClassifier.h</include>
+    <include location="local" impldecl="in implementation">../../ImageProcessing/ObjectAnalysis/ChainCoding.h</include>
+    <include location="local" impldecl="in implementation">../../Robot/Robot.h</include>
+    <include location="local" impldecl="in implementation">imagemaskmainwidget.ui.h</include>
+</includes>
+<forwards>
+    <forward>namespace Tribots { class MultiImageProducer; class ImageProducer; class ImageDistanceFilter; class ImageMaxDistanceFilter; class ImageVarianceFilter; class WhiteClassifier; class BlackClassifier; class ColorClassifier; class RegionDetector; class Region; class Robot; }</forward>
+    <forward>using Tribots::Image;</forward>
+</forwards>
+<variables>
+    <variable>int centerY;</variable>
+    <variable>Tribots::ConfigReader config;</variable>
+    <variable>QString filename;</variable>
+    <variable>int blackRegionMin;</variable>
+    <variable>int whiteRegionMin;</variable>
+    <variable>int threshold;</variable>
+    <variable>bool capturing;</variable>
+    <variable>bool programStart;</variable>
+    <variable>Tribots::ImageProducer* producer;</variable>
+    <variable>Tribots::Image* image;</variable>
+    <variable>QTimer* timer;</variable>
+    <variable>Tribots::ImageVarianceFilter* distanceFilter;</variable>
+    <variable>Tribots::Image* mask;</variable>
+    <variable>Tribots::ColorClassifier* whiteClassifier;</variable>
+    <variable>Tribots::ColorClassifier* blackClassifier;</variable>
+    <variable>Tribots::RegionDetector* regionDetector;</variable>
+    <variable>Tribots::Robot* robot;</variable>
+    <variable>QString configFileName;</variable>
+    <variable>int centerX;</variable>
+</variables>
+<signals>
+    <signal>imageChanged(const Image&amp; image)</signal>
+</signals>
+<slots>
+    <slot>fileSave()</slot>
+    <slot>fileSaveAs()</slot>
+    <slot>writeConfig()</slot>
+    <slot>writeMask( QString filename )</slot>
+    <slot>fileExit()</slot>
+    <slot>helpIndex()</slot>
+    <slot>helpContents()</slot>
+    <slot>helpAbout()</slot>
+    <slot>nextImageSlot()</slot>
+    <slot>toggleCapture( bool state )</slot>
+    <slot>recalculateMask()</slot>
+    <slot>thresholdChanged( int threshold )</slot>
+    <slot>recalculateImageCenter()</slot>
+    <slot>fillRegion( Tribots::Image * image, const Tribots::Region &amp; region, const Tribots::RGBTuple &amp; color )</slot>
+    <slot>captureOff()</slot>
+</slots>
+<functions>
+    <function access="private" specifier="non virtual">init()</function>
+    <function access="private" specifier="non virtual">destroy()</function>
+</functions>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

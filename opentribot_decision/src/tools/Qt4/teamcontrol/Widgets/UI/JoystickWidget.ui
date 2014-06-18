@@ -1,0 +1,720 @@
+<ui version="4.0" >
+ <class>JoystickWidget</class>
+ <widget class="QWidget" name="JoystickWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>540</width>
+    <height>290</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Joystick Widget</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox6" >
+   <property name="geometry" >
+    <rect>
+     <x>11</x>
+     <y>194</y>
+     <width>169</width>
+     <height>85</height>
+    </rect>
+   </property>
+   <property name="font" >
+    <font/>
+   </property>
+   <property name="title" >
+    <string>(De-)Aktivieren</string>
+   </property>
+   <widget class="QLabel" name="textLabel1_6" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>70</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Aktivieren</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel2" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Deaktivieren</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxDeactivateButtonIdx" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>50</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimum" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxActivateButtonIdx" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>20</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimum" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox8" >
+   <property name="geometry" >
+    <rect>
+     <x>360</x>
+     <y>194</y>
+     <width>169</width>
+     <height>85</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Maus Joystick</string>
+   </property>
+   <widget class="TribotsTools::MouseJoyWidget" native="1" name="mouseJoyWidget1" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>151</width>
+      <height>60</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxKick" >
+   <property name="geometry" >
+    <rect>
+     <x>186</x>
+     <y>194</y>
+     <width>168</width>
+     <height>85</height>
+    </rect>
+   </property>
+   <property name="font" >
+    <font/>
+   </property>
+   <property name="title" >
+    <string>Kicker</string>
+   </property>
+   <widget class="QLabel" name="textLabel1_7" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>70</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Kick Länge</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxKickLength" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>50</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>500</number>
+    </property>
+    <property name="minimum" >
+     <number>1</number>
+    </property>
+    <property name="singleStep" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxKickButtonIdx" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>20</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="minimum" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>6</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1_4" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>57</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Taste</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxXVel_2" >
+   <property name="geometry" >
+    <rect>
+     <x>186</x>
+     <y>87</y>
+     <width>168</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font" >
+    <font/>
+   </property>
+   <property name="title" >
+    <string>Y - Geschwindigkeit</string>
+   </property>
+   <widget class="QLabel" name="textLabel1_2" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>40</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Achse</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1_5_3_2" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>79</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Nullzone (%)</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBoxYInvert" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>110</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>invertieren</string>
+    </property>
+    <property name="checked" >
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxYAxisIdx" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>20</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxYAxisNull" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>60</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>100</number>
+    </property>
+    <property name="singleStep" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>30</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxYAxisMaxV" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>40</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>40</number>
+    </property>
+    <property name="singleStep" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>15</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1_5_2" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>99</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>max V (0.1 m/s)</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxXVel" >
+   <property name="geometry" >
+    <rect>
+     <x>11</x>
+     <y>87</y>
+     <width>169</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font" >
+    <font/>
+   </property>
+   <property name="title" >
+    <string>X - Geschwindigkeit</string>
+   </property>
+   <widget class="QCheckBox" name="checkBoxXInvert" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>110</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>invertieren</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxXAxisNull" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>60</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>100</number>
+    </property>
+    <property name="singleStep" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>30</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1_5" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>99</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>max V (0.1 m/s)</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxXAxisMaxV" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>40</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>40</number>
+    </property>
+    <property name="singleStep" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>15</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxXAxisIdx" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>20</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1_5_3" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>79</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Nullzone (%)</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>40</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Achse</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxJoyDev" >
+   <property name="geometry" >
+    <rect>
+     <x>11</x>
+     <y>11</y>
+     <width>343</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font" >
+    <font/>
+   </property>
+   <property name="title" >
+    <string>Joystick Device</string>
+   </property>
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item row="0" column="0" >
+     <widget class="QFrame" name="frameJoyDev" >
+      <property name="autoFillBackground" >
+       <bool>true</bool>
+      </property>
+      <property name="frameShape" >
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow" >
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="lineWidth" >
+       <number>0</number>
+      </property>
+      <widget class="QComboBox" name="comboBoxJoyDev" >
+       <property name="geometry" >
+        <rect>
+         <x>10</x>
+         <y>2</y>
+         <width>290</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="editable" >
+        <bool>true</bool>
+       </property>
+       <item>
+        <property name="text" >
+         <string>/dev/input/js0</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>/dev/input/js1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>/dev/input/js2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>/dev/input/js3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text" >
+         <string>Maus</string>
+        </property>
+       </item>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QGroupBox" name="groupBoxXVel_3" >
+   <property name="geometry" >
+    <rect>
+     <x>360</x>
+     <y>87</y>
+     <width>169</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font" >
+    <font/>
+   </property>
+   <property name="title" >
+    <string>PHI - Geschwindigkeit</string>
+   </property>
+   <widget class="QCheckBox" name="checkBoxPhiInvert" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>110</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>invertieren</string>
+    </property>
+    <property name="checked" >
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxPhiAxisIdx" >
+    <property name="geometry" >
+     <rect>
+      <x>120</x>
+      <y>20</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="value" >
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxPhiAxisNull" >
+    <property name="geometry" >
+     <rect>
+      <x>120</x>
+      <y>60</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>100</number>
+    </property>
+    <property name="singleStep" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>30</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1_5_3_3" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>79</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Nullzone (%)</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxPhiAxisMaxV" >
+    <property name="geometry" >
+     <rect>
+      <x>120</x>
+      <y>40</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>80</number>
+    </property>
+    <property name="value" >
+     <number>20</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1_5_2_2" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>105</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>max V (0.1rad/s)</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textLabel1_3" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>40</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Achse</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox7" >
+   <property name="geometry" >
+    <rect>
+     <x>360</x>
+     <y>11</y>
+     <width>169</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font" >
+    <font/>
+   </property>
+   <property name="title" >
+    <string>Perspektive</string>
+   </property>
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item row="0" column="0" >
+     <widget class="QComboBox" name="comboBoxPerspective" />
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <customwidgets>
+  <customwidget>
+   <class>TribotsTools::MouseJoyWidget</class>
+   <extends>QWidget</extends>
+   <header>../MouseJoyWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>comboBoxJoyDev</tabstop>
+  <tabstop>spinBoxXAxisIdx</tabstop>
+  <tabstop>spinBoxXAxisMaxV</tabstop>
+  <tabstop>spinBoxXAxisNull</tabstop>
+  <tabstop>checkBoxXInvert</tabstop>
+  <tabstop>spinBoxYAxisIdx</tabstop>
+  <tabstop>spinBoxYAxisMaxV</tabstop>
+  <tabstop>spinBoxYAxisNull</tabstop>
+  <tabstop>checkBoxYInvert</tabstop>
+  <tabstop>spinBoxPhiAxisIdx</tabstop>
+  <tabstop>spinBoxPhiAxisMaxV</tabstop>
+  <tabstop>spinBoxPhiAxisNull</tabstop>
+  <tabstop>checkBoxPhiInvert</tabstop>
+  <tabstop>spinBoxKickButtonIdx</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

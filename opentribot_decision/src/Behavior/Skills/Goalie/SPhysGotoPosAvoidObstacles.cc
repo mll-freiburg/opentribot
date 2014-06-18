@@ -1,0 +1,386 @@
+
+#include "SPhysGotoPosAvoidObstacles.h"
+#include "../../../WorldModel/WorldModel.h"
+#include "../../Predicates/RadialObstacleView.h"
+#include "../../../Fundamental/random.h"
+#include <cmath>
+
+using namespace Tribots;
+using namespace std;
+
+namespace {
+  const bool debug = false;
+}
+
+SPhysGotoPosAvoidObstacles::SPhysGotoPosAvoidObstacles (SPhysGotoPos* gosk) throw () : Skill ("SPhysGotoPosAvoidObstacles"), barrier(10), goto_pos_skill (gosk), search_directions (72) {
+  if (!goto_pos_skill)
+    goto_pos_skill = &own_goto_pos_skill;
+  robot_width = 2*MWM.get_robot_properties().max_robot_radius;
+  max_tv = MWM.get_robot_properties().max_velocity;
+  init (Vec::zero_vector, 0, true);
+  consider_ball_as_obstacle=true;
+  evade_dir = Vec (0,0);  // defaultmaessig auf Position zwingen
+  barrier.clear();
+  carefulballmove=false;
+  max_stop_over_velocity=1.0;
+}
+
+void SPhysGotoPosAvoidObstacles::set_target_evade_strategy (Angle a) throw () {
+  evade_dir = Vec::unit_vector (a);
+}
+
+void SPhysGotoPosAvoidObstacles::force_target () throw () {
+  evade_dir = Vec::zero_vector;
+}
+
+void SPhysGotoPosAvoidObstacles::init (Vec tp, Vec th, bool st, bool tolp, bool tolh, bool sm) throw () {
+  init (tp, th.angle()-Angle::quarter, st, tolp, tolh, sm);
+}
+
+void SPhysGotoPosAvoidObstacles::init (Vec tp, Angle ta, bool st, bool tolp, bool tolh, bool sm) throw () {
+  init (tp, ta, (st ? 0.0 : max_tv), tolp, tolh, sm);
+  barrier.clear();
+}
+
+void SPhysGotoPosAvoidObstacles::init (Vec tp, Vec th, double mtv, bool tolp, bool tolh, bool sm) throw () {
+  init (tp, th.angle()-Angle::quarter, mtv, tolp, tolh, sm);
+}
+
+void SPhysGotoPosAvoidObstacles::init (Vec tp, Angle ta, double mtv, bool tolp, bool tolh, bool sm) throw () {
+  stuckmove=sm;
+  max_target_velocity = (mtv>max_tv ? max_tv : mtv);
+  target_pos = tp;
+  target_heading = ta;
+  tolerance_pos = tolp;
+  tolerance_heading = tolh;
+  barrier.clear();
+  // pruefen, ob target_pos ausserhalb des Feldes und ggf. an den Feldrand projezieren
+  const FieldGeometry& fg = MWM.get_field_geometry();
+  const RobotProperties& rp = MWM.get_robot_properties();
+  double maxx = 0.5*fg.field_width+fg.side_band_width-rp.min_robot_radius-100;
+  double maxy = 0.5*fg.field_length+fg.goal_band_width-rp.min_robot_radius-100;
+  if (target_pos.x>maxx) target_pos.x=maxx;
+  if (target_pos.x<-maxx) target_pos.x=-maxx;
+  if (target_pos.y>maxy) target_pos.y=maxy;
+  if (target_pos.y<-maxy) target_pos.y=-maxy;
+}
+
+void SPhysGotoPosAvoidObstacles::set_dynamics (double vt, double vr) throw () {
+  goto_pos_skill->set_dynamics (vt, vr);
+  max_tv = vt;
+}
+
+void SPhysGotoPosAvoidObstacles::set_dynamics (double vt) throw () {
+  goto_pos_skill->set_dynamics (vt);
+  max_tv = vt;
+}
+
+void SPhysGotoPosAvoidObstacles::set_dynamics (double vt, double vr, double at, double ar) throw () {
+  goto_pos_skill->set_dynamics (vt, vr, at, ar);
+  max_tv = vt;
+}
+
+void SPhysGotoPosAvoidObstacles::get_dynamics (double& d1, double& d2, double& d3, double& d4, double& d5, double& d6) throw () {
+  goto_pos_skill->get_dynamics (d1,d2,d3,d4,d5,d6);
+}
+
+void SPhysGotoPosAvoidObstacles::set_ball_as_obstacle (bool b, bool b1) throw () {
+  consider_ball_as_obstacle = b;
+  carefulballmove = b1;
+}
+
+DriveVector SPhysGotoPosAvoidObstacles::getCmd(const Time& t) throw() {
+  const RobotLocation& robot = MWM.get_robot_location(t);
+  const ObstacleLocation& oloc = MWM.get_obstacle_location(t);
+  const RobotProperties& rp = MWM.get_robot_properties();
+  Vec current_stop_over_point = target_pos;
+  Vec current_target_pos = target_pos;
+  std::vector<RadialObstacleView> obstacles;
+  make_radial_obstacle_view (obstacles, t, consider_ball_as_obstacle, true, false, true);
+  bool is_stuckmove = false;
+  if (stuckmove && robot.stuck.msec_since_stuck<2000) {
+    is_stuckmove = true;
+    LOUT << "SPhysGotoPosAvoidObstacles: Stuck->kuenstliches Hindernisse\n";
+    const unsigned int numobs = obstacles.size();
+    for (unsigned int i=0; i<numobs; i++) {
+      if (obstacles[i].distance<1000) {
+        double dnew = (obstacles[i].distance>200 ? obstacles[i].distance-200 : 100);
+        Vec c = robot.pos+dnew*Vec::unit_vector (obstacles[i].mainangle);
+        double w = 2.0*obstacles[i].width;
+        add_obstacle (obstacles, t, c, w);
+        Vec ortho = (robot.pos-c).normalize().rotate_quarter();
+        LOUT << "% brown solid thick line " << c+0.5*w*ortho << c-0.5*w*ortho << "\n";
+      }
+    }
+  }
+
+  if ((robot.pos-target_pos).length()>200) {
+    // pruefen, ob Zielposition frei, ggf. Ausweichstrategie anwenden
+    if (evade_dir.squared_length()>0.1 && !is_stuckmove) { // andernfalls keinen Ausweichpunkt berechnen
+      for (unsigned int k=0; k<5; k++) {
+        // maximal 5mal das Spielchen wiederholen, nach Hindernissen im Anfahrtbereich zu schauen
+        // eine Heuristik, die auch schiefgehen kann, wenn mehrere Hindernisse beteiligt sind, daher Wiederholungsbegrenzung
+        vector<ObstacleDescriptor>::const_iterator it = oloc.begin();
+        const unsigned int num_obstacles = oloc.size();
+        bool an_obstacle=false;
+        for (unsigned int j=0; j<num_obstacles; j++) {
+          if ((it->pos-current_target_pos).length()<it->width+200) {
+            // Hindernis in der Naehe des Anfahrtpunktes, naeher untersuchen
+            Quadrangle obstacle (it->pos, it->pos+it->width*(it->pos-robot.pos).normalize(), it->width);
+            Vec diag1 = (obstacle.p1-obstacle.p3).normalize();
+            Vec diag2 = (obstacle.p2-obstacle.p4).normalize();
+            double s = 1.5*rp.max_robot_radius+100;
+            Quadrangle obstacle_free_space (obstacle.p1+s*diag1, obstacle.p2+s*diag2, obstacle.p3-s*diag1, obstacle.p4-s*diag2);
+            Quadrangle obstacle_free_space2 (obstacle.p1+(s+10)*diag1, obstacle.p2+(s+10)*diag2, obstacle.p3-(s+10)*diag1, obstacle.p4-(s+10)*diag2);
+            if (obstacle_free_space.is_inside (current_target_pos)) {
+              an_obstacle=true;
+              // in Ausweichrichtung den Anfahrtspunkt verschieben
+              LineSegment evade_line (current_target_pos, current_target_pos+10000*evade_dir);
+              vector<Vec> pis = intersect (obstacle_free_space2, evade_line);
+              if (debug) {
+                LOUT << "Hindernis im Weg, verschiebe Anfahrtposition\n";
+                LOUT << "% black dashed " << obstacle_free_space << " " << evade_line << "\n";
+              }
+              if (pis.size()>0)
+                current_target_pos = pis[0];
+              break; // ein Hindernis gefunden, was problematisch ist, dann noch mal von vorne alle Hindernisse durchsuchen
+            }
+          }
+          it++;
+        }
+        if (!an_obstacle) break;
+      }
+    } else if (!is_stuckmove) {
+      // force_target Modus: Hindernisse in Zielpunktnaehe wegnehmen:
+      std::vector<RadialObstacleView>::iterator obs_it = obstacles.begin();
+      while (obs_it<obstacles.end()) {
+        Vec obstacleunitvec = Vec::unit_vector (obs_it->mainangle);
+        Quadrangle obstacle (robot.pos+obs_it->distance*obstacleunitvec, robot.pos+(obs_it->distance+obs_it->width)*obstacleunitvec, obs_it->width);
+        Vec diag1 = (obstacle.p1-obstacle.p3).normalize();
+        Vec diag2 = (obstacle.p2-obstacle.p4).normalize();
+        double s = 1.5*rp.max_robot_radius+100;
+        Quadrangle obstacle_free_space (obstacle.p1+s*diag1, obstacle.p2+s*diag2, obstacle.p3-s*diag1, obstacle.p4-s*diag2);
+        if (obstacle_free_space.is_inside (current_target_pos)) {
+          if (debug) {
+            LOUT << "Hindernis an Zielposition, wegdenken\n";
+            LOUT << "% black dotted " << obstacle_free_space << "\n";
+          }
+          obs_it = obstacles.erase (obs_it);  // Hindernis im Weg -> loeschen
+        } else {
+          obs_it++;  // Hindernis nicht im Weg, beibehalten
+        }
+      }
+    }
+    if ((target_pos-current_target_pos).squared_length()>10)
+      LOUT << "% blue solid thin Tarrow " << target_pos << ' ' << target_pos+(300*max_target_velocity+200)*Vec::unit_vector(target_heading+Angle::quarter) << '\n';
+    LOUT << "% orange solid thin Tarrow " << current_target_pos << ' ' << current_target_pos+(300*max_target_velocity+200)*Vec::unit_vector(target_heading+Angle::quarter) << '\n';
+
+    // in 5-Grad-Schritten sondieren
+    const Angle fuenfgrad = Angle::deg_angle(5);
+    const Angle target_angle = (current_target_pos-robot.pos).angle();
+    double target_dist =  (current_target_pos-robot.pos).length();
+    unsigned int leftindex=0, rightindex=0;
+    double leftdist=0, rightdist=0;
+    barrier.clear();
+
+    double look_ahead [] = { 6000, 3000, 2000, 1000 };  // die verschiedenen look-ahead-Stufen
+    unsigned int num_dirs [] = { 6, 24, 48, 72 };  // die normalerweise zu betrachtende Anzahl Richtungen pro Look-ahead-Stufe
+    unsigned int max_dirs [] = { 12, 27, 72, 72 };  // die maximal zu betrachtende Anzahl Richtungen pro Look-ahead-Stufe
+    unsigned int num_trial=4;
+    // erzeugen der Suchrichtungen:
+    bool do_tabu = false; //(stop_over_time.elapsed_msec ()<=70);  // wenn  in den letzten 70ms ein Wegpunkt definiert wurde, Tabu-Suche anwenden
+    Angle stop_over_angle = (stop_over_time.elapsed_msec ()>70 ? target_angle : (stop_over_point-robot.pos).angle());
+    Angle tabu_right_angle = stop_over_angle+Angle::three_eighth;
+    Angle tabu_left_angle = stop_over_angle-Angle::three_eighth;
+    double sot = (target_angle-stop_over_angle).get_deg_180();
+    unsigned int k=0;
+    Angle angle_left;
+    Angle angle_right;
+    Angle delta_angle;
+    if (sot>=0) {  // stop_over_point rechts von target
+      k = static_cast<unsigned int>(sot/5.0+0.5)+1;
+      delta_angle = -fuenfgrad;
+      angle_left = target_angle;
+      angle_right = target_angle-(k-1)*fuenfgrad;
+    } else {
+      k = static_cast<unsigned int>(-sot/5.0+0.5)+1;
+      delta_angle = fuenfgrad;
+      angle_left = target_angle+(k-1)*fuenfgrad;
+      angle_right = target_angle;
+    }
+    for (unsigned int i=0; i<k; i++)
+      search_directions [i] = target_angle+i*delta_angle;
+    for (unsigned int i=k; i<72; i++)
+      if ((i-k)%2==1)
+        search_directions [i] = angle_right-(i-k+1)/2*fuenfgrad;
+    else
+      search_directions [i] = angle_left+(i-k+2)/2*fuenfgrad;
+    for (unsigned int trial = 0; trial<num_trial; trial++) {
+      double max_dist = (target_dist>look_ahead[trial] ? look_ahead[trial] : target_dist);
+      if (debug)
+        LOUT << "sondiere mit look-ahead " << max_dist << '\n';
+
+      double currently_best_half_width=0.5*robot_width+200;
+      double currently_farest=0;
+      bool valid_direction_found=false; // eine solche auf jeden Fall nehmen
+      bool possible_direction_found=false;  // eine solche waere als Notloesung okay
+
+      unsigned int max_iter=num_dirs[trial];
+      if (max_iter<k+4) max_iter=k+4;
+      if (max_iter>max_dirs[trial]) max_iter = max_dirs[trial];
+      unsigned int iter=0;
+      while (iter<max_iter && iter<search_directions.size()) {  // Moegliche Richtungen testen, solche mit guter Durchfahrtsbreite und moeglichst direkt zuerst evaluieren (Reihenfolge wichtig!)
+        Angle cangle = search_directions [iter];
+        if (debug) {
+          LOUT << "% color " << 3*iter << ' ' << 3*iter << ' ' << 3*iter << " line " << robot.pos << robot.pos+2000*Vec::unit_vector(cangle) << "\n";
+          LOUT << "% word " << robot.pos+2300*Vec::unit_vector(cangle) << iter << '\n';
+          LOUT << "Richtung " << iter;
+        }
+        if (do_tabu && cangle.in_between (tabu_right_angle, tabu_left_angle)) {
+          if (debug) LOUT << " tabu";
+        } else {
+          double od = scan_radial_obstacle_view (leftindex, rightindex, leftdist, rightdist, obstacles, max_dist, cangle);
+          bool dir_okay= (od+1>max_dist);
+          if (!dir_okay && od>1000) {
+            scan_radial_obstacle_view (leftindex, rightindex, leftdist, rightdist, obstacles, od-1, cangle); // noch mal bis kurz vor Hindernis scannen
+          }
+          if (leftdist<0.8*robot_width || rightdist<0.8*robot_width) {
+            if (cangle.in_between (target_angle, target_angle+Angle::half)) {
+              double psi = obstacles[rightindex].distance;
+              double phi = scan_radial_obstacle_view (leftindex, rightindex, leftdist, rightdist, obstacles, psi+1000, cangle);
+              dir_okay = (phi+1>psi+1000);
+            } else {
+              double psi = obstacles[leftindex].distance;
+              double phi = scan_radial_obstacle_view (leftindex, rightindex, leftdist, rightdist, obstacles, psi+1000, cangle);
+              dir_okay = (phi+1>psi+1000);
+            }
+          }
+
+          if (dir_okay) { // freie Richtung gefunden
+            if (debug) LOUT << " frei";
+            if (leftdist>currently_best_half_width && rightdist>currently_best_half_width) { // wenn Durchfahrt breit genug, dann merken
+              if (debug) LOUT << " moeglich";
+              possible_direction_found=true;
+              double len, side;
+              if (cangle.in_between (target_angle, target_angle+Angle::half)) {
+                len = obstacles[rightindex].distance;
+                side = -1;  // links am Hindernis vorbei
+              } else {
+                len = obstacles[leftindex].distance;
+                side = +1;  // rechts am Hindernis vorbei
+              }
+              if (abs((cangle-target_angle).get_deg_180())<3)
+                current_stop_over_point = current_target_pos;
+              else
+                current_stop_over_point = robot.pos+len*Vec::unit_vector (cangle);  // Wegpunkt merken
+              Vec ortho = (current_target_pos-current_stop_over_point).normalize().rotate_quarter();
+              barrier.clear();
+              if ((current_target_pos-current_stop_over_point).squared_length()>100)
+                barrier.push_back (Line (current_stop_over_point-200*side*ortho, current_target_pos+side*ortho));  // Barriere merken
+              currently_best_half_width = (leftdist>rightdist ? rightdist : leftdist);  // Durchfahrtsbreite merken
+
+              if (currently_best_half_width>=robot_width) { // wenn Durchfahrt sehr breit, dann direkt diese Richtung nehmen
+                if (debug) LOUT << " nehmen";
+                valid_direction_found=true;
+                max_iter=iter;
+              } else if (currently_best_half_width>0.5*robot_width) {
+                max_iter = iter+7;
+                if (debug) LOUT << " bis " << max_iter << " sondieren";
+              }
+            } else {
+              if (debug) LOUT << " Durchfahrtsbreite zu gering: " << leftdist << ' ' << rightdist;
+            }
+          } else {
+            if (debug) LOUT << " Hindernis in " << od << "mm";
+            if (!possible_direction_found && od>currently_farest) {
+              currently_farest=od;
+              current_stop_over_point = robot.pos+(od-0.5*robot_width)*Vec::unit_vector (cangle);
+            }
+          }
+        }  // Ende Tabu
+        if (debug) LOUT << '\n';
+        iter++;
+      } // Ende gehe durch alle Richtungen
+      if (debug) {
+        LOUT << "% light_blue line " << robot.pos+200*Vec::unit_vector(angle_left) << robot.pos+1000*Vec::unit_vector(angle_left) << "\n";
+        LOUT << "% dark_blue line " << robot.pos << robot.pos+800*Vec::unit_vector(angle_right) << "\n";
+      }
+
+      if (valid_direction_found || possible_direction_found || trial+1==num_trial) {
+        if (valid_direction_found)
+          LOUT << "fahre um Hindernis mit look_ahead " << look_ahead[trial] << "\n";
+        else if (possible_direction_found)
+          LOUT << "fahre eng an Hindernis vorbei mit look_ahead " << look_ahead[trial] << "\n";
+        else
+          LOUT << "fahre in Sackgasse mangels Alternative\n";
+        stop_over_point = current_stop_over_point;
+        if ((stop_over_point-current_target_pos).squared_length()>400)
+          stop_over_time.update();
+        max_stop_over_velocity = 1.0;
+        break;
+      }
+    }  // Ende Untersuche alle look-aheads
+
+    // seitliche Barrieren einbauen
+    Angle t_angle = (stop_over_point-robot.pos).angle();
+    double max_dist = (stop_over_point-robot.pos).length();
+    if (max_dist>100) {
+      scan_radial_obstacle_view (leftindex, rightindex, leftdist, rightdist, obstacles, max_dist, t_angle); // Hindernisse in Zielrichtung suchen
+      Vec ortho = (stop_over_point-robot.pos).normalize().rotate_quarter();
+      double sm = 0.5*MWM.get_robot_properties().robot_width;
+      if (leftdist<10000)
+        barrier.push_back (Line (robot.pos+(leftdist-sm)*ortho, stop_over_point+(leftdist-sm)*ortho));
+      if (rightdist<10000)
+        barrier.push_back (Line (robot.pos-(rightdist-sm)*ortho, stop_over_point-(rightdist-sm)*ortho));
+    }
+
+  } else {
+    // Ende: Hindernisbehandlung nur wenn Abstand zum Zielpunkt mindestens 200mm
+    stop_over_point=current_stop_over_point;
+  }
+
+  // Maximalgeschwindigkeit nach Abstand zu naechstem Hindernis in Fahrtrichtung +/- berechnen
+  Angle target_dir = (stop_over_point-robot.pos).angle();
+  const Angle oeffnungswinkel = Angle::deg_angle (15);
+  double next_obstacle = cone_radial_obstacle_view (obstacles, target_dir-oeffnungswinkel, target_dir+oeffnungswinkel);
+  double dec, no_good, vrot, vtrans;
+  goto_pos_skill->get_dynamics (vtrans, vrot, no_good, no_good, dec, no_good);
+  double max_v_dec = sqrt (2.0e-3*dec*next_obstacle);
+  Angle stop_over_target_dir = (current_target_pos-stop_over_point).angle();
+                  if (max_stop_over_velocity<max_v_dec) max_v_dec = max_stop_over_velocity;
+  if ((stop_over_point-current_target_pos).squared_length()<400) max_v_dec=0;  // Am Zielpunkt anhalten
+  goto_pos_skill->init (stop_over_point, target_heading, max_v_dec);
+  goto_pos_skill->init_barrier (barrier);
+  if (carefulballmove) {
+    const BallLocation& ball = MWM.get_ball_location(t);
+    if (((robot.pos-ball.pos.toVec()).squared_length()<1000000) && ((robot.pos-target_pos).squared_length()>562500)) {
+      goto_pos_skill->set_dynamics (vtrans, 0.5);
+    }
+  }
+  goto_pos_skill->init_barrier (additional_barriers);
+  DriveVector dv = goto_pos_skill->getCmd (t);
+  goto_pos_skill->set_dynamics (vtrans, vrot);
+  additional_barriers.clear();
+//cout <<"in SPhysgotopos"<<dv.vtrans<<endl;
+  return dv;
+}
+
+void SPhysGotoPosAvoidObstacles::init_barrier (const Line& arg) throw () {
+  additional_barriers.push_back (arg);
+}
+
+void SPhysGotoPosAvoidObstacles::init_barrier (const std::vector<Line>& arg) throw () {
+  additional_barriers.insert (additional_barriers.begin(), arg.begin(), arg.end());
+}
+
+bool SPhysGotoPosAvoidObstacles::destination_reached (Time t) const throw () {
+  return heading_reached(t) && position_reached(t);
+}
+
+bool SPhysGotoPosAvoidObstacles::heading_reached (Time t) const throw () {
+  return goto_pos_skill->heading_reached(t) && (target_heading-MWM.get_robot_location(t).heading).get_deg_180()<15;
+}
+
+bool SPhysGotoPosAvoidObstacles::position_reached (Time t) const throw () {
+  return goto_pos_skill->position_reached(t) && (target_pos-MWM.get_robot_location(t).pos).length()<300;
+}

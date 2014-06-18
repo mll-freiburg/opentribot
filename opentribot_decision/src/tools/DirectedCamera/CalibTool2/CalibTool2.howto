@@ -1,0 +1,48 @@
+ANLEITUNG CALIBTOOL2
+===================
+
+Projekt anlegen:
+  - Projekt angelegen (über "New Project")
+  - der dabei angegebene Projektordner darf eine .txt Datei und mehrere Bilder enthalten
+    (JPEG oder PPM oder beides)
+
+
+ShortCuts:
+  - mit drücken der "Ctrl" Taste wird der Zoom eingeschaltet
+  - nochmaliges drücken schaltet den Zoom wieder ab
+
+  - bei eingeschaltetem Zoom kann mit drücken der "Space" Taste der Precision Mode eingeschaltet werden
+    dann ist es möglich den Mauszeiger im gezoomten Bereich zu bewegen
+  - nochmaliges drücken der "Space" Tast schaltet den Precision Mode wieder ab 
+    (diese Funktion ist noch nicht ganz ausgereift und sollte mit Vorsicht benutzt werden)
+
+  - der Zoom und Precision Mode lassen sich für jedes Bild seperat ein- und ausschalten
+
+
+ModelView:
+  - gruene Punkte -> noch nicht im Bild markiert
+  - rote Punkte -> bereits im Bild markiert
+  - rot umrandete Punkte -> aktuell ausgewählter Punkt
+                            der als nächstes gesetzt wird
+
+  - Punkte, die schon gesetzt wurden können per delete-Button wieder gelöscht werden
+  - oder einfach Punkt mittels Pfeil-Button auswählen und im Bild neue Markierung setzen
+  - wenn alle Punkte gesetzt wurden ist keine Markierung im Bild mehr möglich
+
+
+Bildanzeige:
+  - das Wechseln zwischen den Bildern ist problemlos möglich
+  - ModelView wird automatisch an das gerade aktuelle Bild angepasst
+
+
+Speichern:
+  - das Speichern der Korrespondenz-Punkte erfolgt über Save
+  - standardmäßig wird eine Datei mit dem Namen cpoints.txt erzeugt und im Projektordner gespeichert
+  - für alle noch nicht gesetzten Punkte wird für den x- und y-Wert eine -1 eingetragen
+
+
+Compilieren:
+  - qmake CalibTool2.pro
+  - make
+  - ./CalibTool2
+

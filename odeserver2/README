@@ -1,0 +1,8 @@
+Neue Version des Tribots-Simulators, auf 12x18m-Felder erweitert und mit
+neuer Kommunikation ausgestattet. Die Dynamik wurde - soweit moeglich - dem
+alten Simulator nachempfunden.
+
+Bitte beachten: der Inhalt der Unterverzeichnisse Communication/ und
+Fundamental/ enthaelt 1-zu-1-Kopien von Quelldateien aus der
+Tribotssoftware. Bei Veraenderungen dieser Module muessen die Aenderungen
+manuell in die Tribotssoftware uebertragen werden!

@@ -1,0 +1,246 @@
+<ui version="4.0" >
+ <class>CameraDefinitionWidget</class>
+ <widget class="QWidget" name="CameraDefinitionWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>779</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item rowspan="3" row="0" column="0" >
+    <widget class="TribotsTools::ScrollImageWidget" native="1" name="imageWidget" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Expanding" hsizetype="Expanding" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" colspan="3" >
+    <widget class="QGroupBox" name="groupBox_properties" >
+     <property name="title" >
+      <string>Kameraeigenschaften</string>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label_name" >
+        <property name="text" >
+         <string>Name</string>
+        </property>
+        <property name="buddy" >
+         <cstring>lineEdit_name</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2" >
+       <widget class="QLineEdit" name="lineEdit_name" >
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_device" >
+        <property name="text" >
+         <string>Kameradevice</string>
+        </property>
+        <property name="buddy" >
+         <cstring>lineEdit_device</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="lineEdit_device" />
+      </item>
+      <item row="1" column="2" >
+       <widget class="QPushButton" name="pushButton_device" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="label_uid" >
+        <property name="text" >
+         <string>UID</string>
+        </property>
+        <property name="buddy" >
+         <cstring>comboBox_uid</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="2" >
+       <widget class="QComboBox" name="comboBox_uid" >
+        <property name="editable" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label_mode" >
+        <property name="text" >
+         <string>Modus</string>
+        </property>
+        <property name="buddy" >
+         <cstring>lineEdit_mode</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="2" >
+       <widget class="QLineEdit" name="lineEdit_mode" />
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="label_delay" >
+        <property name="text" >
+         <string>Latenz (msec)</string>
+        </property>
+        <property name="buddy" >
+         <cstring>spinBox_delay</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" colspan="2" >
+       <widget class="QSpinBox" name="spinBox_delay" >
+        <property name="maximum" >
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" >
+       <widget class="QLabel" name="label_selftest" >
+        <property name="text" >
+         <string>Selbsttest</string>
+        </property>
+        <property name="buddy" >
+         <cstring>checkBox_selftest</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" colspan="2" >
+       <widget class="QCheckBox" name="checkBox_selftest" >
+        <property name="layoutDirection" >
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0" >
+       <widget class="QLabel" name="label_blocking" >
+        <property name="text" >
+         <string>Blockierend</string>
+        </property>
+        <property name="buddy" >
+         <cstring>checkBox_blocking</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1" colspan="2" >
+       <widget class="QCheckBox" name="checkBox_blocking" >
+        <property name="layoutDirection" >
+         <enum>Qt::RightToLeft</enum>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="3" >
+    <widget class="QGroupBox" name="groupBox_messages" >
+     <property name="title" >
+      <string>Status</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="leftMargin" >
+       <number>9</number>
+      </property>
+      <property name="topMargin" >
+       <number>9</number>
+      </property>
+      <property name="rightMargin" >
+       <number>9</number>
+      </property>
+      <property name="bottomMargin" >
+       <number>9</number>
+      </property>
+      <property name="horizontalSpacing" >
+       <number>6</number>
+      </property>
+      <property name="verticalSpacing" >
+       <number>6</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="QTextEdit" name="textEdit_messages" >
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="1" >
+    <widget class="QPushButton" name="pushButton_start" >
+     <property name="text" >
+      <string>Start</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" >
+    <widget class="QPushButton" name="pushButton_restart" >
+     <property name="text" >
+      <string>Restart</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="3" >
+    <widget class="QPushButton" name="pushButton_stop" >
+     <property name="text" >
+      <string>Stop</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TribotsTools::ScrollImageWidget</class>
+   <extends>QWidget</extends>
+   <header>../../../components/ScrollImageWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>lineEdit_name</tabstop>
+  <tabstop>lineEdit_device</tabstop>
+  <tabstop>pushButton_device</tabstop>
+  <tabstop>comboBox_uid</tabstop>
+  <tabstop>lineEdit_mode</tabstop>
+  <tabstop>spinBox_delay</tabstop>
+  <tabstop>checkBox_selftest</tabstop>
+  <tabstop>checkBox_blocking</tabstop>
+  <tabstop>textEdit_messages</tabstop>
+  <tabstop>pushButton_start</tabstop>
+  <tabstop>pushButton_restart</tabstop>
+  <tabstop>pushButton_stop</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

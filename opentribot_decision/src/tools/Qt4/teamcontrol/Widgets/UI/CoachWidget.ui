@@ -1,0 +1,252 @@
+<ui version="4.0" >
+ <class>CoachWidget</class>
+ <widget class="QWidget" name="CoachWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>573</width>
+    <height>334</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>320</width>
+    <height>200</height>
+   </size>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>1000</width>
+    <height>1000</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Trainer</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="1" >
+    <widget class="QGroupBox" name="groupBoxTactics" >
+     <property name="font" >
+      <font/>
+     </property>
+     <property name="title" >
+      <string>Taktik</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>0</number>
+      </property>
+      <property name="spacing" >
+       <number>0</number>
+      </property>
+      <item row="1" column="0" colspan="3" >
+       <widget class="TribotsTools::TacticsWidget" name="tacticsWidget" />
+      </item>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="checkBoxTacticsOnOff" >
+        <property name="text" >
+         <string>Taktik an/aus</string>
+        </property>
+        <property name="checked" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>31</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QComboBox" name="comboBoxTacticsVariants" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QGroupBox" name="groupBoxCommunication" >
+       <property name="font" >
+        <font/>
+       </property>
+       <property name="title" >
+        <string>Kommunikation</string>
+       </property>
+       <layout class="QGridLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>0</number>
+        </property>
+        <item rowspan="2" row="2" column="1" >
+         <widget class="QCheckBox" name="broadcast_mode_check" >
+          <property name="text" >
+           <string>Broadcast</string>
+          </property>
+         </widget>
+        </item>
+        <item rowspan="2" row="0" column="1" >
+         <widget class="QCheckBox" name="teammate_mode_check" >
+          <property name="text" >
+           <string>Mitspielerpos.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" >
+         <widget class="QCheckBox" name="ball_position_mode_check" >
+          <property name="text" >
+           <string>Ballposition</string>
+          </property>
+         </widget>
+        </item>
+        <item rowspan="2" row="1" column="0" >
+         <widget class="QCheckBox" name="ball_posession_mode_check" >
+          <property name="text" >
+           <string>Ballbesitz</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0" >
+         <widget class="QCheckBox" name="sl_mirror_hint_check" >
+          <property name="text" >
+           <string>SL-Seitenhinweis</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBoxRoleChange" >
+       <property name="font" >
+        <font/>
+       </property>
+       <property name="title" >
+        <string>Rollenzuweisung</string>
+       </property>
+       <layout class="QGridLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>0</number>
+        </property>
+        <item row="0" column="0" >
+         <widget class="QComboBox" name="policy_combo" >
+          <item>
+           <property name="text" >
+            <string>---</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="summary_edit" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>5</hsizetype>
+         <vsizetype>7</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font" >
+        <font/>
+       </property>
+       <property name="readOnly" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBoxExtraMessage" >
+       <property name="font" >
+        <font/>
+       </property>
+       <property name="title" >
+        <string>Extra Message</string>
+       </property>
+       <layout class="QGridLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>0</number>
+        </property>
+        <item row="0" column="0" >
+         <widget class="QComboBox" name="message_combo" >
+          <property name="editable" >
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <customwidgets>
+  <customwidget>
+   <class>TribotsTools::TacticsWidget</class>
+   <extends>QFrame</extends>
+   <header>../TacticsWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

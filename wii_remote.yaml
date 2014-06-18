@@ -1,0 +1,4 @@
+roslaunch:
+  uris: {host_tribot11__43954: 'http://tribot11:43954/', host_tribot11__44871: 'http://tribot11:44871/'}
+run_id: bbc682fe-e765-11df-bd56-001f3bc2f587
+wii_remote: {Speed: 12.12, bluetooth_address: 'ANY'}

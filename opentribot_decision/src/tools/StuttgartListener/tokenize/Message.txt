@@ -1,0 +1,63 @@
+Stefan.Welker@gmail.com
+
+MDP3-Server starten:
+
+auf pcschlappi (mit cops einloggen)
+mdp3Server 20002
+
+unser aktueller testserver:
+laplehmann 20002
+
+
+Communication womo_send_interval 	int	100
+
+Example WoMoMessage:
+
+               SENDER      MESSAGE-ID         TIMESTAMP
+MSG::WM::1::B::rfcbot1::System_WoMo_Data::N::-1267039682//
+12,
+INT,-1267039691,4,1,0,0,0,0, 					(OmniCamBallRelPolar)
+INT,-1267039682,4,1,-6877,-164,52,0, 				(FeatureManager AbsPos)
+INT,-1267039691,7,1,1,-4358,3874,1568,1649,650,2795,		(AbsTracker BallPosAbs)
+INT,-1267039691,9,0,  						(AbsTracker AbsFieldObstacleTracks)
+INT,-1267039718,2,0, 						(ProcTracksShared TrackID2PlayerMap)
+INT,-1267039718,6,1,1,-4196,3486,1166,1878,0,  			(ProcTracksShared SharedBallAbsPos) 
+INT,-1267039682,3,1,16,-16,-8, 					(AbsTracker EgoMotionData)
+INT,-1267039682,7,1,-6877,-164,52,0,-6877,-164,52,	 	(RobotIntensions RobotTargets) 
+INT,-31985088,3,0, 						(Odometry CurrentTransRotVel)
+INT,0,5,0,  							(Compass AbsAngle)
+INT,-1267039682,3,0,   						(XPlayer AbsOpponents)
+STRING,-1267039682,10,1,wait,0,RefereeEvents,K,O,Stop,0,1,N,0	(XPlayer PlayerState)
+//::END
+
+
+(XPlayer PlayerState)
+[Timestamp],10,1,wait,0,RefereeEvents,[Rolle],[Strategy],[currentRefereeEvent],0,1,N,0
+
+Strategy: [O,OR,D] Offensive, OffesinveRisky, Defensive
+
+
+
+Example RefBox-Message:
+MSG::PC::1::B::RefBoxCommandTester::System_Player_Commands::I::-1273146465//[REFBOX-COMMAND]//::END
+
+REFBOX-COMMAND:
+go		(Start-Kommando auf der Refbox)	
+gameInterrupt   (Stop-Kommando auf der Refbox)
+ownKickOff
+goalKickOwn
+cornerKickOwn
+throwInOwn
+freeKickOwn
+oppKickOff
+goalKickOpp
+cornerKickOpp
+throwInOpp
+freeKickOpp
+stop
+penaltyKickOwn
+penaltyKickOpp
+droppedBall
+ownGoal
+oppGoal
+

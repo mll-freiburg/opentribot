@@ -1,0 +1,73 @@
+<ui version="4.0" >
+ <class>ImageCenterWidget</class>
+ <widget class="QWidget" name="ImageCenterWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>470</width>
+    <height>327</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Bildmittelpunkt</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="2" column="1" >
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QCheckBox" name="checkBox_auto" >
+     <property name="text" >
+      <string>Automatik</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QCheckBox" name="checkBox_debug" >
+     <property name="text" >
+      <string>Debug-Anzeige</string>
+     </property>
+    </widget>
+   </item>
+   <item rowspan="3" row="0" column="0" >
+    <widget class="TribotsTools::ScrollImageWidget" native="1" name="imageWidget" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TribotsTools::ScrollImageWidget</class>
+   <extends>QWidget</extends>
+   <header>../../../components/ScrollImageWidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

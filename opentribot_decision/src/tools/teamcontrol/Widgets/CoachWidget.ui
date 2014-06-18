@@ -1,0 +1,408 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>CoachWidget</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>CoachWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>485</width>
+            <height>284</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>7</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>0</width>
+            <height>0</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>32767</width>
+            <height>32767</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>Trainer</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>3</number>
+        </property>
+        <property name="spacing">
+            <number>3</number>
+        </property>
+        <widget class="QSplitter" row="0" column="0">
+            <property name="name">
+                <cstring>splitter2</cstring>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+            <widget class="QLayoutWidget">
+                <property name="name">
+                    <cstring>layout2</cstring>
+                </property>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QGroupBox" row="0" column="0">
+                        <property name="name">
+                            <cstring>groupBoxCommunication</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="title">
+                            <string>Kommunikation</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>3</number>
+                            </property>
+                            <property name="spacing">
+                                <number>0</number>
+                            </property>
+                            <widget class="QCheckBox" row="1" column="0" rowspan="2" colspan="2">
+                                <property name="name">
+                                    <cstring>ball_posession_mode_check</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Ballbesitz</string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox" row="0" column="0">
+                                <property name="name">
+                                    <cstring>ball_position_mode_check</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Ballposition</string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox" row="0" column="1">
+                                <property name="name">
+                                    <cstring>teammate_mode_check</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Mitspielerpos.</string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox" row="2" column="1">
+                                <property name="name">
+                                    <cstring>broadcast_mode_check</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Broadcast</string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>sl_mirror_hint_check</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>SL-Seitenhinweis</string>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QGroupBox" row="3" column="0">
+                        <property name="name">
+                            <cstring>groupBoxExtraMessage</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="title">
+                            <string>Extra Message</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>3</number>
+                            </property>
+                            <property name="spacing">
+                                <number>0</number>
+                            </property>
+                            <widget class="QComboBox" row="0" column="0">
+                                <property name="name">
+                                    <cstring>message_combo</cstring>
+                                </property>
+                                <property name="editable">
+                                    <bool>true</bool>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QGroupBox" row="1" column="0">
+                        <property name="name">
+                            <cstring>groupBoxRoleChange</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="title">
+                            <string>Rollenzuweisung</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>3</number>
+                            </property>
+                            <property name="spacing">
+                                <number>0</number>
+                            </property>
+                            <widget class="QComboBox" row="1" column="0">
+                                <item>
+                                    <property name="text">
+                                        <string>---</string>
+                                    </property>
+                                </item>
+                                <property name="name">
+                                    <cstring>policy_combo</cstring>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QTextEdit" row="2" column="0">
+                        <property name="name">
+                            <cstring>summary_edit</cstring>
+                        </property>
+                        <property name="sizePolicy">
+                            <sizepolicy>
+                                <hsizetype>5</hsizetype>
+                                <vsizetype>7</vsizetype>
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                            </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                            <size>
+                                <width>0</width>
+                                <height>1</height>
+                            </size>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="text">
+                            <string></string>
+                        </property>
+                        <property name="wordWrap">
+                            <enum>WidgetWidth</enum>
+                        </property>
+                        <property name="readOnly">
+                            <bool>true</bool>
+                        </property>
+                    </widget>
+                </grid>
+            </widget>
+            <widget class="QGroupBox">
+                <property name="name">
+                    <cstring>groupBoxTactics</cstring>
+                </property>
+                <property name="font">
+                    <font>
+                    </font>
+                </property>
+                <property name="title">
+                    <string>Taktik</string>
+                </property>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <property name="margin">
+                        <number>3</number>
+                    </property>
+                    <widget class="QCheckBox" row="0" column="0">
+                        <property name="name">
+                            <cstring>checkBoxTacticsOnOff</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Taktik an/aus</string>
+                        </property>
+                        <property name="checked">
+                            <bool>true</bool>
+                        </property>
+                    </widget>
+                    <spacer row="0" column="1">
+                        <property name="name">
+                            <cstring>spacer1</cstring>
+                        </property>
+                        <property name="orientation">
+                            <enum>Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                            <enum>Expanding</enum>
+                        </property>
+                        <property name="sizeHint">
+                            <size>
+                                <width>31</width>
+                                <height>20</height>
+                            </size>
+                        </property>
+                    </spacer>
+                    <widget class="QComboBox" row="0" column="2">
+                        <property name="name">
+                            <cstring>comboBoxTacticsVariants</cstring>
+                        </property>
+                        <property name="sizePolicy">
+                            <sizepolicy>
+                                <hsizetype>7</hsizetype>
+                                <vsizetype>0</vsizetype>
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                            </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                            <size>
+                                <width>150</width>
+                                <height>0</height>
+                            </size>
+                        </property>
+                    </widget>
+                    <widget class="TribotsTools::TacticsWidget" row="2" column="0" rowspan="1" colspan="3">
+                        <property name="name">
+                            <cstring>tacticsWidget</cstring>
+                        </property>
+                    </widget>
+                </grid>
+            </widget>
+        </widget>
+    </grid>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>TribotsTools::TacticsWidget</class>
+        <header location="local">TacticsWidget.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>7</hordata>
+            <verdata>7</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="PNG" length="912">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000035749444154388db5953168dc5618c77f361abe831b9ec0063d70e10e32e406436ef070a6196ae89003431ac8e2e225d0b174e994bac9e4a9814e9d4cdba1e06ce7c1c419d2904241ca10728198a8908004313c810d7a90037d83201d64375ceacbd2f45b9e1e4ffcf47bfff7499a8be398b35a5d5d7dcb47a8388ee7e6cec0f7f6efbd1d5c1c90fb9ceaa422f3192d5a5454582c0e77eebcf425e9cb94e44902f53b787066fa70f410634aecb2c14d325625a45447d8b6949a316c5bd01224c46b869177f3e4b910fe6a38f8dd4f8301d2d7298325c3f8e867e44d465a2b3684f435f84270852208ad05e82f438662022814a2456051a7e2f807cc049c8e915a71b5c72e1ac6093cbdaf3c7a52200168ad4860882e085f6e86f4562a3a068a89d2591040ff0d7e51bca02f4afa26c58686837d6577c7430dc608f68220022e57f257caf67719d73623ae6d42740a3fd7d89e666917857102a353e8c6d588fe3af4ba165f3b8490d15ec568c733fa2da7d7e9d1bfd2226aeb94f1fcd9859b3842115c0907fb1ead95e1d588b51bd0ed2a459dc2718bddbb251b9b211b5f1b08849f761c32013f2dfc9e719d81ef923e1b634cc467eb1019c52b486dd9fea1243bf494c7b075cb923cf0647f29c9b8c29a69f094b16d0b699e4100b603dd4fa050050dd9bee9480f3d6284e1e5903228e9f50d5a2bee08dc6406d8b62d285811a8956ebb494c2696ed5b25d9a13607d9165a4bd035cd7e2510b4066b64b63102da0602439c2b428bd17ed598b68568c990e705776e3b9224c4658ad64ab7d3a2fc505778cd182c43a72314b932daabb8f15597f258195e096919b8731bf257055bdf3874e2892243af0feaa7b8d3c646048f32bc2e68ad4d4bed656cddb474572afa838a6fbfb74491c19f1450c3eabaa17f09dc878c51870984d5cba02711bfece4ecfe08c903cf60c5e06b7059893fd1265b94f44f2579dca26b66bc79d951d30d852a9d36ac5d17c4f418dd75a4874afa2c6feeaec12c18d6be303c7da4b889478290f4688671fa32254985c80a852a9181b5f58ae1e73d92b1434fa09c40efa2c5f63cfd4b903c6e61821ebecec89e4f673c17c771f3810f60f0a910daa6a55415a46921397dbc04a72d08284d1cde433a565ca1f8e21c636a48fe38dbcefbe3ac9abd3e3f73e53fd63c34ffa8ff05fcb1e1711ccffd0d322eaf09ef3df6210000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>policy_combo</sender>
+        <signal>activated(int)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>message_combo</sender>
+        <signal>activated(const QString&amp;)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>extraMessage(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>ball_position_mode_check</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>valueChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>ball_posession_mode_check</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>valueChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>broadcast_mode_check</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>valueChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>teammate_mode_check</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>valueChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxTacticsOnOff</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>tacticsOnOffChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>comboBoxTacticsVariants</sender>
+        <signal>activated(const QString&amp;)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>tacticsVariantsSelected(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>sl_mirror_hint_check</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>CoachWidget</receiver>
+        <slot>valueChanged(bool)</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in declaration">../States/RemoteBlackboard.h</include>
+    <include location="local" impldecl="in declaration">TacticsWidget.h</include>
+    <include location="local" impldecl="in declaration">../../../Fundamental/ConfigReader.h</include>
+    <include location="global" impldecl="in declaration">map</include>
+    <include location="global" impldecl="in declaration">string</include>
+    <include location="local" impldecl="in implementation">CoachWidget.ui.h</include>
+</includes>
+<variables>
+    <variable access="private">bool display_locked;</variable>
+    <variable access="private">std::map&lt;std::string, Tribots::TacticsBoard&gt; tactics_variants;</variable>
+    <variable access="private">std::string latest_policy_name;</variable>
+</variables>
+<slots>
+    <slot access="private">valueChanged( int )</slot>
+    <slot access="private">valueChanged( bool )</slot>
+    <slot>update()</slot>
+    <slot access="private">extraMessage( const QString &amp; s )</slot>
+    <slot access="private">tacticsOnOffChanged( bool b )</slot>
+    <slot access="private">tacticsVariantsSelected( const QString &amp; sel )</slot>
+    <slot>init( const Tribots::ConfigReader &amp; cfg )</slot>
+</slots>
+<functions>
+    <function access="private">init()</function>
+    <function access="private">destroy()</function>
+</functions>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>TacticsWidget.h</includehint>
+</includehints>
+</UI>

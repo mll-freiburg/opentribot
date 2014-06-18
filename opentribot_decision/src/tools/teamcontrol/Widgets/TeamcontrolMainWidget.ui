@@ -1,0 +1,255 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>TeamcontrolMainWidget</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>TeamcontrolMainWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>320</width>
+            <height>140</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>0</width>
+            <height>0</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>32000</width>
+            <height>14000</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>Teamcontrol</string>
+    </property>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>MenuBarEditor</cstring>
+    </property>
+    <item text="Fenster" name="Fenster">
+        <action name="fensterSpielfeldAction"/>
+        <action name="fensterRefereeStatesAction"/>
+        <action name="fensterJoystickAction"/>
+        <action name="fensterTrainerAction"/>
+        <action name="fensterCommunicationLoadAction"/>
+    </item>
+    <item text="Roboter" name="Roboter">
+    </item>
+    <item text="Modus" name="Modus">
+        <action name="MasterOnlyAction"/>
+        <action name="MasterAction"/>
+        <action name="SlaveAction"/>
+        <action name="masterSlaveMessageAction"/>
+    </item>
+</menubar>
+<toolbars>
+</toolbars>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>fensterSpielfeldAction</cstring>
+        </property>
+        <property name="text">
+            <string>Spielfeld</string>
+        </property>
+        <property name="menuText">
+            <string>Spielfeld</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fensterRefereeStatesAction</cstring>
+        </property>
+        <property name="text">
+            <string>RefereeStates</string>
+        </property>
+        <property name="menuText">
+            <string>RefereeStates</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fensterJoystickAction</cstring>
+        </property>
+        <property name="text">
+            <string>Joystick</string>
+        </property>
+        <property name="menuText">
+            <string>Joystick</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fensterTrainerAction</cstring>
+        </property>
+        <property name="text">
+            <string>Trainer</string>
+        </property>
+        <property name="menuText">
+            <string>Trainer</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fensterCommunicationLoadAction</cstring>
+        </property>
+        <property name="text">
+            <string>Kommunikationslast</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>MasterAction</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Master</string>
+        </property>
+        <property name="menuText">
+            <string>Master</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>MasterOnlyAction</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Single</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>SlaveAction</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>Slave</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>masterSlaveMessageAction</cstring>
+        </property>
+        <property name="text">
+            <string>Anzeige</string>
+        </property>
+    </action>
+</actions>
+<connections>
+    <connection>
+        <sender>SlaveAction</sender>
+        <signal>activated()</signal>
+        <receiver>TeamcontrolMainWidget</receiver>
+        <slot>slaveModeSelected()</slot>
+    </connection>
+    <connection>
+        <sender>MasterAction</sender>
+        <signal>activated()</signal>
+        <receiver>TeamcontrolMainWidget</receiver>
+        <slot>masterModeSelected()</slot>
+    </connection>
+    <connection>
+        <sender>MasterOnlyAction</sender>
+        <signal>activated()</signal>
+        <receiver>TeamcontrolMainWidget</receiver>
+        <slot>singleModeSelected()</slot>
+    </connection>
+    <connection>
+        <sender>masterSlaveMessageAction</sender>
+        <signal>activated()</signal>
+        <receiver>TeamcontrolMainWidget</receiver>
+        <slot>showMasterSlaveComm()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in implementation">../States/RemoteBlackboard.h</include>
+    <include location="local" impldecl="in implementation">../../../Fundamental/stringconvert.h</include>
+    <include location="global" impldecl="in implementation">iostream</include>
+    <include location="global" impldecl="in implementation">qinputdialog.h</include>
+    <include location="global" impldecl="in implementation">qmessagebox.h</include>
+    <include location="global" impldecl="in implementation">qstatusbar.h</include>
+    <include location="global" impldecl="in declaration">qtimer.h</include>
+    <include location="global" impldecl="in declaration">vector</include>
+    <include location="local" impldecl="in declaration">CoachWidget.h</include>
+    <include location="local" impldecl="in declaration">JoystickWidget.h</include>
+    <include location="local" impldecl="in declaration">RefboxWidget.h</include>
+    <include location="local" impldecl="in declaration">RobotWidget.h</include>
+    <include location="local" impldecl="in declaration">TeamcontrolFieldWidget.h</include>
+    <include location="local" impldecl="in declaration">../Logic/Coach.h</include>
+    <include location="local" impldecl="in declaration">../Logic/JoystickControl.h</include>
+    <include location="local" impldecl="in declaration">../Logic/RefboxControl.h</include>
+    <include location="local" impldecl="in declaration">../Logic/RemoteRobot.h</include>
+    <include location="local" impldecl="in declaration">CommunicationLoadWidget.h</include>
+    <include location="local" impldecl="in declaration">../States/TeamcontrolMode.h</include>
+    <include location="local" impldecl="in declaration">../Logic/TeamcontrolMasterServer.h</include>
+    <include location="local" impldecl="in declaration">../Logic/TeamcontrolSlaveClient.h</include>
+    <include location="global" impldecl="in declaration">qlayout.h</include>
+    <include location="local" impldecl="in implementation">TeamcontrolMainWidget.ui.h</include>
+</includes>
+<variables>
+    <variable>TribotsTools::TeamcontrolSlaveClient* masterslave_client;</variable>
+    <variable>TribotsTools::TeamcontrolMasterServer* masterslave_server;</variable>
+    <variable>std::vector&lt;TribotsTools::RemoteRobot*&gt; remote_robot;</variable>
+    <variable>TribotsTools::RefboxControl* refbox_control;</variable>
+    <variable>TribotsTools::JoystickControl* joystick_control;</variable>
+    <variable>TribotsTools::Coach* coach;</variable>
+    <variable>CoachWidget* coach_widget;</variable>
+    <variable access="private">QTimer* cycle_timer;</variable>
+    <variable>JoystickWidget* joystick_widget;</variable>
+    <variable>RefboxWidget* refbox_widget;</variable>
+    <variable>TeamcontrolFieldWidget* field_widget;</variable>
+    <variable>std::vector&lt;RobotWidget*&gt; robot_widget;</variable>
+    <variable access="private">QTimer* cycle_timer_refbox;</variable>
+    <variable>CommunicationLoadWidget* communication_load_widget;</variable>
+    <variable access="public">bool try_to_connect;</variable>
+    <variable access="private">TribotsTools::TeamcontrolMode teamcontrol_mode;</variable>
+    <variable>int cycle_task_mutex;</variable>
+    <variable>std::vector&lt;bool&gt; show_robot_widget;</variable>
+    <variable access="private">QGridLayout* layout;</variable>
+</variables>
+<slots>
+    <slot access="protected">init()</slot>
+    <slot access="protected">destroy()</slot>
+    <slot>init( const Tribots::ConfigReader &amp; cfg )</slot>
+    <slot access="protected">cycleRateChanged( int n )</slot>
+    <slot access="protected">cycle_task()</slot>
+    <slot access="protected">cycle_task_refbox()</slot>
+    <slot access="protected">linesRateChanged( int n )</slot>
+    <slot access="protected">masterModeSelected()</slot>
+    <slot access="protected">slaveModeSelected()</slot>
+    <slot access="protected">singleModeSelected()</slot>
+    <slot access="protected">showMasterSlaveComm()</slot>
+    <slot access="protected">robotToggled(unsigned int, bool)</slot>
+    <slot access="protected">rearrangeRobotWidgets()</slot>
+</slots>
+<functions>
+    <function access="protected" returnType="bool">startAsSlave()</function>
+    <function access="protected" returnType="bool">startAsMaster()</function>
+    <function access="protected" returnType="bool">startAsSingle()</function>
+    <function access="protected" returnType="bool">stopAsSlave()</function>
+    <function access="protected" returnType="bool">stopAsMaster()</function>
+    <function access="protected" returnType="bool">stopAsSingle()</function>
+</functions>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

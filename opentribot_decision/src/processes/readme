@@ -1,0 +1,18 @@
+process system for robocup robot
+
+sharedmemory image
+
+camera process
+
+vision process 
+
+worldmodel process behaviour process
+
+robotcontrol process
+
+>>>>>>>> Excluded 
+
+motionserver The motionserver should be always running to generate a robust interface to the robot
+
+
+

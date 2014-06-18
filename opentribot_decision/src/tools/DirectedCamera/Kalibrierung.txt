@@ -1,0 +1,32 @@
+
+KALIBRIERANLEITUNG PERSPEKTIVISCHE KAMERA
+
+Vorbereitung: Die Omnikamera sollte bereits gut kalibriert sein.
+
+1. In der Datei ~/.robotcontrol/BaslerSpecific.cfg die Zeile mode = .... so
+  abaendern, das der Bildoffset auf 0 steht und die maximale Bildbreite
+  und -hoehe eingestellt ist
+2. Den Roboterlaptop und einen externen Laptop miteinander verbinden
+  (Crosspatch, WLAN, etc.) und auf dem externen Laptop das Programm
+  MarkerDisplay starten. Das rote Rechteck vermessen.
+3. Auf dem Roboterrechner das Programm CalibrationRecorder starten
+  und mindestens 3 Ebenen an Kalibriermerkmalen aufsammeln. Auf dem
+  externen Laptop werden die Kalibriermerkmale angezeigt. Glanzpunkte auf
+  dem externen Laptopbildschirm sollten vermieden werden. Die Kalibrierung
+  erzeugt ein Markerfile, z.B. offline.marker
+4. Omnikalibriertapete ausrollen und von mehreren Standorten und Ausrichtungen
+  Bilder mit der Omnikamera und perspektivischen Kamera machen (z.B. mit
+  Programm MultiCamMonitor (Taste s speichert Bilder beider Kameras). Falls
+  das Programm nicht starten will, die Framerate von einer Kamera auf 15fps
+  runtersetzen (Datei ~/.robotcontrol/BaslerSpecific.cfg), da ggf. der
+  Firewirebus nicht gross genug.
+5. Aus den in Schritt 4 erzeugten Bildpaaren mit dem Programm StereoCalibration
+  Punktkorrespondenzen auswaehlen (klicken) und die erzeugten Marker in eine
+  Datei schreiben lassen, z.B. online.marker
+6. Markerdateien vereinigen:
+  cat offline.marker online-marker > all.marker
+7. Kalibrierung durchfuehren mit Hilfe des Programms Calibration. Die
+  erzeugte Kalibrierdatei in das Verzeichnis ~/.robotcontrol kopieren
+8. Alle Aenderungen in der Datei ~/.robotcontrol/BaslerSpecific.cfg
+  rueckgaengig machen. Das Ergebnis der Kalibrierung kann mit dem colorTool
+  betrachtet werden (Ctrl-4, Ctrl-P).

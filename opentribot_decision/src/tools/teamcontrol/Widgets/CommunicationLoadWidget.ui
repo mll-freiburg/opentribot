@@ -1,0 +1,308 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>CommunicationLoadWidget</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>CommunicationLoadWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>270</width>
+            <height>272</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>0</width>
+            <height>0</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>3200</width>
+            <height>2100</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>Kommunikationslast</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>3</number>
+        </property>
+        <property name="spacing">
+            <number>3</number>
+        </property>
+        <widget class="QGroupBox" row="0" column="0">
+            <property name="name">
+                <cstring>groupBoxPackets</cstring>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>Pakete/Sekunde</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>3</number>
+                </property>
+                <widget class="QLineEdit" row="0" column="0">
+                    <property name="name">
+                        <cstring>lineEditPacketsSend</cstring>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLineEdit" row="1" column="0">
+                    <property name="name">
+                        <cstring>lineEditPacketsReceive</cstring>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="1">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Empfang</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="1">
+                    <property name="name">
+                        <cstring>textLabel1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Senden</string>
+                    </property>
+                </widget>
+                <widget class="TribotsTools::ValPlotWidget" row="2" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>valPlotWidgetPackets</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>5</hsizetype>
+                            <vsizetype>7</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>60</width>
+                            <height>100</height>
+                        </size>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="0" column="1">
+            <property name="name">
+                <cstring>groupBoxBytes</cstring>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>0</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>kiloBit/Sekunde</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>3</number>
+                </property>
+                <widget class="TribotsTools::ValPlotWidget" row="2" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>valPlotWidgetBytes</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>5</hsizetype>
+                            <vsizetype>7</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>60</width>
+                            <height>100</height>
+                        </size>
+                    </property>
+                </widget>
+                <widget class="QLineEdit" row="1" column="0">
+                    <property name="name">
+                        <cstring>lineEditBytesReceive</cstring>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLineEdit" row="0" column="0">
+                    <property name="name">
+                        <cstring>lineEditBytesSend</cstring>
+                    </property>
+                    <property name="readOnly">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="1">
+                    <property name="name">
+                        <cstring>textLabel4</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Empfang</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="1">
+                    <property name="name">
+                        <cstring>textLabel3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Senden</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="1" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>groupBox4</cstring>
+            </property>
+            <property name="title">
+                <string>Kommunikationsrate</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>3</number>
+                </property>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Zykluszeit (ms):</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>textLabel2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Linien (alle ... Zyklen):</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>spin_rate</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>1000</number>
+                    </property>
+                    <property name="minValue">
+                        <number>50</number>
+                    </property>
+                    <property name="lineStep">
+                        <number>25</number>
+                    </property>
+                    <property name="value">
+                        <number>150</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>spin_lines</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>10</number>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+    </grid>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>TribotsTools::ValPlotWidget</class>
+        <header location="local">../../components/ValPlotWidget.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="XBM.GZ" length="79">789c534e494dcbcc4b554829cdcdad8c2fcf4c29c95030e0524611cd48cd4ccf28010a1797249664262b2467241641a592324b8aa363156c15aab914146aadb90067111b1f</data>
+    </image>
+</images>
+<includes>
+    <include location="local" impldecl="in implementation">../States/RemoteBlackboard.h</include>
+    <include location="local" impldecl="in declaration">../../components/ValPlotWidget.h</include>
+    <include location="global" impldecl="in declaration">qdatetime.h</include>
+    <include location="local" impldecl="in implementation">CommunicationLoadWidget.ui.h</include>
+</includes>
+<variables>
+    <variable access="private">QTime latest_update;</variable>
+</variables>
+<slots>
+    <slot>init()</slot>
+    <slot>update()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>../../components/ValPlotWidget.h</includehint>
+    <includehint>../../components/ValPlotWidget.h</includehint>
+</includehints>
+</UI>

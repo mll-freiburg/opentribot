@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/slider" >
+        <file>Icons/hue.png</file>
+        <file>Icons/intensity.png</file>
+        <file>Icons/saturation.png</file>
+    </qresource>
+</RCC>

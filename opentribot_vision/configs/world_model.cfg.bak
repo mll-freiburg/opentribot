@@ -1,0 +1,98 @@
+#########################################
+# Parameter des Weltmodells             #
+# nur nach Absprache mit Martin aendern #
+#########################################
+
+[WorldModel]
+
+sl_filter_type = temporal_difference
+report_computation_time = false
+report_computation_time_per_cycle = false
+
+velocity_prediction_test = false            # Testdatei erzeugen fuer Geschwindigkeitsfilter
+velocity_prediction_delay = 230             # Prognosehorizont fuer Erzeugung von Testdatei in ms
+
+
+[VelocityPredictor]
+
+do_predict = true                           # Neuronale Prognose an/aus
+#max_lacc = 2
+#max_ldec = 3.8
+max_aacc = 30
+#max_lv = 4
+#max_av = 10
+ignore_lv = 0.05
+ignore_av = 0.1
+
+
+
+[TemporalDifferenceSL]
+
+number_internal_alternatives = 4     # Anzahl interner Alternativen, die pro Zyklus berechnet werden (0-8)
+internal_random_direction = true     # sollen die internen Alternativen rein zufaellige Richtungen besitzen?
+number_external_alternatives = 0     # bei Verzicht auf globale Lokalisierung: 0
+number_alternative_updates = 0       # bei Verzicht auf globale Lokalisierung: 0
+max_lines = 50                      # bei Rechenzeitproblemen: 50
+remove_occluded_lines = far          # durch Hindernisse verdeckte Linien ignorieren
+                                     # true/all=alle, false/none=keine, far=nur bei Robotern mit Mindestabstand 50cm
+                                     # @Stephan, Xiaoye: I've changed this parameter since our discussion to 
+                                     # overcome the problem we've discussed. The new "far" version removes linepoints
+                                     # that are hidden by obstacles that have a minimal distance to the robot of 50cm.
+                                     # I've checked this variant with several logfiles and it seems to work well for different
+                                     # kind of opponents. Hence, I decided to make it the standard. ML
+remove_lines_outside_field = true    # Linien ausserhalb des Feldes bezogen auf Haupthypothese ignorieren
+remove_lines_from_distance = 6000    # Linien ab dieser Entfernung ignorieren (nur in Kombination mit remove_occluded_lines)
+reset_hysteresis = 25 200            # Schwellwerte fuer die Resethysterese
+gyroscope = false                    # Gyroskop vorhanden?
+enter_side = left                    # left, right, je nachdem wo der Roboter typischerweise eingesetzt wird
+
+
+[BallFilter]
+
+filter_type                   = world3d     # 3D-SL-basierter Ballfilter
+history_length                = 3 15        # Minimal- und Maximallaenge des Ballfilters in Zyklen
+max_error                     = 500         # maximaler tolerierter Prognosefehler in mm
+raised_threshold              = 5 7         # Hysterese fuer Geschwindigkeiten bei Raised-Attribut in m/s
+imagesource                   = 0 1         # IDs der Kameraquellen, aus der die Ballposition extrahiert werden sollen (default=0)
+common_mode                   = false       # gemeinsamer Filter fuer alle Bildquellen (true) oder individuelle Filter (false,default)?
+
+
+[ObstacleFilter]
+
+parameters                    = 0.6 0.2 0.3 # EMA, Hysterese-Schwellwerte
+stuck_obstacle_delay          = 2000        # Wie lange wird Stuck-Hindernis eingetragen in ms?
+remove_ball_obstacles         = true        # kleiner Hindernisse direkt vor dem Ball ignorieren (Schatten)
+minimal_obstacle_width        = 300         # minimale Hindernisbreite in mm
+maximal_number_recent_positions = 10
+
+
+[StuckSensor]
+
+num_cycles                    = 15          # Integrationslaenge in Zyklen
+
+
+
+###### Alte Module, nicht wettkampftauglich bzw. nicht mehr gewartet:
+
+[CondensationFilter]
+
+number_particles		= 200 200 200 0
+auto_reinit_waiting_time	= 0
+spread_factors			= 100 15
+sensor_probabilities		= 500 0.2
+trimrate			= 0.0
+consider_goals			= true		# bei falsch eingestellten Farben: false
+max_lines                     = 100         # bei Rechenzeitproblemen: 50
+
+[ErrorMinimiserSL]
+
+error_width                   = 300         # Fehlerfunktion-Breitenparameter in mm
+distance_weight_parameter     = 2500        # Gewichtungsparameter fuer Linienabstand vom Roboter in mm
+consider_yellow_goal          = false       # bei falsch eingestellten Farben: false
+consider_blue_goal            = false       # bei falsch eingestellten Farben oder Schiri mit blauen Hosen: false
+use_internal_alternatives     = true
+number_external_alternatives  = 0           # bei Verzicht auf globale Lokalisierung: 0
+max_lines                     = 100         # bei Rechenzeitproblemen: 50
+remove_occluded_lines         = true        # durch Hindernisse verdeckte Linien ignorieren
+remove_lines_outside_field    = true        # Linien ausserhalb des Feldes bezogen auf Haupthypothese ignorieren
+remove_lines_from_distance    = 6000        # Linien ab dieser Entfernung ignorieren (nur in Kombination mit remove_occluded_lines)

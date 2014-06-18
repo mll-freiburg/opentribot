@@ -1,0 +1,342 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>MainForm</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>MainForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>633</width>
+            <height>369</height>
+        </rect>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>89</width>
+            <height>225</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>Tribots Master Control GUI</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <property name="spacing">
+            <number>0</number>
+        </property>
+        <widget class="QTabWidget" row="0" column="0">
+            <property name="name">
+                <cstring>ToolTab</cstring>
+            </property>
+            <property name="tabShape">
+                <enum>Triangular</enum>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tmp_tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>tmp</string>
+                </attribute>
+            </widget>
+        </widget>
+    </grid>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>MenuBar</cstring>
+    </property>
+    <item text="Main" name="Main">
+        <action name="mainEXITAction"/>
+    </item>
+    <item text="robotcontrol" name="robotcontrol">
+        <separator/>
+        <action name="robotcontrolopen_ControlGUIAction"/>
+        <action name="robotcontrolopen_colorToolAction"/>
+        <action name="robotcontrolopen_CalibrationToolAction"/>
+        <action name="robotcontrolopen_tribotsviewAction"/>
+        <action name="robotcontrolopen_configEditorAction"/>
+        <action name="robotcontroltoolsshow_debug_imageAction"/>
+    </item>
+    <item text="Tools" name="Tools">
+        <action name="robotcontroltoolsopen_simulatorAction"/>
+        <action name="robotcontroltoolscoriander"/>
+    </item>
+    <separator/>
+    <item text="&amp;Help" name="helpMenu">
+        <action name="helpContentsAction"/>
+        <action name="helpIndexAction"/>
+        <separator/>
+        <action name="helpAboutAction"/>
+    </item>
+</menubar>
+<toolbars>
+</toolbars>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>helpContentsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Contents</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Contents...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpIndexAction</cstring>
+        </property>
+        <property name="text">
+            <string>Index</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Index...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpAboutAction</cstring>
+        </property>
+        <property name="text">
+            <string>About</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;About</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontroltoolsAction</cstring>
+        </property>
+        <property name="text">
+            <string>tools</string>
+        </property>
+        <property name="menuText">
+            <string>tools</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontroltoolsshow_debug_imageAction</cstring>
+        </property>
+        <property name="text">
+            <string>show debug image</string>
+        </property>
+        <property name="menuText">
+            <string>show debug image</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+D</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontroltoolsopen_simulatorAction</cstring>
+        </property>
+        <property name="text">
+            <string>open simulator</string>
+        </property>
+        <property name="menuText">
+            <string>open simulator</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+Alt+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontroltoolscoriander</cstring>
+        </property>
+        <property name="text">
+            <string>coriander</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>mainEXITAction</cstring>
+        </property>
+        <property name="text">
+            <string>EXIT</string>
+        </property>
+        <property name="menuText">
+            <string>EXIT</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontrolopen_colorToolAction</cstring>
+        </property>
+        <property name="text">
+            <string>open colorTool</string>
+        </property>
+        <property name="menuText">
+            <string>open colorTool</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontrolopen_CalibrationToolAction</cstring>
+        </property>
+        <property name="text">
+            <string>open CalibrationTool</string>
+        </property>
+        <property name="menuText">
+            <string>open CalibrationTool</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontrolopen_tribotsviewAction</cstring>
+        </property>
+        <property name="text">
+            <string>open tribotsview</string>
+        </property>
+        <property name="menuText">
+            <string>open tribotsview</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontrolopen_configEditorAction</cstring>
+        </property>
+        <property name="text">
+            <string>open configEditor</string>
+        </property>
+        <property name="menuText">
+            <string>open configEditor</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>robotcontrolopen_ControlGUIAction</cstring>
+        </property>
+        <property name="text">
+            <string>open ControlGUI</string>
+        </property>
+        <property name="menuText">
+            <string>open ControlGUI</string>
+        </property>
+    </action>
+</actions>
+<connections>
+    <connection>
+        <sender>helpIndexAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>helpIndex()</slot>
+    </connection>
+    <connection>
+        <sender>helpContentsAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>helpContents()</slot>
+    </connection>
+    <connection>
+        <sender>helpAboutAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>helpAbout()</slot>
+    </connection>
+    <connection>
+        <sender>robotcontroltoolsshow_debug_imageAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>show_debug_image()</slot>
+    </connection>
+    <connection>
+        <sender>robotcontroltoolsopen_simulatorAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>open_simulator()</slot>
+    </connection>
+    <connection>
+        <sender>robotcontroltoolscoriander</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>open_coriander()</slot>
+    </connection>
+    <connection>
+        <sender>mainEXITAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>robotcontrolopen_CalibrationToolAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>open_calibrationtool()</slot>
+    </connection>
+    <connection>
+        <sender>robotcontrolopen_colorToolAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>open_colortool()</slot>
+    </connection>
+    <connection>
+        <sender>robotcontrolopen_tribotsviewAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>open_tribotsview()</slot>
+    </connection>
+    <connection>
+        <sender>robotcontrolopen_configEditorAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>open_configeditor()</slot>
+    </connection>
+    <connection>
+        <sender>robotcontrolopen_ControlGUIAction</sender>
+        <signal>activated()</signal>
+        <receiver>MainForm</receiver>
+        <slot>open_controlGUI()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="global" impldecl="in implementation">qfiledialog.h</include>
+    <include location="local" impldecl="in declaration">robotcontrol_ctrwidget.h</include>
+    <include location="global" impldecl="in declaration">qmessagebox.h</include>
+    <include location="local" impldecl="in implementation">mainform.ui.h</include>
+</includes>
+<variables>
+    <variable>RobotControl_CtrWidget* rc_ctr;</variable>
+</variables>
+<slots>
+    <slot>helpIndex()</slot>
+    <slot>helpContents()</slot>
+    <slot>helpAbout()</slot>
+    <slot>show_debug_image()</slot>
+    <slot>open_simulator()</slot>
+    <slot>open_coriander()</slot>
+    <slot>open_colortool()</slot>
+    <slot>open_calibrationtool()</slot>
+    <slot>open_tribotsview()</slot>
+    <slot>open_configeditor()</slot>
+    <slot>open_controlGUI()</slot>
+</slots>
+<functions>
+    <function>init()</function>
+    <function>destroy()</function>
+    <function access="protected">closeEvent( QCloseEvent * ce )</function>
+</functions>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -1,0 +1,15 @@
+#!/bin/bash
+ 
+log_file=/tmp/opentribot-upstart.log
+DATE=`date`
+
+if [ -s /etc/ros/setup.bash ]; then
+  echo "$DATE: turtlebot-start using setup file /etc/ros/setup.bash" >> $log_file
+  source /etc/ros/setup.bash
+else
+  echo "$DATE: turtlebot-start using setup file /opt/ros/diamondback/setup.bash" >> $log_file
+  source /opt/ros/diamondback/setup.bash
+fi
+
+ 
+setuidgid tribot roslaunch opentribot_motion motionserver.launch

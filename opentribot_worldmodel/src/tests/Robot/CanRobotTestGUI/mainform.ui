@@ -1,0 +1,470 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>MainForm</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>MainForm</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>480</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>CanRobotTestGUI</string>
+    </property>
+    <widget class="QComboBox">
+        <item>
+            <property name="text">
+                <string>CAN_BAUD_1M</string>
+            </property>
+        </item>
+        <item>
+            <property name="text">
+                <string>CAN_BAUD_250K</string>
+            </property>
+        </item>
+        <property name="name">
+            <cstring>comboBoxBaud</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>350</x>
+                <y>20</y>
+                <width>150</width>
+                <height>20</height>
+            </rect>
+        </property>
+    </widget>
+    <widget class="QLineEdit">
+        <property name="name">
+            <cstring>dev_path</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>40</x>
+                <y>20</y>
+                <width>280</width>
+                <height>21</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>/dev/pcan32</string>
+        </property>
+    </widget>
+    <widget class="QTextEdit">
+        <property name="name">
+            <cstring>msg_out</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>40</x>
+                <y>250</y>
+                <width>460</width>
+                <height>191</height>
+            </rect>
+        </property>
+        <property name="textFormat">
+            <enum>LogText</enum>
+        </property>
+    </widget>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>mainTabWidget</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>70</x>
+                <y>50</y>
+                <width>520</width>
+                <height>190</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab1</cstring>
+            </property>
+            <attribute name="title">
+                <string>basic handle tests</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButton_handle_test</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>100</width>
+                        <height>29</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>test</string>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab2</cstring>
+            </property>
+            <attribute name="title">
+                <string>TmcCanCom tests</string>
+            </attribute>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButton_tmcCanCom_connect</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>109</width>
+                        <height>29</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>connect</string>
+                </property>
+                <property name="toggleButton">
+                    <bool>false</bool>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButton_tmcCanCom_disconnect</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>40</y>
+                        <width>109</width>
+                        <height>16</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>disconnect</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lineEdit_v1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>130</y>
+                        <width>80</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lineEdit_fw_version</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>374</x>
+                        <y>10</y>
+                        <width>130</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QPushButton">
+                <property name="name">
+                    <cstring>pushButton_tmccancom_send</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>370</x>
+                        <y>80</y>
+                        <width>80</width>
+                        <height>29</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>send</string>
+                </property>
+                <property name="toggleButton">
+                    <bool>true</bool>
+                </property>
+            </widget>
+            <widget class="QSpinBox">
+                <property name="name">
+                    <cstring>spinBox_u1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>70</y>
+                        <width>80</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+                <property name="maxValue">
+                    <number>1023</number>
+                </property>
+                <property name="minValue">
+                    <number>-1023</number>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>slider_u1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>100</y>
+                        <width>84</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="minValue">
+                    <number>-1023</number>
+                </property>
+                <property name="maxValue">
+                    <number>1023</number>
+                </property>
+                <property name="orientation">
+                    <enum>Horizontal</enum>
+                </property>
+            </widget>
+            <widget class="QSpinBox">
+                <property name="name">
+                    <cstring>spinBox_u2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>90</x>
+                        <y>70</y>
+                        <width>80</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+                <property name="maxValue">
+                    <number>1023</number>
+                </property>
+                <property name="minValue">
+                    <number>-1023</number>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>slider_u2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>89</x>
+                        <y>102</y>
+                        <width>84</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="minValue">
+                    <number>-1023</number>
+                </property>
+                <property name="maxValue">
+                    <number>1023</number>
+                </property>
+                <property name="orientation">
+                    <enum>Horizontal</enum>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>slider_u3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>179</x>
+                        <y>102</y>
+                        <width>84</width>
+                        <height>20</height>
+                    </rect>
+                </property>
+                <property name="minValue">
+                    <number>-1023</number>
+                </property>
+                <property name="maxValue">
+                    <number>1023</number>
+                </property>
+                <property name="orientation">
+                    <enum>Horizontal</enum>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lineEdit_v2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>90</x>
+                        <y>130</y>
+                        <width>80</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QLineEdit">
+                <property name="name">
+                    <cstring>lineEdit_v3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>180</x>
+                        <y>130</y>
+                        <width>80</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QSpinBox">
+                <property name="name">
+                    <cstring>spinBox_u3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>179</x>
+                        <y>72</y>
+                        <width>80</width>
+                        <height>21</height>
+                    </rect>
+                </property>
+                <property name="maxValue">
+                    <number>1023</number>
+                </property>
+                <property name="minValue">
+                    <number>-1023</number>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab3</cstring>
+            </property>
+            <attribute name="title">
+                <string>TmcCanCtr tests</string>
+            </attribute>
+        </widget>
+    </widget>
+</widget>
+<toolbars>
+</toolbars>
+<connections>
+    <connection>
+        <sender>pushButton_handle_test</sender>
+        <signal>clicked()</signal>
+        <receiver>MainForm</receiver>
+        <slot>test_handle()</slot>
+    </connection>
+    <connection>
+        <sender>comboBoxBaud</sender>
+        <signal>activated(int)</signal>
+        <receiver>MainForm</receiver>
+        <slot>update_config_from_view()</slot>
+    </connection>
+    <connection>
+        <sender>dev_path</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MainForm</receiver>
+        <slot>update_config_from_view()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton_tmcCanCom_connect</sender>
+        <signal>clicked()</signal>
+        <receiver>MainForm</receiver>
+        <slot>connect_tmc_can_com()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton_tmcCanCom_disconnect</sender>
+        <signal>clicked()</signal>
+        <receiver>MainForm</receiver>
+        <slot>disconnect_tmc_can_com()</slot>
+    </connection>
+    <connection>
+        <sender>pushButton_tmccancom_send</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>MainForm</receiver>
+        <slot>enale_sending_tmccancom_cmd(bool)</slot>
+    </connection>
+    <connection>
+        <sender>slider_u1</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>spinBox_u1</receiver>
+        <slot>setValue(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBox_u1</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>slider_u1</receiver>
+        <slot>setValue(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBox_u2</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>slider_u2</receiver>
+        <slot>setValue(int)</slot>
+    </connection>
+    <connection>
+        <sender>slider_u2</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>spinBox_u2</receiver>
+        <slot>setValue(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBox_u3</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>slider_u3</receiver>
+        <slot>setValue(int)</slot>
+    </connection>
+    <connection>
+        <sender>slider_u3</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>spinBox_u3</receiver>
+        <slot>setValue(int)</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="global" impldecl="in implementation">fcntl.h</include>
+    <include location="global" impldecl="in implementation">sstream</include>
+    <include location="local" impldecl="in implementation">ConfigReader.h</include>
+    <include location="global" impldecl="in implementation">qtimer.h</include>
+    <include location="global" impldecl="in declaration">libpcan.h</include>
+    <include location="local" impldecl="in declaration">TmcCanCtr.h</include>
+    <include location="local" impldecl="in declaration">TmcCanCom.h</include>
+    <include location="global" impldecl="in declaration">iostream</include>
+    <include location="global" impldecl="in declaration">qtimer.h</include>
+    <include location="local" impldecl="in implementation">mainform.ui.h</include>
+</includes>
+<variables>
+    <variable>RobotCtr2::TmcCanCtr_Params p_ctr;</variable>
+    <variable>RobotCtr2::TmcCanCom* com;</variable>
+    <variable>RobotCtr2::TmcCanCom_Params p;</variable>
+    <variable>std::string config_file_name;</variable>
+    <variable>QTimer* r_timer;</variable>
+    <variable>QTimer* s_timer;</variable>
+</variables>
+<slots>
+    <slot returnType="bool">test_handle()</slot>
+    <slot>ReportTest( bool ok, QTextEdit * out_disp, std::string test_name, std::string error_desc, std::string error_hint )</slot>
+    <slot>set_config_file( std::string fname )</slot>
+    <slot access="protected">update_config_views()</slot>
+    <slot access="protected">update_config_from_view()</slot>
+    <slot access="protected" returnType="bool">connect_tmc_can_com()</slot>
+    <slot access="protected" returnType="bool">disconnect_tmc_can_com()</slot>
+    <slot access="protected">receive_tmccancom_data()</slot>
+    <slot access="protected">send_tmccancom_cmd()</slot>
+    <slot access="protected">enale_sending_tmccancom_cmd( bool a )</slot>
+</slots>
+<functions>
+    <function access="private" specifier="non virtual">init()</function>
+    <function access="private" specifier="non virtual">destroy()</function>
+</functions>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

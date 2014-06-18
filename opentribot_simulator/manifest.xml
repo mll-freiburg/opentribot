@@ -1,0 +1,15 @@
+<package>
+  <description brief="opentribot_simulator">
+
+     opentribot_simulator
+
+  </description>
+  <author>tribot</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/opentribot_simulator</url>
+  <depend package="opentribot_messages"/>
+
+</package>
+
+

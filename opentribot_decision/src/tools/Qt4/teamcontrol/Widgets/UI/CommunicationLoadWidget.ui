@@ -1,0 +1,174 @@
+<ui version="4.0" >
+ <class>CommunicationLoadWidget</class>
+ <widget class="QWidget" name="CommunicationLoadWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>320</width>
+    <height>206</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>0</hsizetype>
+    <vsizetype>0</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>21</width>
+    <height>135</height>
+   </size>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>320</width>
+    <height>210</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Kommunikationslast</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item row="0" column="1" >
+    <widget class="QGroupBox" name="groupBoxBytes" >
+     <property name="minimumSize" >
+      <size>
+       <width>50</width>
+       <height>40</height>
+      </size>
+     </property>
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="title" >
+      <string>kiloBit/Sekunde</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="2" column="0" colspan="2" >
+       <widget class="TribotsTools::ValPlotWidget" name="valPlotWidgetBytes" />
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="textLabel3" >
+        <property name="text" >
+         <string>Senden</string>
+        </property>
+        <property name="wordWrap" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="textLabel4" >
+        <property name="text" >
+         <string>Empfang</string>
+        </property>
+        <property name="wordWrap" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLineEdit" name="lineEditBytesSend" >
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLineEdit" name="lineEditBytesReceive" >
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QGroupBox" name="groupBoxPackets" >
+     <property name="font" >
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="title" >
+      <string>Pakete/Sekunde</string>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="2" column="0" colspan="2" >
+       <widget class="TribotsTools::ValPlotWidget" name="valPlotWidgetPackets" />
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLineEdit" name="lineEditPacketsReceive" >
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLineEdit" name="lineEditPacketsSend" >
+        <property name="readOnly" >
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Senden</string>
+        </property>
+        <property name="wordWrap" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QLabel" name="textLabel2" >
+        <property name="text" >
+         <string>Empfang</string>
+        </property>
+        <property name="wordWrap" >
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <customwidgets>
+  <customwidget>
+   <class>TribotsTools::ValPlotWidget</class>
+   <extends>QFrame</extends>
+   <header>../../../components/ValPlotWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

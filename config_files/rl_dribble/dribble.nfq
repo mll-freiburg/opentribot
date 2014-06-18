@@ -1,0 +1,15 @@
+[DRIBBLE]
+
+#main:
+#core:
+actions= 0 1 2 3
+#Q.init = ../config_files/rl_dribble/vxvy.obsdim_4.1.net
+Q.init = ../config_files/rl_dribble/action0123.vzfa.ss.r0.03.340.net
+xwork = [] [][][]  []
+#xminus = [] [][][] [.9 1.1] 
+
+
+
+
+
+

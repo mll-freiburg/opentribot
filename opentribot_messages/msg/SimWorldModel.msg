@@ -1,0 +1,3 @@
+BallLocation ball
+RobotLocation robot
+ObstacleLocation obstacles

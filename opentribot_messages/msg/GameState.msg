@@ -1,0 +1,15 @@
+Header header
+int32 refstate
+int32 latest_update_nsec
+int32 latest_update_sec
+int32 cycle_num
+bool in_game
+int32 own_score
+int32 opponent_score
+int32 yellow_cards
+float32 intended_cyle_time
+float32 actual_cycle_time
+int32 cycle_start_time_nsec
+int32 cycle_start_time_sec
+int32 expected_execution_time_nsec
+int32 expected_execution_time_sec

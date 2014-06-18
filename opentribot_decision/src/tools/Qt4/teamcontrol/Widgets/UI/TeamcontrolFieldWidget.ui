@@ -1,0 +1,44 @@
+<ui version="4.0" >
+ <class>TeamcontrolFieldWidget</class>
+ <widget class="QMainWindow" name="TeamcontrolFieldWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>524</width>
+    <height>383</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Spielfeld</string>
+  </property>
+  <property name="iconSize" >
+   <size>
+    <width>16</width>
+    <height>16</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QGridLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item row="0" column="0" >
+     <widget class="TribotsTools::FieldOfPlay" native="1" name="field" />
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TribotsTools::FieldOfPlay</class>
+   <extends>QWidget</extends>
+   <header>../../../components/FieldOfPlay.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

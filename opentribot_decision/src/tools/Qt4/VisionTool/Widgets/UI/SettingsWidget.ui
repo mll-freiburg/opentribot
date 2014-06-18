@@ -1,0 +1,169 @@
+<ui version="4.0" >
+ <class>SettingsWidget</class>
+ <widget class="QWidget" name="SettingsWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item rowspan="2" row="0" column="0" >
+    <widget class="TribotsTools::ScrollImageWidget" name="imageWidget" />
+   </item>
+   <item row="0" column="1" >
+    <widget class="TribotsTools::CameraSettingsWidget" name="cameraSettingsWidget" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="MinimumExpanding" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>380</width>
+       <height>0</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QGroupBox" name="groupBox_soft" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>380</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="title" >
+      <string>Softwarefeatures</string>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="checkBox_softWhiteBalance" >
+        <property name="text" >
+         <string>Software Weißabgleich</string>
+        </property>
+       </widget>
+      </item>
+      <item rowspan="4" row="0" column="1" >
+       <widget class="Line" name="line_3" >
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Shutter-Bereich</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <widget class="QSpinBox" name="spinBox_shutterMin" />
+      </item>
+      <item row="0" column="4" >
+       <widget class="QSpinBox" name="spinBox_shutterMax" />
+      </item>
+      <item row="1" column="0" >
+       <widget class="QCheckBox" name="checkBox_softExposure" >
+        <property name="text" >
+         <string>Software Helligkeit</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLabel" name="label_2" >
+        <property name="text" >
+         <string>Gain-Bereich</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3" >
+       <widget class="QSpinBox" name="spinBox_gainMin" />
+      </item>
+      <item row="1" column="4" >
+       <widget class="QSpinBox" name="spinBox_gainMax" />
+      </item>
+      <item row="2" column="0" >
+       <widget class="QCheckBox" name="checkBox_adjustGain" >
+        <property name="text" >
+         <string>Gain anpassen</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" >
+       <widget class="QLabel" name="label_4" >
+        <property name="text" >
+         <string>UV-Bereich</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3" >
+       <widget class="QSpinBox" name="spinBox_uvMin" />
+      </item>
+      <item row="2" column="4" >
+       <widget class="QSpinBox" name="spinBox_uvMax" />
+      </item>
+      <item row="3" column="0" >
+       <widget class="QCheckBox" name="checkBox_shutterPosLogic" >
+        <property name="text" >
+         <string>Shutter positive Logik</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2" >
+       <widget class="QLabel" name="label_3" >
+        <property name="text" >
+         <string>Zielhelligkeit</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3" >
+       <widget class="QSpinBox" name="spinBox_targetExposure" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TribotsTools::CameraSettingsWidget</class>
+   <extends>QFrame</extends>
+   <header>../CameraSettingsWidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TribotsTools::ScrollImageWidget</class>
+   <extends>QFrame</extends>
+   <header>../../../components/ScrollImageWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>checkBox_softWhiteBalance</tabstop>
+  <tabstop>checkBox_softExposure</tabstop>
+  <tabstop>checkBox_adjustGain</tabstop>
+  <tabstop>checkBox_shutterPosLogic</tabstop>
+  <tabstop>spinBox_shutterMin</tabstop>
+  <tabstop>spinBox_shutterMax</tabstop>
+  <tabstop>spinBox_gainMin</tabstop>
+  <tabstop>spinBox_gainMax</tabstop>
+  <tabstop>spinBox_uvMin</tabstop>
+  <tabstop>spinBox_uvMax</tabstop>
+  <tabstop>spinBox_targetExposure</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

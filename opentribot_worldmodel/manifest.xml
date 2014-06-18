@@ -1,0 +1,15 @@
+<package>
+  <description brief="opentribot_worldmodel">
+
+     opentribot_worldmodel
+
+  </description>
+  <author>tribot</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/opentribot_worldmodel</url>
+  <depend package="opentribot_messages"/>
+
+</package>
+
+

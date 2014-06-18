@@ -1,0 +1,15 @@
+<package>
+  <description brief="opentribot_motion">
+
+     opentribot_motion
+
+  </description>
+  <author>tribot</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/opentribot_motion</url>
+  <depend package="opentribot_messages"/>
+
+</package>
+
+

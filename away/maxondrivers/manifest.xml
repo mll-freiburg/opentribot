@@ -1,0 +1,14 @@
+<package>
+  <description brief="EPOS Maxon Controller using OpenRAVE and Orocos">
+    Robot controller communicating with EPOS controllers through the CAN network using Orocos RTT and OCL. Uses OpenRAVE for kinematics and other information.
+  </description>
+  <author>Rosen Diankov (rdiankov@cs.cmu.edu)</author>
+  <license>Apache License 2.0</license>
+  <export>
+    <cpp cflags="-I${prefix}/include"/>
+  </export>
+  <depend package="roscpp"/>
+  <depend package="openrave_robot_control"/>
+<!--   <depend package="ocl" />
+  <depend package="rtt" /> -->
+</package>

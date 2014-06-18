@@ -1,0 +1,722 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>RobotWidget</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>RobotWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>285</width>
+            <height>149</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>1</hsizetype>
+            <vsizetype>1</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>0</width>
+            <height>0</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>3200</width>
+            <height>1550</height>
+        </size>
+    </property>
+    <property name="font">
+        <font>
+        </font>
+    </property>
+    <property name="caption">
+        <string>Roboter</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <widget class="QTabWidget" row="0" column="0">
+            <property name="name">
+                <cstring>tabWidget</cstring>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Roboter</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <property name="margin">
+                        <number>0</number>
+                    </property>
+                    <property name="spacing">
+                        <number>2</number>
+                    </property>
+                    <widget class="QLayoutWidget" row="0" column="0">
+                        <property name="name">
+                            <cstring>layout8</cstring>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QCheckBox">
+                                <property name="name">
+                                    <cstring>check_connect</cstring>
+                                </property>
+                                <property name="font">
+                                    <font>
+                                    </font>
+                                </property>
+                                <property name="text">
+                                    <string>verbinden</string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox">
+                                <property name="name">
+                                    <cstring>check_activate</cstring>
+                                </property>
+                                <property name="font">
+                                    <font>
+                                    </font>
+                                </property>
+                                <property name="text">
+                                    <string>aktivieren</string>
+                                </property>
+                            </widget>
+                            <widget class="QPushButton">
+                                <property name="name">
+                                    <cstring>button_start</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>5</hsizetype>
+                                        <vsizetype>0</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                    </size>
+                                </property>
+                                <property name="text">
+                                    <string>rein</string>
+                                </property>
+                                <property name="accel">
+                                    <string></string>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                    <widget class="QLayoutWidget" row="0" column="2">
+                        <property name="name">
+                            <cstring>layout7</cstring>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>0</number>
+                            </property>
+                            <property name="spacing">
+                                <number>0</number>
+                            </property>
+                            <widget class="QFrame">
+                                <property name="name">
+                                    <cstring>frame_playertype</cstring>
+                                </property>
+                                <property name="frameShape">
+                                    <enum>StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                    <enum>Plain</enum>
+                                </property>
+                                <property name="lineWidth">
+                                    <number>0</number>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>1</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>0</number>
+                                    </property>
+                                    <widget class="QComboBox" row="0" column="0">
+                                        <item>
+                                            <property name="text">
+                                                <string>---</string>
+                                            </property>
+                                        </item>
+                                        <property name="name">
+                                            <cstring>combo_playertype</cstring>
+                                        </property>
+                                        <property name="sizePolicy">
+                                            <sizepolicy>
+                                                <hsizetype>7</hsizetype>
+                                                <vsizetype>0</vsizetype>
+                                                <horstretch>0</horstretch>
+                                                <verstretch>0</verstretch>
+                                            </sizepolicy>
+                                        </property>
+                                        <property name="font">
+                                            <font>
+                                            </font>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                            <widget class="QFrame">
+                                <property name="name">
+                                    <cstring>frame_playerrole</cstring>
+                                </property>
+                                <property name="frameShape">
+                                    <enum>StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                    <enum>Plain</enum>
+                                </property>
+                                <property name="lineWidth">
+                                    <number>0</number>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>1</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>0</number>
+                                    </property>
+                                    <widget class="QComboBox" row="0" column="0">
+                                        <item>
+                                            <property name="text">
+                                                <string>---</string>
+                                            </property>
+                                        </item>
+                                        <property name="name">
+                                            <cstring>combo_playerrole</cstring>
+                                        </property>
+                                        <property name="font">
+                                            <font>
+                                            </font>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                            <widget class="QFrame">
+                                <property name="name">
+                                    <cstring>frame_refstate</cstring>
+                                </property>
+                                <property name="frameShape">
+                                    <enum>StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                    <enum>Plain</enum>
+                                </property>
+                                <property name="lineWidth">
+                                    <number>0</number>
+                                </property>
+                                <grid>
+                                    <property name="name">
+                                        <cstring>unnamed</cstring>
+                                    </property>
+                                    <property name="margin">
+                                        <number>1</number>
+                                    </property>
+                                    <property name="spacing">
+                                        <number>0</number>
+                                    </property>
+                                    <widget class="QComboBox" row="0" column="0">
+                                        <item>
+                                            <property name="text">
+                                                <string>---</string>
+                                            </property>
+                                        </item>
+                                        <property name="name">
+                                            <cstring>combo_refstate</cstring>
+                                        </property>
+                                        <property name="font">
+                                            <font>
+                                            </font>
+                                        </property>
+                                    </widget>
+                                </grid>
+                            </widget>
+                        </vbox>
+                    </widget>
+                    <widget class="QLayoutWidget" row="0" column="1">
+                        <property name="name">
+                            <cstring>layout7</cstring>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel2</cstring>
+                                </property>
+                                <property name="font">
+                                    <font>
+                                    </font>
+                                </property>
+                                <property name="text">
+                                    <string>U[V]</string>
+                                </property>
+                                <property name="alignment">
+                                    <set>WordBreak|AlignBottom</set>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit">
+                                <property name="name">
+                                    <cstring>lineEdit_vcc</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>0</hsizetype>
+                                        <vsizetype>0</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>10</width>
+                                        <height>0</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>30</width>
+                                        <height>32767</height>
+                                    </size>
+                                </property>
+                                <property name="readOnly">
+                                    <bool>true</bool>
+                                </property>
+                            </widget>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel1_3</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Ping</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit">
+                                <property name="name">
+                                    <cstring>lineEdit_ping</cstring>
+                                </property>
+                                <property name="sizePolicy">
+                                    <sizepolicy>
+                                        <hsizetype>0</hsizetype>
+                                        <vsizetype>0</vsizetype>
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                    </sizepolicy>
+                                </property>
+                                <property name="minimumSize">
+                                    <size>
+                                        <width>10</width>
+                                        <height>0</height>
+                                    </size>
+                                </property>
+                                <property name="maximumSize">
+                                    <size>
+                                        <width>30</width>
+                                        <height>32767</height>
+                                    </size>
+                                </property>
+                                <property name="readOnly">
+                                    <bool>true</bool>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                </grid>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Host</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QLineEdit" row="1" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>edit_ip</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                    </widget>
+                    <widget class="QLabel" row="0" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>textLabel1</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="text">
+                            <string>IP-Adress:Port:</string>
+                        </property>
+                        <property name="alignment">
+                            <set>AlignBottom</set>
+                        </property>
+                    </widget>
+                    <widget class="QPushButton" row="2" column="0">
+                        <property name="name">
+                            <cstring>pushButtonStartRobotcontrol</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Start Robotcontrol</string>
+                        </property>
+                    </widget>
+                    <widget class="QPushButton" row="2" column="1">
+                        <property name="name">
+                            <cstring>pushButtonExitRobotcontrol</cstring>
+                        </property>
+                        <property name="text">
+                            <string>Exit Robotcontrol</string>
+                        </property>
+                    </widget>
+                </grid>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>tab</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Extra</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QButtonGroup" row="0" column="0">
+                        <property name="name">
+                            <cstring>buttonGroupTeam</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Team</string>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QRadioButton">
+                                <property name="name">
+                                    <cstring>radioButtonTeamTribots</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Tribots</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton">
+                                <property name="name">
+                                    <cstring>radioButtonTeamOpponents</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Gegner</string>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                    <widget class="QLayoutWidget" row="0" column="1">
+                        <property name="name">
+                            <cstring>layout8</cstring>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QLabel">
+                                <property name="name">
+                                    <cstring>textLabel1_2</cstring>
+                                </property>
+                                <property name="font">
+                                    <font>
+                                    </font>
+                                </property>
+                                <property name="text">
+                                    <string>Gelbe Karten:</string>
+                                </property>
+                            </widget>
+                            <widget class="QSpinBox">
+                                <property name="name">
+                                    <cstring>spinBoxYellowCards</cstring>
+                                </property>
+                                <property name="paletteForegroundColor">
+                                    <color>
+                                        <red>0</red>
+                                        <green>0</green>
+                                        <blue>0</blue>
+                                    </color>
+                                </property>
+                                <property name="paletteBackgroundColor">
+                                    <color>
+                                        <red>255</red>
+                                        <green>255</green>
+                                        <blue>255</blue>
+                                    </color>
+                                </property>
+                                <property name="font">
+                                    <font>
+                                    </font>
+                                </property>
+                                <property name="maxValue">
+                                    <number>7</number>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                </grid>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>TabPage</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Demo/Debug</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QCheckBox" row="0" column="0">
+                        <property name="name">
+                            <cstring>check_joystick</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="text">
+                            <string>Joystick</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="1" column="0">
+                        <property name="name">
+                            <cstring>check_robotdata</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="text">
+                            <string>Roboterdaten</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox" row="2" column="0">
+                        <property name="name">
+                            <cstring>check_messageboard</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="text">
+                            <string>MessageBoard</string>
+                        </property>
+                    </widget>
+                    <widget class="QPushButton" row="0" column="1" rowspan="2" colspan="1">
+                        <property name="name">
+                            <cstring>button_image</cstring>
+                        </property>
+                        <property name="font">
+                            <font>
+                            </font>
+                        </property>
+                        <property name="text">
+                            <string>Debug-Bild</string>
+                        </property>
+                    </widget>
+                </grid>
+            </widget>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>check_connect</sender>
+        <signal>released()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>connectChanged()</slot>
+    </connection>
+    <connection>
+        <sender>check_activate</sender>
+        <signal>released()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>activateChanged()</slot>
+    </connection>
+    <connection>
+        <sender>check_robotdata</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>robotdataChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>combo_playerrole</sender>
+        <signal>activated(int)</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>playerroleChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>combo_playertype</sender>
+        <signal>activated(int)</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>playertypeChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>combo_refstate</sender>
+        <signal>activated(int)</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>refstateChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>edit_ip</sender>
+        <signal>returnPressed()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>ipChanged()</slot>
+    </connection>
+    <connection>
+        <sender>check_messageboard</sender>
+        <signal>released()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>messageBoardChanged()</slot>
+    </connection>
+    <connection>
+        <sender>button_image</sender>
+        <signal>clicked()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>debugImageClicked()</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxYellowCards</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>yellowCardsChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>button_start</sender>
+        <signal>clicked()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>startPressed()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonTeamTribots</sender>
+        <signal>clicked()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>teamClicked()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonTeamOpponents</sender>
+        <signal>clicked()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>teamClicked()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonStartRobotcontrol</sender>
+        <signal>clicked()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>startRobotcontrol()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonExitRobotcontrol</sender>
+        <signal>clicked()</signal>
+        <receiver>RobotWidget</receiver>
+        <slot>exitRobotcontrol()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>check_connect</tabstop>
+    <tabstop>check_activate</tabstop>
+    <tabstop>check_joystick</tabstop>
+    <tabstop>check_robotdata</tabstop>
+    <tabstop>check_messageboard</tabstop>
+    <tabstop>combo_playertype</tabstop>
+    <tabstop>combo_playerrole</tabstop>
+    <tabstop>combo_refstate</tabstop>
+    <tabstop>edit_ip</tabstop>
+</tabstops>
+<includes>
+    <include location="local" impldecl="in implementation">../../../Fundamental/stringconvert.h</include>
+    <include location="local" impldecl="in implementation">../States/RemoteBlackboard.h</include>
+    <include location="global" impldecl="in implementation">sstream</include>
+    <include location="global" impldecl="in implementation">vector</include>
+    <include location="local" impldecl="in declaration">RobotDataWidget.h</include>
+    <include location="local" impldecl="in declaration">string</include>
+    <include location="local" impldecl="in declaration">../../../Structures/GameState.h</include>
+    <include location="local" impldecl="in declaration">../../../Fundamental/ConfigReader.h</include>
+    <include location="local" impldecl="in implementation">RobotWidget.ui.h</include>
+</includes>
+<variables>
+    <variable access="private">std::vector&lt;bool&gt; was_comm_okay;</variable>
+    <variable access="private">unsigned int robot;</variable>
+    <variable access="private">RobotDataWidget* data_widget;</variable>
+    <variable access="private">std::string playerrole;</variable>
+    <variable access="private">std::string playertype;</variable>
+    <variable access="private">Tribots::RefereeState refstate;</variable>
+    <variable access="private">std::string ip;</variable>
+    <variable access="private">int port;</variable>
+    <variable access="private">int robotcontrol_child_pid;</variable>
+</variables>
+<slots>
+    <slot access="private">init()</slot>
+    <slot access="private">destroy()</slot>
+    <slot>init( unsigned int n, const Tribots::ConfigReader &amp; cfg )</slot>
+    <slot>hide()</slot>
+    <slot access="private">connectChanged()</slot>
+    <slot access="private">activateChanged()</slot>
+    <slot access="private">messageBoardChanged()</slot>
+    <slot access="private">playertypeChanged( int )</slot>
+    <slot access="private">playerroleChanged( int )</slot>
+    <slot access="private">refstateChanged( int i )</slot>
+    <slot access="private">ipChanged()</slot>
+    <slot access="private">teamChanged()</slot>
+    <slot access="private">robotdataChanged( bool b )</slot>
+    <slot>update()</slot>
+    <slot access="private">debugImageClicked()</slot>
+    <slot access="private">yellowCardsChanged( int v )</slot>
+    <slot access="private">startPressed()</slot>
+    <slot access="private">teamClicked()</slot>
+    <slot access="private">startRobotcontrol()</slot>
+    <slot access="private">killChild()</slot>
+    <slot access="private">exitRobotcontrol()</slot>
+</slots>
+<functions>
+    <function>startAsSlave()</function>
+    <function>stopAsSlave()</function>
+    <function>updateRequests()</function>
+</functions>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

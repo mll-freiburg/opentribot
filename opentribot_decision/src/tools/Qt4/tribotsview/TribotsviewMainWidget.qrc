@@ -1,0 +1,48 @@
+<RCC>
+    <qresource prefix="/TribotsviewMainWidget/" >
+        <file>Icons/TribotsviewMainWidget/attach.png</file>
+        <file>Icons/TribotsviewMainWidget/clock.png</file>
+        <file>Icons/TribotsviewMainWidget/exit.png</file>
+        <file>Icons/TribotsviewMainWidget/file_add.png</file>
+        <file>Icons/TribotsviewMainWidget/file_image.png</file>
+        <file>Icons/TribotsviewMainWidget/file.png</file>
+        <file>Icons/TribotsviewMainWidget/flip_field.png</file>
+        <file>Icons/TribotsviewMainWidget/next_imagesource.png</file>
+        <file>Icons/TribotsviewMainWidget/player_back.png</file>
+        <file>Icons/TribotsviewMainWidget/player_end.png</file>
+        <file>Icons/TribotsviewMainWidget/player_fwd.png</file>
+        <file>Icons/TribotsviewMainWidget/player_pause.png</file>
+        <file>Icons/TribotsviewMainWidget/player_play.png</file>
+        <file>Icons/TribotsviewMainWidget/player_rew.png</file>
+        <file>Icons/TribotsviewMainWidget/player_start.png</file>
+        <file>Icons/TribotsviewMainWidget/revert.png</file>
+        <file>Icons/TribotsviewMainWidget/show_images.png</file>
+    </qresource>
+</RCC>
+<RCC>
+    <qresource prefix="/FieldOfPlay/" >
+        <file>Icons/FieldOfPlay/ball_trace.png</file>
+        <file>Icons/FieldOfPlay/change_orientation.png</file>
+        <file>Icons/FieldOfPlay/clock.png</file>
+        <file>Icons/FieldOfPlay/flip_field.png</file>
+        <file>Icons/FieldOfPlay/next_robot.png</file>
+        <file>Icons/FieldOfPlay/redo.png</file>
+        <file>Icons/FieldOfPlay/remove_mem.png</file>
+        <file>Icons/FieldOfPlay/robot_trace.png</file>
+        <file>Icons/FieldOfPlay/show_aux_lines.png</file>
+        <file>Icons/FieldOfPlay/show_ball.png</file>
+        <file>Icons/FieldOfPlay/show_goals.png</file>
+        <file>Icons/FieldOfPlay/show_obstacles.png</file>
+        <file>Icons/FieldOfPlay/show_particles.png</file>
+        <file>Icons/FieldOfPlay/show_robot_ball_link.png</file>
+        <file>Icons/FieldOfPlay/show_robotid.png</file>
+        <file>Icons/FieldOfPlay/show_robot.png</file>
+        <file>Icons/FieldOfPlay/show_vis_ball.png</file>
+        <file>Icons/FieldOfPlay/show_vis_obstacles.png</file>
+        <file>Icons/FieldOfPlay/show_white_lines.png</file>
+        <file>Icons/FieldOfPlay/undo.png</file>
+        <file>Icons/FieldOfPlay/viewmag-.png</file>
+        <file>Icons/FieldOfPlay/viewmag+.png</file>
+        <file>Icons/FieldOfPlay/window_fullscreen.png</file>
+    </qresource>
+</RCC>

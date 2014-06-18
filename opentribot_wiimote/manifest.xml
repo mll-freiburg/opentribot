@@ -1,0 +1,16 @@
+<package>
+  <description brief="opentribot_wiimote">
+
+     opentribot_wiimote
+
+  </description>
+  <author>tribot</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/opentribot_wiimote</url>
+  <depend package="opentribot_messages"/>
+  <depend package="opentribot_decision"/>
+
+</package>
+
+

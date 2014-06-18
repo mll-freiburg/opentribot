@@ -1,0 +1,18 @@
+Mit welchem Config-File starte ich die Software?
+ -> immer mit robotcontrol.cfg
+
+Wie starte ich mit richtigem Roboter?
+ -> in robotcontrol.cfg die Configfiles global_real.cfg, das richtige
+    Feld und den richtigen Robotertyp auswaehlen. Fertig.
+
+Wie starte ich mit dem Simulator?
+ -> in robotcontrol.cfg die Configfiles global_simulator, das richtige
+    Feld und den richtigen Robotertyp auswaehlen. Zuerst den simsrv2
+    starten, dann das robotcontrol-Programm
+
+Welche vordefinierten Modi gibt es noch?
+ -> global_file: Die Sensordaten werden aus Logfiles gelesen. Dies kann zur
+    Weiterentwicklung des Weltmodells genutzt werden
+ -> global_image_test: Die Bilder werden aus einer Datei gelesen, die in
+    "image_producer_file" einzustellen ist. Nur Bildverarbeitung und
+    Weltmodell sind aktiv

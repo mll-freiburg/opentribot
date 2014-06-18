@@ -1,0 +1,54 @@
+
+
+robotcontrol/src/tools/DirectionalCalibration/CalibTool.h / .cc :
+ 
+    This class provides methods to select points in the format needed for the 
+    DirectionalCalibration tool.
+ 
+    Call:
+ 	./CalibTool chessboard-metric-pattern coordinate-map [ppm-image | -d directory]
+ 	
+ 	The chessboard-metric-pattern should contain:
+ 	 - 1st line: The number of corners to mark in each image.
+ 	 - The real world coordinates of the chessboard corners egocentrically
+ 	    from the robot (extrinsic coordinates of last frame --> see documentation 
+	    of DirectionalCalibration) in the form: x y (one pair per line)
+   
+ 	The coordinate map is the resulting file in a format that can be used 
+ 	 as input to the DirectionalCalibration tool.
+ 
+ 	You can process either a single image (only ppm is supported) or, 
+ 	 by setting parameter flag -d, specify a directory with .ppm files.
+ 	 All files that do not end on .ppm in that directory will be skipped automatically.
+ 
+    Usage:
+ 	--> Left-Click to add a point.
+ 	--> Right-Click to remove last point.
+ 	--> Hold Ctrl-Key to select point in zoomed view.
+ 	--> Press enter to save points for current image and advance to next.
+ 	--> Press Left- or Right-key to flip through images in the specified folder.
+     
+    (method main is in file main.cc)
+ 
+	
+
+robotcontrol/src/tools/DirectionalCalibration/CalibTool.cc --> MyClickWidget :
+   
+  MyClickWidget is an ImageWidget that allows the user to perform certain actions in the image.
+  These are:
+ 	- Zoom the area undnerneath the mouse pointer.
+ 	- Add a pixel's coordinates to a list by click of the left mouse button.
+ 	- Hold the current zoomed view to aim more precisely by holding the Ctrl-Key pressed.
+ 		--> Yields sub-pixel accuracy.
+ 	- Remove coordinates of the last pixel from that list by click of the right mouse button.
+ 	- Save those coordinates to the file given in the params by pressing enter. Advances
+ 	  to the next .ppm picture.
+       - The Left- and Right-key can flip through the .ppm files stored in the given directory.
+ 
+ 
+ 	
+    Authors: Christopher Loerken, cloerken@uos.de
+             Tobias Kringe, tkringe@uos.de
+ 
+    Date: 16.06.2005
+ 

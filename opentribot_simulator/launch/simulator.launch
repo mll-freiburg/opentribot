@@ -1,0 +1,6 @@
+<launch>
+     <rosparam file="wii_remote.yaml" command="load" ns="wii_remote" />
+     <node pkg="opentribot_simulator" name="motionserver" type="motionserver"/>
+     <node pkg="opentribot_decision" name="motionserver" type="motionserver"/>
+     <node pkg="opentribot_wiimote" name="wii_remote" type="wii_remote"/>
+</launch>

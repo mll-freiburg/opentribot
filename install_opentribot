@@ -1,0 +1,27 @@
+
+sudo sh -c 'echo "deb http://code.ros.org/packages/ros/ubuntu karmic main" > /etc/apt/sources.list.d/ros-latest.list'
+
+
+wget http://code.ros.org/packages/ros.key -O - | sudo apt-key add -
+
+
+sudo apt-get update
+
+
+sudo apt-get install ros-cturtle-base
+
+echo "source /opt/ros/cturtle/setup.sh" >> ~/.bashrc
+. ~/.bashrcecho "source /opt/ros/cturtle/setup.sh" >> ~/.bashrc
+. ~/.bashrc
+
+
+
+
+source /opt/ros/cturtle/setup.sh
+
+
+sudo apt-get install mercurial
+
+hg clone ssh://swelker@ml06.informatik.uni-freiburg.de/opentribot/opentribot 
+
+

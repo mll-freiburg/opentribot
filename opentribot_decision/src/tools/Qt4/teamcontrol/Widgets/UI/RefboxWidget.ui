@@ -1,0 +1,565 @@
+<ui version="4.0" >
+ <class>RefboxWidget</class>
+ <widget class="QWidget" name="RefboxWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>320</width>
+    <height>378</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>320</width>
+    <height>200</height>
+   </size>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>320</width>
+    <height>380</height>
+   </size>
+  </property>
+  <property name="font" >
+   <font/>
+  </property>
+  <property name="windowTitle" >
+   <string>RefereeBoxWidget</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox1" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>101</width>
+     <height>150</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Tribots</string>
+   </property>
+   <widget class="QPushButton" name="KickOffOwnButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Anstoß</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ThrowInOwnButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Einwurf</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GoalKickOwnButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Torabstoß</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CornerKickOwnButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Eckball</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="FreeKickOwnButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Freistoß</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PenaltyOwnButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Strafstoß</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox2" >
+   <property name="geometry" >
+    <rect>
+     <x>210</x>
+     <y>40</y>
+     <width>100</width>
+     <height>150</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Gegner</string>
+   </property>
+   <widget class="QPushButton" name="ThrowInOpponentButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Einwurf</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GoalKickOpponentButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Torabstoß</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="CornerKickOpponentButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Eckball</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="FreeKickOpponentButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Freistoß</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="PenaltyOpponentButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Strafstoß</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="KickOffOpponentButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Anstoß</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="edit_refstate" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>301</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="alignment" >
+    <set>Qt::AlignLeading</set>
+   </property>
+   <property name="readOnly" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DroppedBallButton" >
+   <property name="geometry" >
+    <rect>
+     <x>120</x>
+     <y>80</y>
+     <width>81</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>DroppedBall</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox4" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>200</y>
+     <width>301</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string/>
+   </property>
+   <widget class="QPushButton" name="ChangeGoalColorButton" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>41</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Wechseln</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ChangeLabelColorButton" >
+    <property name="geometry" >
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Wechseln</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="edit_tribotcolor" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground" >
+     <bool>true</bool>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignHCenter</set>
+    </property>
+    <property name="readOnly" >
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="edit_opponentcolor" >
+    <property name="geometry" >
+     <rect>
+      <x>210</x>
+      <y>10</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground" >
+     <bool>true</bool>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignHCenter</set>
+    </property>
+    <property name="readOnly" >
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="edit_opponentownhalf" >
+    <property name="geometry" >
+     <rect>
+      <x>210</x>
+      <y>40</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground" >
+     <bool>true</bool>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignHCenter</set>
+    </property>
+    <property name="readOnly" >
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="edit_tribotownhalf" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground" >
+     <bool>true</bool>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignHCenter</set>
+    </property>
+    <property name="readOnly" >
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox5" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>275</y>
+     <width>300</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string/>
+   </property>
+   <property name="alignment" >
+    <set>Qt::AlignHCenter</set>
+   </property>
+   <widget class="QLabel" name="textLabel1_2" >
+    <property name="geometry" >
+     <rect>
+      <x>97</x>
+      <y>10</y>
+      <width>110</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>&lt;p align="center">Spielstand&lt;/p></string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxOwnScore" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground" >
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxOpponentScore" >
+    <property name="geometry" >
+     <rect>
+      <x>210</x>
+      <y>10</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground" >
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox7" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>320</y>
+     <width>301</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Refereebox</string>
+   </property>
+   <widget class="QLabel" name="textLabel1" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>20</y>
+      <width>20</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>IP:</string>
+    </property>
+    <property name="wordWrap" >
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="edit_refboxip" >
+    <property name="geometry" >
+     <rect>
+      <x>150</x>
+      <y>20</y>
+      <width>140</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="check_refboxconnect" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground" >
+     <bool>true</bool>
+    </property>
+    <property name="text" >
+     <string>verbinden</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="StartButton" >
+   <property name="geometry" >
+    <rect>
+     <x>120</x>
+     <y>110</y>
+     <width>80</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>FreiesSpiel</string>
+   </property>
+   <property name="shortcut" >
+    <string>G</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="StopButton" >
+   <property name="geometry" >
+    <rect>
+     <x>120</x>
+     <y>50</y>
+     <width>80</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Stop</string>
+   </property>
+   <property name="shortcut" >
+    <string>Space</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="GoButton" >
+   <property name="geometry" >
+    <rect>
+     <x>120</x>
+     <y>140</y>
+     <width>81</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Los!</string>
+   </property>
+   <property name="shortcut" >
+    <string>L</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="testStateComboBox" >
+   <property name="geometry" >
+    <rect>
+     <x>120</x>
+     <y>170</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <tabstops>
+  <tabstop>edit_refstate</tabstop>
+  <tabstop>KickOffOwnButton</tabstop>
+  <tabstop>ThrowInOwnButton</tabstop>
+  <tabstop>GoalKickOwnButton</tabstop>
+  <tabstop>CornerKickOwnButton</tabstop>
+  <tabstop>FreeKickOwnButton</tabstop>
+  <tabstop>PenaltyOwnButton</tabstop>
+  <tabstop>StopButton</tabstop>
+  <tabstop>DroppedBallButton</tabstop>
+  <tabstop>StartButton</tabstop>
+  <tabstop>GoButton</tabstop>
+  <tabstop>KickOffOpponentButton</tabstop>
+  <tabstop>ThrowInOpponentButton</tabstop>
+  <tabstop>GoalKickOpponentButton</tabstop>
+  <tabstop>CornerKickOpponentButton</tabstop>
+  <tabstop>FreeKickOpponentButton</tabstop>
+  <tabstop>PenaltyOpponentButton</tabstop>
+  <tabstop>edit_tribotcolor</tabstop>
+  <tabstop>ChangeLabelColorButton</tabstop>
+  <tabstop>edit_opponentcolor</tabstop>
+  <tabstop>edit_tribotownhalf</tabstop>
+  <tabstop>ChangeGoalColorButton</tabstop>
+  <tabstop>edit_opponentownhalf</tabstop>
+  <tabstop>edit_refboxip</tabstop>
+  <tabstop>check_refboxconnect</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

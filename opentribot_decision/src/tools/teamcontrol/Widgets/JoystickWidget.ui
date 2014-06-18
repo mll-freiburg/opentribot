@@ -1,0 +1,741 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>JoystickWidget</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>JoystickWidget</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>465</width>
+            <height>291</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Joystick Widget</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QGroupBox" row="2" column="1" rowspan="2" colspan="1">
+            <property name="name">
+                <cstring>groupBoxKick</cstring>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>Kicker</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>1</number>
+                </property>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_7</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Kick Länge</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>spinBoxKickLength</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>500</number>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="lineStep">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>100</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>spinBoxKickButtonIdx</cstring>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>6</number>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_4</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Taste</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="2" column="0" rowspan="2" colspan="1">
+            <property name="name">
+                <cstring>groupBox6</cstring>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>(De-)Aktivieren</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>1</number>
+                </property>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_6</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Aktivieren</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Deaktivieren</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>spinBoxDeactivateButtonIdx</cstring>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>2</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>spinBoxActivateButtonIdx</cstring>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>1</number>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="1" column="2" rowspan="2" colspan="1">
+            <property name="name">
+                <cstring>groupBoxXVel_3</cstring>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>PHI - Geschwindigkeit</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>1</number>
+                </property>
+                <widget class="QCheckBox" row="3" column="0">
+                    <property name="name">
+                        <cstring>checkBoxPhiInvert</cstring>
+                    </property>
+                    <property name="text">
+                        <string>invertieren</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>spinBoxPhiAxisIdx</cstring>
+                    </property>
+                    <property name="value">
+                        <number>2</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="2" column="1">
+                    <property name="name">
+                        <cstring>spinBoxPhiAxisNull</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>100</number>
+                    </property>
+                    <property name="lineStep">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>30</number>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="2" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_5_3_3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Nullzone (%)</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Achse</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>spinBoxPhiAxisMaxV</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>80</number>
+                    </property>
+                    <property name="value">
+                        <number>20</number>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_5_2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>max V (0.1rad/s)</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="1" column="1">
+            <property name="name">
+                <cstring>groupBoxXVel_2</cstring>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>Y - Geschwindigkeit</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>1</number>
+                </property>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Achse</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="2" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_5_3_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Nullzone (%)</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>checkBoxYInvert</cstring>
+                    </property>
+                    <property name="text">
+                        <string>invertieren</string>
+                    </property>
+                    <property name="checked">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>spinBoxYAxisIdx</cstring>
+                    </property>
+                    <property name="value">
+                        <number>1</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="2" column="1">
+                    <property name="name">
+                        <cstring>spinBoxYAxisNull</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>100</number>
+                    </property>
+                    <property name="lineStep">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>30</number>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>spinBoxYAxisMaxV</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>40</number>
+                    </property>
+                    <property name="lineStep">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>15</number>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_5_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>max V (0.1 m/s)</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="1" column="0">
+            <property name="name">
+                <cstring>groupBoxXVel</cstring>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>X - Geschwindigkeit</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>1</number>
+                </property>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>textLabel1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Achse</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="2" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_5_3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Nullzone (%)</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="0" column="1">
+                    <property name="name">
+                        <cstring>spinBoxXAxisIdx</cstring>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="1" column="1">
+                    <property name="name">
+                        <cstring>spinBoxXAxisMaxV</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>40</number>
+                    </property>
+                    <property name="lineStep">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>15</number>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>textLabel1_5</cstring>
+                    </property>
+                    <property name="text">
+                        <string>max V (0.1 m/s)</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox" row="2" column="1">
+                    <property name="name">
+                        <cstring>spinBoxXAxisNull</cstring>
+                    </property>
+                    <property name="maxValue">
+                        <number>100</number>
+                    </property>
+                    <property name="lineStep">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>30</number>
+                    </property>
+                </widget>
+                <widget class="QCheckBox" row="3" column="0" rowspan="1" colspan="2">
+                    <property name="name">
+                        <cstring>checkBoxXInvert</cstring>
+                    </property>
+                    <property name="text">
+                        <string>invertieren</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="0" column="2">
+            <property name="name">
+                <cstring>groupBox7</cstring>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>Perspektive</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>3</number>
+                </property>
+                <widget class="QComboBox" row="0" column="0">
+                    <property name="name">
+                        <cstring>comboBoxPerspective</cstring>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="0" column="0" rowspan="1" colspan="2">
+            <property name="name">
+                <cstring>groupBoxJoyDev</cstring>
+            </property>
+            <property name="font">
+                <font>
+                </font>
+            </property>
+            <property name="title">
+                <string>Joystick Device</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>3</number>
+                </property>
+                <widget class="QFrame" row="0" column="0">
+                    <property name="name">
+                        <cstring>frameJoyDev</cstring>
+                    </property>
+                    <property name="frameShape">
+                        <enum>StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                        <enum>Plain</enum>
+                    </property>
+                    <property name="lineWidth">
+                        <number>0</number>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <property name="margin">
+                            <number>1</number>
+                        </property>
+                        <widget class="QComboBox" row="0" column="0">
+                            <item>
+                                <property name="text">
+                                    <string>/dev/input/js0</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>/dev/input/js1</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>/dev/input/js2</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>/dev/input/js3</string>
+                                </property>
+                            </item>
+                            <item>
+                                <property name="text">
+                                    <string>Maus</string>
+                                </property>
+                            </item>
+                            <property name="name">
+                                <cstring>comboBoxJoyDev</cstring>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>7</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="editable">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+            </grid>
+        </widget>
+        <widget class="QGroupBox" row="3" column="2">
+            <property name="name">
+                <cstring>groupBox8</cstring>
+            </property>
+            <property name="title">
+                <string>Maus Joystick</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>3</number>
+                </property>
+                <property name="spacing">
+                    <number>1</number>
+                </property>
+                <widget class="TribotsTools::MouseJoyWidget" row="0" column="0">
+                    <property name="name">
+                        <cstring>mouseJoyWidget1</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>7</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+    </grid>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>TribotsTools::MouseJoyWidget</class>
+        <header location="local">MouseJoyWidget.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>0</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="PNG" length="824">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002ff49444154388db59531681c4714863f992dde820cb370815b50600f54e8ca0ba43970712a8fb838438a3895634813d238a5ab80e314ae4d0a812060a4226017c27221c8a9da6b8c4fe0e00d28b0571cec82043b85611f78c12966efa4bb8bc085f29a6567df7cef9f7fdeccaec571cc2cbaddee47ae21e2385e5b9b815f1ebcfcd8de6a63ad25cb338af7c52741acb5a4a729a3d723a82ec6bd99d267bf3f23fc1c4cab2442d14a915986e792fdfa59569766573049417784f1b12e8267954dab24b78714450a28beaf941f847c2a14e70a0841035a2d45d641eb027213c210c69756320767794684d6508bef0befde1a860796e4c402333542b4256c0f0cdd1e50b97191458be6e0e27d81563a87c643d8fb2d7793d685d696413cc8a6cae46f65f7d79c7c62b87b4f2e15fd0fb0d302be0fefde4a0d557a5f35e90f84e0334014d590f855c9de4ecee17e4eb319d1ff3a00ec02f8c67299f283307c61e7d06fbf1782d082588a33e1cf1705fd81cf773f3601e1f9bec59e2f4b5c7ef5209f0ac95f16630cfd818067c103b586dd274a726229cee0fe8380d191cb4d1267d3d58aa1de7d258ceae5d7d0a78fdd269a86f0c52d414c49bbe3762c9b686de41560d7a72e41c4795a6486a78f95e4c4151481d686efbe7b3398ac58b1a23868b8c474aaa8068c8e714a8dd06c1af2a9e5d1c38c641c909dba6e08237f19b358a7ac5cf3479bc2e41f257e55d2ffc6a73833746f09e186cfa387904f2cbffc90a2aa9886d0e99464d3c5965b512cebd01f1800f67672e2a392fb0f023a3d883a053ffddcc2340dd65ab452b6074dc2cd15c1cbceb863daed413e353cdfcfd97d92333a12da6d0181ec3443cf753ef3cdd092de0e116ff1a02cdc157338ca9d7b8269461cfee1ba2139b9286e1a427f10110f2d561555b076d18a39383d4d99a4c0cd0b787f20747b214962c8266e3cdcf0e97c59126ec2f6edd089f40a92f115e0d1eb11ba238461dd6a15f32b53666de841965bb203575a3cc15a48c64a965fe57105e3635db8fa96dcffc431172b5d715d7103dc3fea7f015f373c8ee3b57f0135105a0fae7717960000000049454e44ae426082</data>
+    </image>
+</images>
+<connections>
+    <connection>
+        <sender>comboBoxJoyDev</sender>
+        <signal>activated(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>deviceChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxKickButtonIdx</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxPhiAxisIdx</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxPhiAxisMaxV</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxPhiAxisNull</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxXAxisIdx</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxXAxisMaxV</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxXAxisMaxV</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxYAxisIdx</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxYAxisMaxV</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxYAxisNull</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxPhiInvert</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxXInvert</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxYInvert</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(bool)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxActivateButtonIdx</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxDeactivateButtonIdx</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>comboBoxPerspective</sender>
+        <signal>activated(const QString&amp;)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>perspectiveChanged(const QString&amp;)</slot>
+    </connection>
+    <connection>
+        <sender>spinBoxKickLength</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>JoystickWidget</receiver>
+        <slot>valueChanged(int)</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>comboBoxJoyDev</tabstop>
+    <tabstop>spinBoxXAxisIdx</tabstop>
+    <tabstop>spinBoxXAxisMaxV</tabstop>
+    <tabstop>spinBoxXAxisNull</tabstop>
+    <tabstop>checkBoxXInvert</tabstop>
+    <tabstop>spinBoxYAxisIdx</tabstop>
+    <tabstop>spinBoxYAxisMaxV</tabstop>
+    <tabstop>spinBoxYAxisNull</tabstop>
+    <tabstop>checkBoxYInvert</tabstop>
+    <tabstop>spinBoxPhiAxisIdx</tabstop>
+    <tabstop>spinBoxPhiAxisMaxV</tabstop>
+    <tabstop>spinBoxPhiAxisNull</tabstop>
+    <tabstop>checkBoxPhiInvert</tabstop>
+    <tabstop>spinBoxKickButtonIdx</tabstop>
+</tabstops>
+<includes>
+    <include location="local" impldecl="in declaration">../States/RemoteBlackboard.h</include>
+    <include location="local" impldecl="in declaration">MouseJoyWidget.h</include>
+    <include location="local" impldecl="in implementation">JoystickWidget.ui.h</include>
+</includes>
+<slots>
+    <slot access="private">deviceChanged( int )</slot>
+    <slot access="private">valueChanged( int )</slot>
+    <slot access="private">valueChanged( bool )</slot>
+    <slot>update()</slot>
+    <slot access="private">perspectiveChanged( const QString &amp; np )</slot>
+</slots>
+<functions>
+    <function access="private">init()</function>
+    <function access="private">destroy()</function>
+</functions>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+<includehints>
+    <includehint>MouseJoyWidget.h</includehint>
+</includehints>
+</UI>

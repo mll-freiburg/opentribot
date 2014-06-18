@@ -1,0 +1,7 @@
+plot \
+"log.dat" u 1:2 title "CYC_ID", \
+"log.dat" u 1:3 title "Vel" w lp, \
+"log.dat" u 1:5 title "VCC", \
+"log.dat" u 1:4 title "C", \
+"log.dat" u 1:6 title "O" w lp, \
+"log.dat" u 1:($7*10) title "IDLE *10" w p

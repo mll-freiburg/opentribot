@@ -1,0 +1,116 @@
+####### Trainer- und Strategieeinstellungen, wird durch teamcontrol.cfg eingebunden
+
+[Coach]
+
+ball_position_mode = true
+ball_posession_mode = true
+broadcast_mode = true
+teammate_mode = true
+policy = Feldspieler07Policy
+
+# vorgehensweise: rollen einlesen, roboter einlesen. fuer die roboter preferenzen einlesen und in listen speichern. bei standardsituation alle moeglichen loesungen finden (0 prefs verletzt, dann, falls keine loesung vorhanden, 1 prefs vereltzt, etc.). falls keine loesung-> so lassen. falls mehr als eine loesung: fuer alle loesungen zaehlen, wie viele roboter veraendert werden muessten. die loesung nehmen, fuer die am wenigsten geaendert werden muss.
+pref_roles  = ballL ballR left right safety
+pref_robots = 2 3 4 5 6 7 8 9
+pref_robot4 = left right ballL 
+pref_robot2 = left right ballR
+pref_robot5 = ballL ballR safety
+pref_robot7 = ballL ballR safety
+pref_robot9 = ballL ballR
+pref_robot3 =  
+
+# Semantik der folgenden Zeile:
+# Liste mit Taktikparmetern. Fuer Mit * markierte Parameter wird eine frei
+#  editierbare ComboBox erzeugt, fuer alle anderen Parameter nur eine nicht
+#  editierbare Combobox
+
+tactics_attributes = EindhovenMove TaktischeAusrichtung ErstInDieMitteDribbeln SchlenkerMoves Bolzen  SidewardsFahrgeschwindigkeit QuerPass SpontanerPass PassenWenn OefterPassenBeiVorsprung Fluegelangriff FluegelangriffAusstieg Befreiungsschlag AllgemeineFahrgeschwindigkeit Lernen *BDraufhalten Rotation AbstossGegner KampfUmBall StandardMitDynamischemBlock *StandardAbstandBlock StandardLangPassWk *StandardSituationAbstand StandardSituationSpionAufstellen StandardSituationSendeBall StandardSituationWartezeit StandardSituationBallDirektAnfahren GoalKickDirect OwnHalfAllDirect GoalieKickOff *Volley *obstacles_behind_goal_distance *GoalieAttackArea boosting *Boost2Goal *GoalieChipKickPositioning *BFarShootProb
+# 3DFeldspielerVerhalten AusweichenNaheBall FastCatch FluegelangriffSeitwaerts
+
+
+# Semantik der folgenden Zeilen:
+# fuer jeden Taktikparameter werden die moeglichen Werte angegeben
+# ein mit * markierte Wert wird als Default verwendet
+# ein mit + markierter Wert zwingt den Roboter und das Teamcontrol, diesen
+#   Wert anzunehmen, auch wenn im Teamcontrol ein anderer Wert angegeben ist.
+
+EindhovenMove = *an aus
+Bolzen = sofort *sobaldBedraengt gegnerImTrichter gegnerInSchusslinie aus
+ErstInDieMitteDribbeln = *an bolzerNicht aus
+SchlenkerMoves = alleAus bolzerGarNicht *bolzerNichtAbschuetteln alleAn
+TaktischeAusrichtung = *offensiv neutral defensiv
+SidewardsFahrgeschwindigkeit = schneller *normal langsamer langsam
+StandardMitDynamischemBlock = *an aus
+StandardAbstandBlock = 1500 1800 2000 *2300 2500 3000
+Rotation = *Ab3Spielern Ab4Spielern aus
+# 3DFeldspielerVerhalten = *an aus
+# FluegelangriffSeitwaerts = *ja nein
+AbstossGegner = normal *blockTor
+KampfUmBall = NurEngAusweichen *AuchImVorfeldVorsichtig TorAbdecken BallFreispielen
+SpontanerPass = immer oft manchmal selten *nie
+QuerPass = immer oft *manchmal selten nie
+Fluegelangriff = immer oft *manchmal selten nie
+OefterPassenBeiVorsprung = *abEinTor abZweiToren abDreiToren abFuenfTore nie
+FluegelangriffAusstieg = *ja nein
+AllgemeineFahrgeschwindigkeit = schneller *normal langsamer langsam
+PassenWenn = *TorBlockiert ImmerWennGeht
+Lernen = an auchBallabfangen *nurDribbeln aus
+StandardLangPassWk = nie *drittel zweidrittel immer
+StandardSituationAbstand = 1000 1100 1200 1300 1400 1500 *1600 1700 1800 1900 2000
+StandardSituationSpionAufstellen = *an aus
+BDraufhalten = 0 .1 *.2 .3 .4 .5 .6 .7 .8 .9 1
+Befreiungsschlag = immer oft manchmal *selten nie
+#AusweichenNaheBall = an *aus
+GoalKickDirect = *an aus
+OwnHalfAllDirect = an *aus 
+StandardSituationSendeBall = an *aus
+StandardSituationWartezeit = 1 2 4 6 8 *10 automatisch
+GoalieKickOff = *zentral seitlich dynamisch
+StandardSituationBallDirektAnfahren = *an aus
+Volley = 0 0.25 *0.5 0.75 1.0
+obstacles_behind_goal_distance = 0.0 100.0 200.0 300.0 400.0 *500.0 600.0
+GoalieAttackArea = 1500 1800 *2250 2500
+boosting = *ja nein
+Boost2Goal = 0.0 0.25 *0.75 1.0
+GoalieChipKickPositioning = nie immer *GegnerHaelfte GegnerDrittel GegnerZweiDrittel GegnerViertel GegnerDreiViertel
+BFarShootProb = 0.0 0.25 0.5 0.75 *1.0
+
+# FastCatch = *an aus
+
+
+tactics_variants = gegenDribbelteam gegenWeitschussteam MINHO gegenStarkesDefenseteam GegnerKannKeinenEinwurf ZwanghaftPassen
+
+[MINHO]
+AbstossGegner = blockTor
+KampfUmBall = TorSchuetzen
+
+[gegenDribbelteam]
+AbstossGegner = normal
+KampfUmBall = BallFreispielen
+GoalieChipKickPositioning = GegnerDrittel
+
+[gegenWeitschussteam]
+AbstossGegner = normal
+KampfUmBall = TorSchuetzen
+GoalieChipKickPositioning = GegnerZweiDrittel
+
+[gegenStarkesDefenseteam]
+AbstossGegner = normal
+KampfUmBall = TorSchuetzen
+Befreiungsschlag = oft
+OwnHalfDirect = an
+GoalKickDirect = an
+BDraufhalten = .5
+
+[GegnerKannKeinenEinwurf]
+StandardSituationSpionAufstellen = aus
+StandardSituationBallDirektAnfahren = aus
+
+[ZwanghaftPassen]
+Fluegelangriff = immer
+SpontanerPass = manchmal
+QuerPass = immer 
+PassenWenn = ImmerWennGeht
+FluegelangriffAusstieg = nein
+Befreiungsschlag = nie
+BDraufhalten = 0.1
+Boost2Goal = 0.25

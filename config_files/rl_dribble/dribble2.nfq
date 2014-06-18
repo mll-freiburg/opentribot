@@ -1,0 +1,23 @@
+[DRIBBLE]
+
+#main:
+#core:
+
+#aggressive version
+actions= -4 0 2 5 6
+Q.init = ../config_files/rl_dribble/rl2.aset2.off.200.net
+
+#smoother version
+#actions= 1 2 4 5
+#Q.init = ../config_files/rl_dribble/rl2.aset1.off.200.net
+
+
+
+xwork = [] [][][]  []
+#xminus = [] [][][] [.9 1.1] 
+
+
+
+
+
+

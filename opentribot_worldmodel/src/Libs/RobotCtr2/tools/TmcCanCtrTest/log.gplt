@@ -1,0 +1,5 @@
+plot \
+"log.dat" u ($0*10.0):4 title "VCC" w lp, \
+"log.dat" u ($0*10.0):7 title "V" w lp, \
+"log.dat" u ($0*10.0):($11*100) title "C [A*100]" w lp, \
+"log.dat" u ($0*10.0):($15*100) title "O" w lp

@@ -1,0 +1,271 @@
+<ui version="4.0" >
+ <class>ColorCalibrationWidget</class>
+ <widget class="QWidget" name="ColorCalibrationWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>760</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Color Calibration</string>
+  </property>
+  <layout class="QGridLayout" >
+   <item rowspan="2" row="0" column="0" >
+    <widget class="TribotsTools::ScrollImageWidget" name="imageWidget" >
+     <property name="focusPolicy" >
+      <enum>Qt::NoFocus</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1" >
+    <widget class="QFrame" name="frame_2" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QFrame" name="frameColorPatch" >
+        <property name="frameShape" >
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow" >
+         <enum>QFrame::Raised</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QPushButton" name="pushButtonSetColor" >
+        <property name="text" >
+         <string>set color</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QPushButton" name="pushButtonAddColor" >
+        <property name="text" >
+         <string>add color</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QPushButton" name="pushButtonUndoColor" >
+        <property name="text" >
+         <string>undo</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1" >
+    <widget class="QFrame" name="frame_4" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="checkBoxLUT" >
+        <property name="text" >
+         <string>use lookup table</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QPushButton" name="pushButtonLoad" >
+        <property name="text" >
+         <string>load</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLineEdit" name="lineEditFilename" />
+      </item>
+      <item row="3" column="0" >
+       <widget class="QComboBox" name="comboBoxColorClass" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2" >
+    <widget class="QFrame" name="frame_3" >
+     <property name="sizePolicy" >
+      <sizepolicy vsizetype="Maximum" hsizetype="Preferred" >
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <item row="0" column="0" >
+       <widget class="QLabel" name="label_4" >
+        <property name="font" >
+         <font>
+          <pointsize>24</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>H</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="TribotsTools::DoubleSlider" name="sliderHue" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::TabFocus</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" >
+       <widget class="TribotsTools::DoubleSlider" name="sliderSaturation" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::TabFocus</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <widget class="QLabel" name="label" >
+        <property name="font" >
+         <font>
+          <pointsize>24</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>S</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_3" >
+        <property name="font" >
+         <font>
+          <pointsize>24</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>B</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="TribotsTools::DoubleSlider" name="sliderBall" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::TabFocus</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" >
+       <widget class="TribotsTools::DoubleSlider" name="sliderIntensity" >
+        <property name="sizePolicy" >
+         <sizepolicy vsizetype="Preferred" hsizetype="Expanding" >
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize" >
+         <size>
+          <width>16777215</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::TabFocus</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3" >
+       <widget class="QLabel" name="label_2" >
+        <property name="font" >
+         <font>
+          <pointsize>24</pointsize>
+         </font>
+        </property>
+        <property name="text" >
+         <string>I</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TribotsTools::DoubleSlider</class>
+   <extends>QWidget</extends>
+   <header>../../../components/DoubleSlider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TribotsTools::ScrollImageWidget</class>
+   <extends>QFrame</extends>
+   <header>../../../components/ScrollImageWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>sliderHue</tabstop>
+  <tabstop>sliderSaturation</tabstop>
+  <tabstop>sliderIntensity</tabstop>
+  <tabstop>sliderBall</tabstop>
+  <tabstop>pushButtonSetColor</tabstop>
+  <tabstop>pushButtonAddColor</tabstop>
+  <tabstop>pushButtonUndoColor</tabstop>
+  <tabstop>checkBoxLUT</tabstop>
+  <tabstop>pushButtonLoad</tabstop>
+  <tabstop>lineEditFilename</tabstop>
+  <tabstop>comboBoxColorClass</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../VisionTool.qrc" />
+ </resources>
+ <connections/>
+</ui>

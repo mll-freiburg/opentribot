@@ -1,0 +1,15 @@
+<package>
+  <description brief="opentribot_vision">
+
+     opentribot_vision
+
+  </description>
+  <author>tribot</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/opentribot_vision</url>
+  <depend package="opentribot_messages"/>
+
+</package>
+
+

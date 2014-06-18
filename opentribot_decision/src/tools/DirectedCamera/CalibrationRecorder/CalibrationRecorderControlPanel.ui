@@ -1,0 +1,173 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>CalibrationRecorderControlPanel</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>CalibrationRecorderControlPanel</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>344</width>
+            <height>166</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>ControlPanel</string>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QPushButton" row="1" column="0">
+            <property name="name">
+                <cstring>pushButtonNext</cstring>
+            </property>
+            <property name="text">
+                <string>Next</string>
+            </property>
+            <property name="accel">
+                <string>N</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="1" column="1">
+            <property name="name">
+                <cstring>pushButtonContinue</cstring>
+            </property>
+            <property name="text">
+                <string>Continue</string>
+            </property>
+            <property name="accel">
+                <string>C</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="1" column="4">
+            <property name="name">
+                <cstring>pushButtonQuit</cstring>
+            </property>
+            <property name="text">
+                <string>Quit</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="1" column="3">
+            <property name="name">
+                <cstring>pushButtonBack</cstring>
+            </property>
+            <property name="text">
+                <string>Back</string>
+            </property>
+            <property name="accel">
+                <string>B</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" row="1" column="2">
+            <property name="name">
+                <cstring>pushButtonSkip</cstring>
+            </property>
+            <property name="text">
+                <string>Skip</string>
+            </property>
+            <property name="accel">
+                <string>S</string>
+            </property>
+        </widget>
+        <widget class="QTextEdit" row="0" column="0" rowspan="1" colspan="5">
+            <property name="name">
+                <cstring>textEditMessage</cstring>
+            </property>
+            <property name="maximumSize">
+                <size>
+                    <width>32767</width>
+                    <height>32767</height>
+                </size>
+            </property>
+            <property name="readOnly">
+                <bool>true</bool>
+            </property>
+        </widget>
+        <widget class="QSlider" row="2" column="0" rowspan="1" colspan="5">
+            <property name="name">
+                <cstring>sliderSensitivity</cstring>
+            </property>
+            <property name="minValue">
+                <number>-20</number>
+            </property>
+            <property name="maxValue">
+                <number>150</number>
+            </property>
+            <property name="value">
+                <number>20</number>
+            </property>
+            <property name="orientation">
+                <enum>Horizontal</enum>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>pushButtonNext</sender>
+        <signal>clicked()</signal>
+        <receiver>CalibrationRecorderControlPanel</receiver>
+        <slot>nextClicked()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonContinue</sender>
+        <signal>clicked()</signal>
+        <receiver>CalibrationRecorderControlPanel</receiver>
+        <slot>continueClicked()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonQuit</sender>
+        <signal>clicked()</signal>
+        <receiver>CalibrationRecorderControlPanel</receiver>
+        <slot>quitClicked()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonBack</sender>
+        <signal>clicked()</signal>
+        <receiver>CalibrationRecorderControlPanel</receiver>
+        <slot>backClicked()</slot>
+    </connection>
+    <connection>
+        <sender>sliderSensitivity</sender>
+        <signal>sliderMoved(int)</signal>
+        <receiver>CalibrationRecorderControlPanel</receiver>
+        <slot>sensitivityChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>sliderSensitivity</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>CalibrationRecorderControlPanel</receiver>
+        <slot>sensitivityChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonSkip</sender>
+        <signal>clicked()</signal>
+        <receiver>CalibrationRecorderControlPanel</receiver>
+        <slot>skipClicked()</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="local" impldecl="in implementation">CalibrationRecorderControlPanel.ui.h</include>
+</includes>
+<variables>
+    <variable access="public">bool doContinue;</variable>
+    <variable access="public">bool doNext;</variable>
+    <variable access="public">bool doQuit;</variable>
+    <variable access="public">bool doBack;</variable>
+    <variable access="public">int sensitivity;</variable>
+    <variable access="public">bool doSkip;</variable>
+</variables>
+<slots>
+    <slot access="protected">nextClicked()</slot>
+    <slot access="protected">continueClicked()</slot>
+    <slot access="protected">quitClicked()</slot>
+    <slot access="protected">init()</slot>
+    <slot>setMessage( const QString &amp; text )</slot>
+    <slot access="protected">backClicked()</slot>
+    <slot access="protected">sensitivityChanged( int val )</slot>
+    <slot access="protected">skipClicked()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
