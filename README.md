@@ -7,20 +7,29 @@ Author: Stefan Welker
 
 For more details, see http://ml.informatik.uni-freiburg.de/OpenTribot/doku.php?id=start
 
-contributors
+Contributors
 ------------
 
- - Dr. Artur Merke
- - Dr. Roland Hafner
- - Dr. Martin Lauer
- - Dr. Sascha Lange
- - Stefan Welker
+Dr. Artur Merke
 
- - Arne Voigtländer
- - Heiko Müller
- - Kolja Hegelich
+Dr. Roland Hafner
+ 
+Dr. Martin Lauer
 
- - Matthias Lewandowski
- - Christopher Lörken
- - Tobias Kringe
- - Sven Kerkling
+Dr. Sascha Lange
+
+Stefan Welker
+
+Arne Voigtländer
+
+Heiko Müller
+
+Kolja Hegelich
+
+Matthias Lewandowski
+
+Christopher Lörken
+
+Tobias Kringe
+
+Sven Kerkling
